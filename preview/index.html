@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAKUDA AI SOLUTION - Design Mock Preview</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', sans-serif;
+  background: #0F172A; color: #E2E8F0; line-height: 1.6; padding: 40px 24px;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; color: #fff; }
+.subtitle { font-size: 15px; color: #94A3B8; margin-bottom: 48px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+.card {
+  background: #1E293B; border: 1px solid #334155; border-radius: 12px;
+  padding: 28px; transition: all 0.2s ease; position: relative; overflow: hidden;
+}
+.card:hover { border-color: #60A5FA; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.card-num {
+  position: absolute; top: 16px; right: 20px; font-size: 48px; font-weight: 900;
+  color: rgba(255,255,255,0.04); line-height: 1;
+}
+.card h2 { font-size: 18px; font-weight: 700; color: #F1F5F9; margin-bottom: 4px; }
+.card .tag {
+  display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px;
+  border-radius: 100px; margin-bottom: 12px;
+}
+.card p { font-size: 13px; color: #94A3B8; line-height: 1.7; margin-bottom: 20px; }
+.card a {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: #60A5FA; text-decoration: none; font-size: 14px; font-weight: 600;
+  transition: color 0.15s;
+}
+.card a:hover { color: #93C5FD; }
+.card a::after { content: "→"; }
+.colors { display: flex; gap: 6px; margin-bottom: 16px; }
+.color-dot { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #334155; }
+.base-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-bottom: 48px; padding: 10px 20px; border: 1px solid #334155;
+  border-radius: 8px; color: #94A3B8; text-decoration: none; font-size: 13px;
+  transition: all 0.15s;
+}
+.base-link:hover { border-color: #60A5FA; color: #60A5FA; }
+.footer { text-align: center; margin-top: 64px; font-size: 12px; color: #475569; }
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+  h1 { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Design Mock Preview</h1>
+  <p class="subtitle">RAKUDA AI SOLUTION — 10 design patterns that avoid the "AI-generated" look</p>
+  <a href="../consulting.html" class="base-link">
+    <span>Original (consulting.html)</span>
+  </a>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-num">01</div>
+      <div class="colors">
+        <div class="color-dot" style="background:#1C1C1C"></div>
+        <div class="color-dot" style="background:#C5705D"></div>
+        <div class="color-dot" style="background:#FFF"></div>
+      </div>
+      <div class="tag" style="background:rgba(197,112,93,0.15);color:#C5705D">Editorial</div>
+      <h2>M1: エディトリアル / マガジン</h2>
+      <p>非対称レイアウト、Cormorant Garamond見出し、テラコッタアクセント。雑誌のような読み心地。</p>
+      <a href="m1.html">プレビュー</a>
+    </div>
+
+    <div class="card">
+      <div class="card-num">02</div>
+      <div class="colors">
+        <div class="color-dot" style="background:#FBF8F4"></div>
+        <div class="color-dot" style="background:#A0522D"></div>
+        <div class="color-dot" style="background:#F4EDE4"></div>
+      </div>
+      <div class="tag" style="background:rgba(160,82,45,0.15);color:#A0522D">Warm</div>
+      <h2>M2: ウォームアースカラー</h2>
+      <p>テラコッタ/シエナ配色、Source Serif 4、暖色クリーム背景。青系を完全排除した温かみ。</p>
+      <a href="m2.html">プレビュー</a>
+    </div>
+
+    <div class="card">
+      <div class="card-num">03</div>
+      <div class="colors">
+        <div class="color-dot" style="background:#FAFAFA"></div>
+        <div class="color-dot" style="background:#FF3E00"></div>
+        <div class="color-dot" style="background:#111"></div>
+      </div>
+      <div class="tag" style="background:rgba(255,62,0,0.15);color:#FF3E00">Brutalist</div>
+      <h2>M3: ブルータリスト / スイス</h2>
+      <p>角ゼロ、黒ボーダー、Space Grotesk。グラデーション・影を完全排除した硬派なデザイン。</p>
+      <a href="m3.html">プレビュー</a>
+    </div>
+
+    <div class="card">
+      <div class="card-num">04</div>
+      <div class="colors">
+        <div class="color-dot" style="background:#FEFDFB"></div>
+        <div class="color-dot" style="background:#2D4A3E"></div>
+        <div class="color-dot" style="background:#F8F6F2"></div>
+      </div>
+      <div class="tag" style="background:rgba(45,74,62,0.15);color:#2D4A3E">Premium</div>
+      <h2>M4: 和モダン / プレミアム</h2>
+      <p>Noto Serif JP、深緑アクセント、大きな余白。日本的な静けさと品格を重視。</p>
+      <a href="m4.html">プレビュー</a>
+    </div>
+
+    <div class="card">
+      <div class="card-num">05</div>
+      <div class="colors">
+        <div class="color-dot" style="background:#111111"></div>
+        <div class="color-dot" style="background:#E8C547"></div>
+        <div class="color-dot" style="background:#222222"></div>
+      </div>
+      <div class="tag" style="background:rgba(232,197,71,0.15);color:#E8C547">Dark</div>
+      <h2>M5: ダークモード + グレイン</h2>
+      <p>全面ダーク、ゴールドアクセント、フィルムグレインテクスチャ。高級感のあるダーク。</p>
+      <a href="m5.html">プレビュー</a>
+    </div>
+
+    <div class="card">
+      <div class="card-num">06</div>
+      <div class="colors">
+        <div class="color-dot" style="background:#0F172A"></div>
+        <div class="color-dot" style="background:#2563EB"></div>
+        <div class="color-dot" style="background:#F0F4FF"></div>
+      </div>
+      <div class="tag" style="background:rgba(37,99,235,0.15);color:#60A5FA">Split</div>
+      <h2>M6: ツートーン スプリット</h2>
+      <p>左右分割レイアウト、斜めセクション区切り、ビビッドブルー。大胆な構図変化。</p>
+      <a href="m6.html">プレビュー</a>
+    </div>
+
+    <div class="card">
+      <div class="card-num">07</div>
+      <div class="colors">
+        <div class="color-dot" style="background:#FFFFFF"></div>
+        <div class="color-dot" style="background:#6B21A8"></div>
+        <div class="color-dot" style="background:#FAFAFA"></div>
+      </div>
+      <div class="tag" style="background:rgba(107,33,168,0.15);color:#A855F7">Typography</div>
+      <h2>M7: カードレス / タイポグラフィ主体</h2>
+      <p>カードを完全排除。水平線とフォントの強弱だけで構造化した、テキスト重視のデザイン。</p>
+      <a href="m7.html">プレビュー</a>
+    </div>
+
+    <div class="card">
+      <div class="card-num">08</div>
+      <div class="colors">
+        <div class="color-dot" style="background:#F8FAFC"></div>
+        <div class="color-dot" style="background:#0D9488"></div>
+        <div class="color-dot" style="background:#CCFBF1"></div>
+      </div>
+      <div class="tag" style="background:rgba(13,148,136,0.15);color:#14B8A6">Bento</div>
+      <h2>M8: ベントグリッド</h2>
+      <p>不揃いなカードサイズ、非対称グリッド、ティールアクセント。モダンなダッシュボード風。</p>
+      <a href="m8.html">プレビュー</a>
+    </div>
+
+    <div class="card">
+      <div class="card-num">09</div>
+      <div class="colors">
+        <div class="color-dot" style="background:#FFFBF5"></div>
+        <div class="color-dot" style="background:#B45309"></div>
+        <div class="color-dot" style="background:#FEF3E2"></div>
+      </div>
+      <div class="tag" style="background:rgba(180,83,9,0.15);color:#D97706">Narrative</div>
+      <h2>M9: ストーリー / ナラティブ</h2>
+      <p>Fraunces書体、チャプター構成、タイムライン型。物語として読ませるLP。</p>
+      <a href="m9.html">プレビュー</a>
+    </div>
+
+    <div class="card">
+      <div class="card-num">10</div>
+      <div class="colors">
+        <div class="color-dot" style="background:#FEFEFE"></div>
+        <div class="color-dot" style="background:#3B82F6"></div>
+        <div class="color-dot" style="background:#F5F5F0"></div>
+      </div>
+      <div class="tag" style="background:rgba(59,130,246,0.15);color:#3B82F6">Handcraft</div>
+      <h2>M10: ハンドクラフト / スケッチ</h2>
+      <p>手描き風ボーダー、Caveat手書きフォント注釈、ドットグリッド背景。温もりのある手作り感。</p>
+      <a href="m10.html">プレビュー</a>
+    </div>
+  </div>
+
+  <div class="footer">RAKUDA AI SOLUTION — Design Mock Preview &copy; 2026</div>
+</div>
+</body>
+</html>

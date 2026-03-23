@@ -1,0 +1,36 @@
+<!-- Chatbot FAB + Window -->
+<button class="chatbot-fab" id="chatFab" onclick="toggleChat()">
+  <svg class="fab-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  <svg class="fab-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+</button>
+<div class="chatbot-window" id="chatWindow">
+  <div class="chatbot-header">
+    <div class="chatbot-avatar">R</div>
+    <div class="chatbot-header-info">
+      <div class="chatbot-header-name">RAKUDA AI</div>
+      <div class="chatbot-header-status">オンライン</div>
+    </div>
+  </div>
+  <div class="chatbot-messages" id="chatMessages">
+    <div class="chat-msg bot">
+      <div class="chat-bubble">こんにちは！RAKUDA AIのアシスタントです。AI導入について、何でもお気軽にご質問ください。</div>
+    </div>
+    <div class="chat-quick-actions" id="chatQuickActions">
+      <button class="chat-quick-btn" onclick="sendQuickChat('どんなことができますか？')">できること</button>
+      <button class="chat-quick-btn" onclick="sendQuickChat('料金を知りたい')">料金について</button>
+      <button class="chat-quick-btn" onclick="sendQuickChat('まずは相談したい')">無料相談</button>
+    </div>
+  </div>
+  <div class="chatbot-input-area">
+    <input class="chatbot-input" id="chatInput" placeholder="メッセージを入力..." onkeydown="if(event.key==='Enter'){event.preventDefault();sendChat()}">
+    <button class="chatbot-send" onclick="sendChat()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </div>
+</div>

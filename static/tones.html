@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>AI導入支援LP — Tone Comparison 10 Patterns</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic Medium','Yu Gothic',Meiryo,sans-serif;
+            background: #E5E7EB;
+            color: #1A1A1A;
+            -webkit-font-smoothing: antialiased;
+            font-feature-settings: "palt";
+        }
+
+        /* === STICKY NAV === */
+        .page-nav {
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            background: #FFF;
+            border-bottom: 1px solid #D1D5DB;
+            padding: 14px 0;
+        }
+
+        .page-nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .page-nav h1 {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .page-nav .subtitle {
+            font-size: 12px;
+            color: #6B7280;
+        }
+
+        .nav-pills {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .nav-pills a {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-weight: 500;
+            text-decoration: none;
+            color: #374151;
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            transition: all 0.12s;
+        }
+
+        .nav-pills a:hover {
+            border-color: #9CA3AF;
+            background: #F3F4F6;
+        }
+
+        .nav-pills .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+
+        /* === TONE SECTION === */
+        .tone-section {
+            max-width: 1400px;
+            margin: 32px auto;
+            padding: 0 32px;
+        }
+
+        .tone-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .tone-label .num {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            color: #FFF;
+        }
+
+        .tone-label h2 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .tone-label .desc {
+            font-size: 12px;
+            color: #6B7280;
+            margin-left: 8px;
+        }
+
+        /* === LP FRAME === */
+        .lp-frame {
+            background: #FFF;
+            border-radius: 12px;
+            border: 1px solid #D1D5DB;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+
+        /* === LP INTERNAL STYLES === */
+        .lp { overflow: hidden; }
+
+        .lp .lp-header {
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+        }
+
+        .lp .lp-logo {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .lp .lp-nav {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .lp .lp-nav span {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .lp .lp-nav-cta {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        /* Hero */
+        .lp .lp-hero {
+            padding: 64px 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lp .lp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 12px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .lp .lp-hero h1 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.3;
+            margin-bottom: 14px;
+        }
+
+        .lp .lp-hero p {
+            font-size: 14px;
+            line-height: 1.75;
+            margin-bottom: 28px;
+            max-width: 520px;
+        }
+
+        .lp .lp-cta-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lp .btn-p {
+            padding: 10px 22px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+
+        .lp .btn-s {
+            padding: 10px 22px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid;
+            cursor: pointer;
+            background: transparent;
+        }
+
+        /* Free Tool Banner */
+        .lp .lp-freetool {
+            padding: 32px 40px;
+            text-align: center;
+        }
+
+        .lp .lp-freetool-inner {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 28px 32px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .lp .lp-freetool-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .lp .lp-freetool-text {
+            text-align: left;
+        }
+
+        .lp .lp-freetool-text h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .lp .lp-freetool-text p {
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .lp .lp-freetool-btn {
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        /* Stats */
+        .lp .lp-stats {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            text-align: center;
+            padding: 0;
+        }
+
+        .lp .lp-stat {
+            padding: 28px 16px;
+        }
+
+        .lp .lp-stat .num {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+
+        .lp .lp-stat .lbl {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Features */
+        .lp .lp-features {
+            padding: 48px 40px;
+        }
+
+        .lp .lp-features-title {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .lp .lp-features-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .lp .lp-feat-card {
+            padding: 24px;
+            border-radius: 10px;
+        }
+
+        .lp .lp-feat-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .lp .lp-feat-card h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .lp .lp-feat-card p {
+            font-size: 12px;
+            line-height: 1.65;
+        }
+
+        /* CTA Banner */
+        .lp .lp-cta-banner {
+            padding: 48px 40px;
+            text-align: center;
+        }
+
+        .lp .lp-cta-banner h2 {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+
+        .lp .lp-cta-banner p {
+            font-size: 13px;
+            margin-bottom: 24px;
+        }
+
+        .lp .lp-cta-banner .btn-p {
+            padding: 12px 32px;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        .lp .lp-footer {
+            padding: 20px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lp .lp-footer span {
+            font-size: 11px;
+        }
+
+        /* ==================================================================
+           TONE STYLES
+           ================================================================== */
+
+        /* T1: White + Blue — SaaS定番・安心感 */
+        .t1 .lp-header { background: #FFF; border-bottom: 1px solid #E5E7EB; }
+        .t1 .lp-logo { color: #111827; }
+        .t1 .lp-nav span { color: #6B7280; }
+        .t1 .lp-nav-cta { background: #2563EB; color: #FFF; }
+        .t1 .lp-hero { background: #FFF; }
+        .t1 .lp-badge { background: #EFF6FF; color: #2563EB; }
+        .t1 .lp-hero h1 { color: #111827; }
+        .t1 .lp-hero p { color: #6B7280; }
+        .t1 .btn-p { background: #2563EB; color: #FFF; }
+        .t1 .btn-s { color: #2563EB; border-color: #BFDBFE; }
+        .t1 .lp-freetool { background: #FFF; }
+        .t1 .lp-freetool-inner { background: #EFF6FF; border: 1px solid #BFDBFE; }
+        .t1 .lp-freetool-icon { background: #2563EB; color: #FFF; }
+        .t1 .lp-freetool-text h3 { color: #111827; }
+        .t1 .lp-freetool-text p { color: #6B7280; }
+        .t1 .lp-freetool-btn { background: #2563EB; color: #FFF; }
+        .t1 .lp-stats { background: #F9FAFB; border-top: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; }
+        .t1 .lp-stat .num { color: #2563EB; }
+        .t1 .lp-stat .lbl { color: #6B7280; }
+        .t1 .lp-stat:not(:last-child) { border-right: 1px solid #E5E7EB; }
+        .t1 .lp-features { background: #FFF; }
+        .t1 .lp-features-title { color: #111827; }
+        .t1 .lp-feat-card { background: #F9FAFB; border: 1px solid #E5E7EB; }
+        .t1 .lp-feat-icon { background: #EFF6FF; color: #2563EB; }
+        .t1 .lp-feat-card h3 { color: #111827; }
+        .t1 .lp-feat-card p { color: #6B7280; }
+        .t1 .lp-cta-banner { background: #EFF6FF; }
+        .t1 .lp-cta-banner h2 { color: #111827; }
+        .t1 .lp-cta-banner p { color: #6B7280; }
+        .t1 .lp-footer { background: #F9FAFB; border-top: 1px solid #E5E7EB; }
+        .t1 .lp-footer span { color: #9CA3AF; }
+
+        /* T2: Dark Gradient — AI・テック先進感 */
+        .t2 .lp-header { background: #0A0F1E; border-bottom: 1px solid rgba(99,102,241,0.15); }
+        .t2 .lp-logo { color: #FFF; }
+        .t2 .lp-nav span { color: rgba(255,255,255,0.5); }
+        .t2 .lp-nav-cta { background: #6366F1; color: #FFF; }
+        .t2 .lp-hero { background: linear-gradient(180deg, #0A0F1E 0%, #1E1B4B 100%); }
+        .t2 .lp-badge { background: rgba(99,102,241,0.15); color: #A5B4FC; border: 1px solid rgba(99,102,241,0.3); }
+        .t2 .lp-hero h1 { color: #FFF; }
+        .t2 .lp-hero p { color: rgba(255,255,255,0.55); }
+        .t2 .btn-p { background: #6366F1; color: #FFF; }
+        .t2 .btn-s { color: #A5B4FC; border-color: rgba(99,102,241,0.3); }
+        .t2 .lp-freetool { background: #0F1629; }
+        .t2 .lp-freetool-inner { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); }
+        .t2 .lp-freetool-icon { background: #6366F1; color: #FFF; }
+        .t2 .lp-freetool-text h3 { color: #E0E7FF; }
+        .t2 .lp-freetool-text p { color: rgba(255,255,255,0.45); }
+        .t2 .lp-freetool-btn { background: #6366F1; color: #FFF; }
+        .t2 .lp-stats { background: #0F1629; border-top: 1px solid rgba(99,102,241,0.1); border-bottom: 1px solid rgba(99,102,241,0.1); }
+        .t2 .lp-stat .num { color: #A5B4FC; }
+        .t2 .lp-stat .lbl { color: rgba(255,255,255,0.35); }
+        .t2 .lp-stat:not(:last-child) { border-right: 1px solid rgba(99,102,241,0.1); }
+        .t2 .lp-features { background: #0A0F1E; }
+        .t2 .lp-features-title { color: #FFF; }
+        .t2 .lp-feat-card { background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.12); }
+        .t2 .lp-feat-icon { background: rgba(99,102,241,0.15); color: #A5B4FC; }
+        .t2 .lp-feat-card h3 { color: rgba(255,255,255,0.9); }
+        .t2 .lp-feat-card p { color: rgba(255,255,255,0.4); }
+        .t2 .lp-cta-banner { background: linear-gradient(180deg, #1E1B4B 0%, #0A0F1E 100%); }
+        .t2 .lp-cta-banner h2 { color: #FFF; }
+        .t2 .lp-cta-banner p { color: rgba(255,255,255,0.45); }
+        .t2 .lp-footer { background: #0A0F1E; border-top: 1px solid rgba(99,102,241,0.1); }
+        .t2 .lp-footer span { color: rgba(255,255,255,0.2); }
+
+        /* T3: Bold Monochrome — 大胆・研ぎ澄まされた */
+        .t3 .lp-header { background: #000; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .t3 .lp-logo { color: #FFF; }
+        .t3 .lp-nav span { color: rgba(255,255,255,0.5); }
+        .t3 .lp-nav-cta { background: #FFF; color: #000; }
+        .t3 .lp-hero { background: #000; }
+        .t3 .lp-badge { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.1); }
+        .t3 .lp-hero h1 { color: #FFF; }
+        .t3 .lp-hero p { color: rgba(255,255,255,0.4); }
+        .t3 .btn-p { background: #FFF; color: #000; }
+        .t3 .btn-s { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.15); }
+        .t3 .lp-freetool { background: #000; }
+        .t3 .lp-freetool-inner { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); }
+        .t3 .lp-freetool-icon { background: #FFF; color: #000; }
+        .t3 .lp-freetool-text h3 { color: rgba(255,255,255,0.9); }
+        .t3 .lp-freetool-text p { color: rgba(255,255,255,0.4); }
+        .t3 .lp-freetool-btn { background: #FFF; color: #000; }
+        .t3 .lp-stats { background: #050505; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .t3 .lp-stat .num { color: #FFF; }
+        .t3 .lp-stat .lbl { color: rgba(255,255,255,0.35); }
+        .t3 .lp-stat:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.06); }
+        .t3 .lp-features { background: #000; }
+        .t3 .lp-features-title { color: #FFF; }
+        .t3 .lp-feat-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+        .t3 .lp-feat-icon { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); }
+        .t3 .lp-feat-card h3 { color: rgba(255,255,255,0.9); }
+        .t3 .lp-feat-card p { color: rgba(255,255,255,0.4); }
+        .t3 .lp-cta-banner { background: #050505; }
+        .t3 .lp-cta-banner h2 { color: #FFF; }
+        .t3 .lp-cta-banner p { color: rgba(255,255,255,0.4); }
+        .t3 .lp-footer { background: #000; border-top: 1px solid rgba(255,255,255,0.06); }
+        .t3 .lp-footer span { color: rgba(255,255,255,0.25); }
+
+        /* T4: White + Purple — モダンAI・Anthropic的 */
+        .t4 .lp-header { background: #FFF; border-bottom: 1px solid #E5E7EB; }
+        .t4 .lp-logo { color: #18181B; }
+        .t4 .lp-nav span { color: #71717A; }
+        .t4 .lp-nav-cta { background: #7C3AED; color: #FFF; }
+        .t4 .lp-hero { background: #FFF; }
+        .t4 .lp-badge { background: #F5F3FF; color: #7C3AED; }
+        .t4 .lp-hero h1 { color: #18181B; }
+        .t4 .lp-hero p { color: #71717A; }
+        .t4 .btn-p { background: #7C3AED; color: #FFF; }
+        .t4 .btn-s { color: #7C3AED; border-color: #DDD6FE; }
+        .t4 .lp-freetool { background: #FFF; }
+        .t4 .lp-freetool-inner { background: #F5F3FF; border: 1px solid #DDD6FE; }
+        .t4 .lp-freetool-icon { background: #7C3AED; color: #FFF; }
+        .t4 .lp-freetool-text h3 { color: #18181B; }
+        .t4 .lp-freetool-text p { color: #71717A; }
+        .t4 .lp-freetool-btn { background: #7C3AED; color: #FFF; }
+        .t4 .lp-stats { background: #FAFAFE; border-top: 1px solid #EDE9FE; border-bottom: 1px solid #EDE9FE; }
+        .t4 .lp-stat .num { color: #7C3AED; }
+        .t4 .lp-stat .lbl { color: #71717A; }
+        .t4 .lp-stat:not(:last-child) { border-right: 1px solid #EDE9FE; }
+        .t4 .lp-features { background: #FFF; }
+        .t4 .lp-features-title { color: #18181B; }
+        .t4 .lp-feat-card { background: #FAFAFE; border: 1px solid #EDE9FE; }
+        .t4 .lp-feat-icon { background: #F5F3FF; color: #7C3AED; }
+        .t4 .lp-feat-card h3 { color: #18181B; }
+        .t4 .lp-feat-card p { color: #71717A; }
+        .t4 .lp-cta-banner { background: #F5F3FF; }
+        .t4 .lp-cta-banner h2 { color: #18181B; }
+        .t4 .lp-cta-banner p { color: #71717A; }
+        .t4 .lp-footer { background: #FAFAFE; border-top: 1px solid #EDE9FE; }
+        .t4 .lp-footer span { color: #A1A1AA; }
+
+        /* T5: Gray + Navy — コーポレート堅実（Graffer/GMO的） */
+        .t5 .lp-header { background: #F9FAFB; border-bottom: 1px solid #E2E8F0; }
+        .t5 .lp-logo { color: #1E293B; }
+        .t5 .lp-nav span { color: #64748B; }
+        .t5 .lp-nav-cta { background: #1E3A5F; color: #FFF; }
+        .t5 .lp-hero { background: #F9FAFB; }
+        .t5 .lp-badge { background: #E0E7FF; color: #1E3A5F; }
+        .t5 .lp-hero h1 { color: #1E293B; }
+        .t5 .lp-hero p { color: #64748B; }
+        .t5 .btn-p { background: #1E3A5F; color: #FFF; }
+        .t5 .btn-s { color: #1E3A5F; border-color: #CBD5E1; }
+        .t5 .lp-freetool { background: #F9FAFB; }
+        .t5 .lp-freetool-inner { background: #E0E7FF; border: 1px solid #CBD5E1; }
+        .t5 .lp-freetool-icon { background: #1E3A5F; color: #FFF; }
+        .t5 .lp-freetool-text h3 { color: #1E293B; }
+        .t5 .lp-freetool-text p { color: #64748B; }
+        .t5 .lp-freetool-btn { background: #1E3A5F; color: #FFF; }
+        .t5 .lp-stats { background: #F1F5F9; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0; }
+        .t5 .lp-stat .num { color: #1E3A5F; }
+        .t5 .lp-stat .lbl { color: #64748B; }
+        .t5 .lp-stat:not(:last-child) { border-right: 1px solid #E2E8F0; }
+        .t5 .lp-features { background: #F9FAFB; }
+        .t5 .lp-features-title { color: #1E293B; }
+        .t5 .lp-feat-card { background: #FFF; border: 1px solid #E2E8F0; }
+        .t5 .lp-feat-icon { background: #E0E7FF; color: #1E3A5F; }
+        .t5 .lp-feat-card h3 { color: #1E293B; }
+        .t5 .lp-feat-card p { color: #64748B; }
+        .t5 .lp-cta-banner { background: #E0E7FF; }
+        .t5 .lp-cta-banner h2 { color: #1E293B; }
+        .t5 .lp-cta-banner p { color: #64748B; }
+        .t5 .lp-footer { background: #F1F5F9; border-top: 1px solid #E2E8F0; }
+        .t5 .lp-footer span { color: #94A3B8; }
+
+        /* T6: White + Teal — 清潔・信頼（JAPAN AI的） */
+        .t6 .lp-header { background: #FFF; border-bottom: 1px solid #E5E7EB; }
+        .t6 .lp-logo { color: #111827; }
+        .t6 .lp-nav span { color: #6B7280; }
+        .t6 .lp-nav-cta { background: #0D9488; color: #FFF; }
+        .t6 .lp-hero { background: #FFF; }
+        .t6 .lp-badge { background: #F0FDFA; color: #0D9488; }
+        .t6 .lp-hero h1 { color: #111827; }
+        .t6 .lp-hero p { color: #6B7280; }
+        .t6 .btn-p { background: #0D9488; color: #FFF; }
+        .t6 .btn-s { color: #0D9488; border-color: #99F6E4; }
+        .t6 .lp-freetool { background: #FFF; }
+        .t6 .lp-freetool-inner { background: #F0FDFA; border: 1px solid #99F6E4; }
+        .t6 .lp-freetool-icon { background: #0D9488; color: #FFF; }
+        .t6 .lp-freetool-text h3 { color: #111827; }
+        .t6 .lp-freetool-text p { color: #6B7280; }
+        .t6 .lp-freetool-btn { background: #0D9488; color: #FFF; }
+        .t6 .lp-stats { background: #F0FDFA; border-top: 1px solid #CCFBF1; border-bottom: 1px solid #CCFBF1; }
+        .t6 .lp-stat .num { color: #0D9488; }
+        .t6 .lp-stat .lbl { color: #6B7280; }
+        .t6 .lp-stat:not(:last-child) { border-right: 1px solid #CCFBF1; }
+        .t6 .lp-features { background: #FFF; }
+        .t6 .lp-features-title { color: #111827; }
+        .t6 .lp-feat-card { background: #F0FDFA; border: 1px solid #CCFBF1; }
+        .t6 .lp-feat-icon { background: #CCFBF1; color: #0D9488; }
+        .t6 .lp-feat-card h3 { color: #111827; }
+        .t6 .lp-feat-card p { color: #6B7280; }
+        .t6 .lp-cta-banner { background: #F0FDFA; }
+        .t6 .lp-cta-banner h2 { color: #111827; }
+        .t6 .lp-cta-banner p { color: #6B7280; }
+        .t6 .lp-footer { background: #F9FAFB; border-top: 1px solid #E5E7EB; }
+        .t6 .lp-footer span { color: #9CA3AF; }
+
+        /* T7: Cream + Dark — 温もり・手触り（Notion/STORES的） */
+        .t7 .lp { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Mincho ProN','Yu Mincho','MS PMincho',serif; }
+        .t7 .lp-header { background: #FAF8F4; border-bottom: 1px solid #E7E5E4; }
+        .t7 .lp-logo { color: #292524; }
+        .t7 .lp-nav span { color: #78716C; }
+        .t7 .lp-nav-cta { background: #292524; color: #FAF8F4; }
+        .t7 .lp-hero { background: #FAF8F4; }
+        .t7 .lp-badge { background: #F0EBE0; color: #78603C; }
+        .t7 .lp-hero h1 { color: #292524; }
+        .t7 .lp-hero p { color: #78716C; }
+        .t7 .btn-p { background: #292524; color: #FAF8F4; }
+        .t7 .btn-s { color: #44403C; border-color: #D6D3D1; }
+        .t7 .lp-freetool { background: #FAF8F4; }
+        .t7 .lp-freetool-inner { background: #F0EBE0; border: 1px solid #D6D3D1; }
+        .t7 .lp-freetool-icon { background: #292524; color: #FAF8F4; }
+        .t7 .lp-freetool-text h3 { color: #292524; }
+        .t7 .lp-freetool-text p { color: #78716C; }
+        .t7 .lp-freetool-btn { background: #292524; color: #FAF8F4; }
+        .t7 .lp-stats { background: #F5F0EA; border-top: 1px solid #E7E5E4; border-bottom: 1px solid #E7E5E4; }
+        .t7 .lp-stat .num { color: #292524; }
+        .t7 .lp-stat .lbl { color: #A8A29E; }
+        .t7 .lp-stat:not(:last-child) { border-right: 1px solid #E7E5E4; }
+        .t7 .lp-features { background: #FAF8F4; }
+        .t7 .lp-features-title { color: #292524; }
+        .t7 .lp-feat-card { background: #F5F0EA; border: 1px solid #E7E5E4; }
+        .t7 .lp-feat-icon { background: #F0EBE0; color: #78603C; }
+        .t7 .lp-feat-card h3 { color: #292524; }
+        .t7 .lp-feat-card p { color: #78716C; }
+        .t7 .lp-cta-banner { background: #F0EBE0; }
+        .t7 .lp-cta-banner h2 { color: #292524; }
+        .t7 .lp-cta-banner p { color: #78716C; }
+        .t7 .lp-footer { background: #F5F0EA; border-top: 1px solid #E7E5E4; }
+        .t7 .lp-footer span { color: #A8A29E; }
+
+        /* T8: White + Green — 成果・ROIポジティブ */
+        .t8 .lp-header { background: #FFF; border-bottom: 1px solid #E5E7EB; }
+        .t8 .lp-logo { color: #111827; }
+        .t8 .lp-nav span { color: #6B7280; }
+        .t8 .lp-nav-cta { background: #059669; color: #FFF; }
+        .t8 .lp-hero { background: #FFF; }
+        .t8 .lp-badge { background: #ECFDF5; color: #059669; }
+        .t8 .lp-hero h1 { color: #111827; }
+        .t8 .lp-hero p { color: #6B7280; }
+        .t8 .btn-p { background: #059669; color: #FFF; }
+        .t8 .btn-s { color: #059669; border-color: #A7F3D0; }
+        .t8 .lp-freetool { background: #FFF; }
+        .t8 .lp-freetool-inner { background: #ECFDF5; border: 1px solid #A7F3D0; }
+        .t8 .lp-freetool-icon { background: #059669; color: #FFF; }
+        .t8 .lp-freetool-text h3 { color: #111827; }
+        .t8 .lp-freetool-text p { color: #6B7280; }
+        .t8 .lp-freetool-btn { background: #059669; color: #FFF; }
+        .t8 .lp-stats { background: #F0FDF4; border-top: 1px solid #D1FAE5; border-bottom: 1px solid #D1FAE5; }
+        .t8 .lp-stat .num { color: #059669; }
+        .t8 .lp-stat .lbl { color: #6B7280; }
+        .t8 .lp-stat:not(:last-child) { border-right: 1px solid #D1FAE5; }
+        .t8 .lp-features { background: #FFF; }
+        .t8 .lp-features-title { color: #111827; }
+        .t8 .lp-feat-card { background: #F0FDF4; border: 1px solid #D1FAE5; }
+        .t8 .lp-feat-icon { background: #ECFDF5; color: #059669; }
+        .t8 .lp-feat-card h3 { color: #111827; }
+        .t8 .lp-feat-card p { color: #6B7280; }
+        .t8 .lp-cta-banner { background: #ECFDF5; }
+        .t8 .lp-cta-banner h2 { color: #111827; }
+        .t8 .lp-cta-banner p { color: #6B7280; }
+        .t8 .lp-footer { background: #F9FAFB; border-top: 1px solid #E5E7EB; }
+        .t8 .lp-footer span { color: #9CA3AF; }
+
+        /* T9: Pure White + Black — 静謐・洗練（Apple/Stripe的） */
+        .t9 .lp-header { background: #FFF; border-bottom: 1px solid #E4E4E7; }
+        .t9 .lp-logo { color: #18181B; }
+        .t9 .lp-nav span { color: #71717A; }
+        .t9 .lp-nav-cta { background: #18181B; color: #FAFAFA; }
+        .t9 .lp-hero { background: #FFF; }
+        .t9 .lp-badge { background: #F4F4F5; color: #52525B; border: 1px solid #E4E4E7; }
+        .t9 .lp-hero h1 { color: #18181B; }
+        .t9 .lp-hero p { color: #71717A; }
+        .t9 .btn-p { background: #18181B; color: #FAFAFA; }
+        .t9 .btn-s { color: #3F3F46; border-color: #D4D4D8; }
+        .t9 .lp-freetool { background: #FFF; }
+        .t9 .lp-freetool-inner { background: #F4F4F5; border: 1px solid #E4E4E7; }
+        .t9 .lp-freetool-icon { background: #18181B; color: #FAFAFA; }
+        .t9 .lp-freetool-text h3 { color: #18181B; }
+        .t9 .lp-freetool-text p { color: #71717A; }
+        .t9 .lp-freetool-btn { background: #18181B; color: #FAFAFA; }
+        .t9 .lp-stats { background: #FAFAFA; border-top: 1px solid #E4E4E7; border-bottom: 1px solid #E4E4E7; }
+        .t9 .lp-stat .num { color: #18181B; }
+        .t9 .lp-stat .lbl { color: #A1A1AA; }
+        .t9 .lp-stat:not(:last-child) { border-right: 1px solid #E4E4E7; }
+        .t9 .lp-features { background: #FFF; }
+        .t9 .lp-features-title { color: #18181B; }
+        .t9 .lp-feat-card { background: #FAFAFA; border: 1px solid #E4E4E7; }
+        .t9 .lp-feat-icon { background: #F4F4F5; color: #3F3F46; }
+        .t9 .lp-feat-card h3 { color: #18181B; }
+        .t9 .lp-feat-card p { color: #71717A; }
+        .t9 .lp-cta-banner { background: #FAFAFA; }
+        .t9 .lp-cta-banner h2 { color: #18181B; }
+        .t9 .lp-cta-banner p { color: #71717A; }
+        .t9 .lp-footer { background: #FFF; border-top: 1px solid #E4E4E7; }
+        .t9 .lp-footer span { color: #A1A1AA; }
+
+        /* T10: White + Indigo — モダン日本SaaS（SmartHR/カオナビ的） */
+        .t10 .lp-header { background: #FFF; border-bottom: 1px solid #E5E7EB; }
+        .t10 .lp-logo { color: #111827; }
+        .t10 .lp-nav span { color: #6B7280; }
+        .t10 .lp-nav-cta { background: #4F46E5; color: #FFF; }
+        .t10 .lp-hero { background: #FFF; }
+        .t10 .lp-badge { background: #EEF2FF; color: #4F46E5; }
+        .t10 .lp-hero h1 { color: #111827; }
+        .t10 .lp-hero p { color: #6B7280; }
+        .t10 .btn-p { background: #4F46E5; color: #FFF; }
+        .t10 .btn-s { color: #4F46E5; border-color: #C7D2FE; }
+        .t10 .lp-freetool { background: #FFF; }
+        .t10 .lp-freetool-inner { background: #EEF2FF; border: 1px solid #C7D2FE; }
+        .t10 .lp-freetool-icon { background: #4F46E5; color: #FFF; }
+        .t10 .lp-freetool-text h3 { color: #111827; }
+        .t10 .lp-freetool-text p { color: #6B7280; }
+        .t10 .lp-freetool-btn { background: #4F46E5; color: #FFF; }
+        .t10 .lp-stats { background: #EEF2FF; border-top: 1px solid #C7D2FE; border-bottom: 1px solid #C7D2FE; }
+        .t10 .lp-stat .num { color: #4F46E5; }
+        .t10 .lp-stat .lbl { color: #6B7280; }
+        .t10 .lp-stat:not(:last-child) { border-right: 1px solid #C7D2FE; }
+        .t10 .lp-features { background: #FFF; }
+        .t10 .lp-features-title { color: #111827; }
+        .t10 .lp-feat-card { background: #EEF2FF; border: 1px solid #C7D2FE; }
+        .t10 .lp-feat-icon { background: #C7D2FE; color: #4338CA; }
+        .t10 .lp-feat-card h3 { color: #111827; }
+        .t10 .lp-feat-card p { color: #6B7280; }
+        .t10 .lp-cta-banner { background: #EEF2FF; }
+        .t10 .lp-cta-banner h2 { color: #111827; }
+        .t10 .lp-cta-banner p { color: #6B7280; }
+        .t10 .lp-footer { background: #F9FAFB; border-top: 1px solid #E5E7EB; }
+        .t10 .lp-footer span { color: #9CA3AF; }
+    </style>
+</head>
+<body>
+    <nav class="page-nav">
+        <div class="page-nav-inner">
+            <div>
+                <h1>AI導入支援LP — Tone Full Preview</h1>
+                <span class="subtitle">10パターン比較 ｜ ヘッダー〜フッター + 無料ツール訴求</span>
+            </div>
+            <div class="nav-pills">
+                <a href="#t1"><span class="dot" style="background:#2563EB;"></span>T1 Blue</a>
+                <a href="#t2"><span class="dot" style="background:#6366F1;"></span>T2 AI Dark</a>
+                <a href="#t3"><span class="dot" style="background:#000;"></span>T3 Mono</a>
+                <a href="#t4"><span class="dot" style="background:#7C3AED;"></span>T4 Purple</a>
+                <a href="#t5"><span class="dot" style="background:#1E3A5F;"></span>T5 Navy</a>
+                <a href="#t6"><span class="dot" style="background:#0D9488;"></span>T6 Teal</a>
+                <a href="#t7"><span class="dot" style="background:#78603C;"></span>T7 Cream</a>
+                <a href="#t8"><span class="dot" style="background:#059669;"></span>T8 Green</a>
+                <a href="#t9"><span class="dot" style="background:#18181B;"></span>T9 White</a>
+                <a href="#t10"><span class="dot" style="background:#4F46E5;"></span>T10 Indigo</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        function renderLP(id) {
+            const toneNames = {
+                t1: 'White + Blue — SaaS定番・安心感',
+                t2: 'Dark Gradient — AI・テック先進感',
+                t3: 'Bold Monochrome — 大胆・研ぎ澄まされた',
+                t4: 'White + Purple — モダンAI',
+                t5: 'Gray + Navy — コーポレート堅実',
+                t6: 'White + Teal — 清潔・信頼',
+                t7: 'Cream + Dark — 温もり・手触り',
+                t8: 'White + Green — 成果・ROIポジティブ',
+                t9: 'Pure White + Black — 静謐・洗練',
+                t10: 'White + Indigo — モダン日本SaaS'
+            };
+
+            const colors = {
+                t1: '#2563EB', t2: '#6366F1', t3: '#000',
+                t4: '#7C3AED', t5: '#1E3A5F', t6: '#0D9488',
+                t7: '#292524', t8: '#059669', t9: '#18181B', t10: '#4F46E5'
+            };
+
+            const refs = {
+                t1: 'freee / Graffer',
+                t2: 'AI Native / OpenAI',
+                t3: 'Vercel / Linear',
+                t4: 'Anthropic / Notion AI',
+                t5: 'GMO即レスAI / DigiRise',
+                t6: 'JAPAN AI / ChatSense',
+                t7: 'Notion / STORES',
+                t8: 'AI Native ROI / Ramp',
+                t9: 'Apple / Stripe',
+                t10: 'SmartHR / SHIFT AI'
+            };
+
+            return `
+                <div class="tone-section" id="${id}">
+                    <div class="tone-label">
+                        <div class="num" style="background:${colors[id]}">${id.replace('t', '').padStart(2, '0')}</div>
+                        <h2>${toneNames[id].split('—')[0].trim()}</h2>
+                        <span class="desc">— ${toneNames[id].split('—')[1]?.trim() || ''} ｜ 参考: ${refs[id]}</span>
+                    </div>
+                    <div class="lp-frame ${id}">
+                        <div class="lp">
+                            <div class="lp-header">
+                                <span class="lp-logo">[サービス名]</span>
+                                <div class="lp-nav">
+                                    <span>サービス</span><span>事例</span><span>料金</span>
+                                    <span class="lp-nav-cta">無料AI診断</span>
+                                </div>
+                            </div>
+                            <div class="lp-hero">
+                                <div class="lp-badge">
+                                    <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                                    AI導入・活用支援サービス
+                                </div>
+                                <h1>3分の無料診断で、<br>御社のAI活用ポテンシャルが見える。</h1>
+                                <p>登録不要・完全無料のAI活用診断で、御社に最適なAI導入戦略を即座に可視化。診断から開発・実装まで一気通貫で支援します。</p>
+                                <div class="lp-cta-group">
+                                    <button class="btn-p">無料でAI診断する →</button>
+                                    <button class="btn-s">導入事例を見る</button>
+                                </div>
+                            </div>
+                            <div class="lp-freetool">
+                                <div class="lp-freetool-inner">
+                                    <div class="lp-freetool-icon">
+                                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                                    </div>
+                                    <div class="lp-freetool-text">
+                                        <h3>登録不要・3分で完了 AI活用診断ツール</h3>
+                                        <p>20問の簡単な質問に答えるだけで、4カテゴリの評価レポートと具体的な改善提案を即時取得できます。</p>
+                                    </div>
+                                    <button class="lp-freetool-btn">今すぐ診断 →</button>
+                                </div>
+                            </div>
+                            <div class="lp-stats">
+                                <div class="lp-stat"><div class="num">平均30%</div><div class="lbl">業務効率化実績</div></div>
+                                <div class="lp-stat"><div class="num">120社+</div><div class="lbl">導入・支援実績</div></div>
+                                <div class="lp-stat"><div class="num">最短2週</div><div class="lbl">PoC開始</div></div>
+                            </div>
+                            <div class="lp-features">
+                                <div class="lp-features-title">選ばれる3つの理由</div>
+                                <div class="lp-features-grid">
+                                    <div class="lp-feat-card">
+                                        <div class="lp-feat-icon">
+                                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                                        </div>
+                                        <h3>無料診断で即効果を体感</h3>
+                                        <p>問い合わせ前に無料AI診断で御社の課題を可視化。登録不要で今すぐ、具体的な改善ポイントがわかります。</p>
+                                    </div>
+                                    <div class="lp-feat-card">
+                                        <div class="lp-feat-icon">
+                                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                                        </div>
+                                        <h3>オーダーメイドAI開発</h3>
+                                        <p>汎用ツールの導入ではなく、御社の業務プロセスに最適化されたAIソリューションをゼロから設計・開発します。</p>
+                                    </div>
+                                    <div class="lp-feat-card">
+                                        <div class="lp-feat-icon">
+                                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                        </div>
+                                        <h3>導入後の伴走支援</h3>
+                                        <p>開発して終わりではありません。運用定着・効果測定・改善サイクルまで、専任チームが伴走します。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lp-cta-banner">
+                                <h2>まずは3分、AI活用の可能性を診断しませんか？</h2>
+                                <p>登録不要・完全無料。診断結果は即座にレポートとしてお渡しします。</p>
+                                <button class="btn-p">無料でAI診断する →</button>
+                            </div>
+                            <div class="lp-footer">
+                                <span>&copy; 2026 [会社名]</span>
+                                <span>プライバシー　利用規約　お問い合わせ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        const tones = ['t1','t2','t3','t4','t5','t6','t7','t8','t9','t10'];
+        const container = document.createElement('div');
+        container.innerHTML = tones.map(t => renderLP(t)).join('');
+        document.body.appendChild(container);
+    </script>
+</body>
+</html>

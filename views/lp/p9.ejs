@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>AI導入支援・AI受託開発 | はじめてのAI、かんたんに — RAKUDA AI SOLUTION</title>
+<meta name="description" content="AIの知識がなくても大丈夫。120社以上の支援実績をもつRAKUDA AIが、御社の業務をAIでかんたんに効率化します。まずは無料相談から。">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<%- include('../partials/header') %>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-inner fade-in">
+    <h1>「<em>AI</em>って、うちの会社でも<br>使えるの？」</h1>
+    <div class="hero-subtitle">はい、使えます。<br>むしろ中小企業こそ、AIで大きく変われます。</div>
+    <p class="hero-desc">
+      人手が足りない、同じ作業に時間がかかる、データはあるけど活用できていない——<br>
+      そんなお悩みを、AIがまるごと解決します。<br>
+      専門知識は不要。私たちが御社の「やりたいこと」を一緒に形にします。
+    </p>
+    <div class="hero-cta">
+      <a href="#" class="btn-primary" onclick="openBooking();return false;">まずは無料で相談してみる</a>
+      <a href="#examples" class="btn-secondary">どんなことができるか見る</a>
+    </div>
+    <div class="trust-bar">
+      <span class="trust-item">相談だけでもOK</span>
+      <span class="trust-item">押し売りしません</span>
+      <span class="trust-item">オンラインで完結</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STATS BAR ========== -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="num">120+</div>
+      <div class="lbl">お手伝いした会社</div>
+    </div>
+    <div class="stat">
+      <div class="num">30%</div>
+      <div class="lbl">平均の業務削減率</div>
+    </div>
+    <div class="stat">
+      <div class="num">3ヶ月</div>
+      <div class="lbl">平均の導入期間</div>
+    </div>
+    <div class="stat">
+      <div class="num">98%</div>
+      <div class="lbl">お客様の満足度</div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SECTION 2: PROBLEMS ========== -->
+<section class="section" style="background: var(--canvas);">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2>こんなお悩み、ありませんか？</h2>
+      <p>一つでも当てはまったら、AIで解決できるかもしれません。<br>「これってAIで何とかなる？」という程度の疑問でも、お気軽にご相談ください。</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-num">1</div>
+        <div>
+          <div class="problem-text">毎月の請求書処理に、丸1日かかっている</div>
+          <p style="font-size:13px; color:var(--ink-secondary); margin-top:6px; line-height:1.6;">紙の請求書を1枚ずつ確認して、システムに手入力。ミスがないか何度もチェック。気づけば丸1日が終わっている。そんな経験はありませんか？</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">2</div>
+        <div>
+          <div class="problem-text">お客様への見積もり作成が遅く、機会を逃すことがある</div>
+          <p style="font-size:13px; color:var(--ink-secondary); margin-top:6px; line-height:1.6;">見積もりを作るのに過去の案件を調べたり、上司に確認したり。その間にお客様が他社に流れてしまうことも。</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">3</div>
+        <div>
+          <div class="problem-text">過去の契約書や資料を探すのに、いつも時間がかかる</div>
+          <p style="font-size:13px; color:var(--ink-secondary); margin-top:6px; line-height:1.6;">「あの資料どこだっけ？」とパソコンやキャビネットを探し回る時間。1日に何回もそんなことが起きていませんか？</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">4</div>
+        <div>
+          <div class="problem-text">問い合わせの電話やメールの対応で、本来の業務に集中できない</div>
+          <p style="font-size:13px; color:var(--ink-secondary); margin-top:6px; line-height:1.6;">同じような質問が何度も来る。その度に作業が中断されて、大事な仕事が後回しになってしまう。</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">5</div>
+        <div>
+          <div class="problem-text">属人化した業務があり、その人が休むと業務が止まる</div>
+          <p style="font-size:13px; color:var(--ink-secondary); margin-top:6px; line-height:1.6;">「この作業は○○さんしかできない」という業務。その方が体調を崩したら？辞めてしまったら？</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">6</div>
+        <div>
+          <div class="problem-text">データはたまっているのに、分析や活用ができていない</div>
+          <p style="font-size:13px; color:var(--ink-secondary); margin-top:6px; line-height:1.6;">売上データ、顧客データ、在庫データ。せっかくのデータが活かされず、「なんとなく」の経営判断になっていませんか？</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 3: USE CASES ========== -->
+<section class="section" id="examples">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2>AIでできること、こんなにあります</h2>
+      <p>「AIって難しそう」と思っていませんか？<br>実は、毎日の業務の中に、AIが活躍できる場面がたくさんあります。<br>ここでは、実際にお客様の会社で導入された具体的な例をご紹介します。</p>
+    </div>
+    <div class="usecase-grid">
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>請求書の自動読み取り・仕分け</h3>
+        <div class="effect">月40時間の事務作業を自動化</div>
+        <p>紙やPDFの請求書をAIが読み取り、金額・取引先・日付を自動で抽出。会計ソフトへの入力まで自動化できます。手入力のミスもなくなります。</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>見積書の自動作成</h3>
+        <div class="effect">過去データから最適価格を即提案</div>
+        <p>お客様の要望を入力するだけで、過去の取引データをもとにAIが最適な見積もりを自動作成。1件30分かかっていた作業が3分で完了します。</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>社内文書のAI検索</h3>
+        <div class="effect">必要な資料を5秒で発見</div>
+        <p>「去年の契約書のあの部分」「先月の会議で決まったこと」。AIに聞くだけで、何千もの文書の中からピンポイントで必要な情報を見つけ出します。</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>問い合わせ自動応答</h3>
+        <div class="effect">よくある質問はAIが24時間対応</div>
+        <p>「営業時間は？」「料金はいくら？」といったよくある質問にAIが自動で回答。営業時間外でもお客様をお待たせしません。社員は複雑な問い合わせだけに集中できます。</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <h3>在庫の需要予測</h3>
+        <div class="effect">発注タイミングをAIが最適化</div>
+        <p>「何を」「いつ」「いくつ」仕入れるか。過去の販売データや季節の傾向をAIが分析して、在庫切れも過剰在庫も防ぎます。発注業務の負担が大幅に減ります。</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3>売上データの自動分析</h3>
+        <div class="effect">月次レポートが1クリックで完成</div>
+        <p>毎月の売上をまとめるのに丸2日かかっていませんか？AIなら、データを読み込んでグラフ付きレポートを自動で作成。傾向や異常値もお知らせします。</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </div>
+        <h3>議事録の自動作成</h3>
+        <div class="effect">会議後すぐに要約と次のアクションを共有</div>
+        <p>会議の内容をAIが自動で文字起こし、さらに要約まで作成。「誰が何を担当するか」も整理してくれるので、会議の後すぐに次のアクションに移れます。</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>顧客データの一元管理</h3>
+        <div class="effect">営業状況がひと目でわかるダッシュボード</div>
+        <p>バラバラだった顧客情報をAIが整理・統合。「この顧客にはいつ連絡した？」「商談の進み具合は？」がひと目でわかるようになり、対応漏れを防ぎます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 4: PROCESS ========== -->
+<section class="section" id="flow" style="background: var(--canvas);">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2>3つのステップで、かんたん導入</h2>
+      <p>「難しいことは全部おまかせ」。<br>御社は「やりたいこと」を教えてくれるだけ。<br>あとは私たちが形にします。</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>まずはお話を聞かせてください</h3>
+          <p>
+            御社の業務内容やお困りごとを、30分のオンライン面談でヒアリングします。専門用語は使いません。「こんなこと自動化できたらいいな」くらいの気軽なお話でOKです。
+          </p>
+          <p style="margin-top:12px;">
+            面談では、御社の業務の流れをお聞きしながら、「ここはAIで自動化できそうですね」「これはこういうやり方にすると楽になりますよ」と、その場で具体的なアイデアをお伝えします。面談だけで「なるほど！」と新しい発見がある方も多いです。
+          </p>
+          <div style="margin-top:16px; padding:16px; background:var(--canvas); border-radius:8px; border:1px solid var(--border);">
+            <div style="font-size:13px; font-weight:600; color:var(--accent); margin-bottom:4px;">面談でわかること</div>
+            <ul style="list-style:none; font-size:13px; color:var(--ink-secondary); line-height:1.8;">
+              <li>- 御社の業務でAIが活かせるポイント</li>
+              <li>- おおまかな費用感とスケジュール</li>
+              <li>- どのくらいの効果が見込めるか</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>御社にぴったりのAIをつくります</h3>
+          <p>
+            ヒアリング内容をもとに、御社専用のAIツールを設計・開発します。画面の使い方も、操作マニュアルも、すべてお渡しします。開発中も定期的に進捗をご報告するので安心です。
+          </p>
+          <p style="margin-top:12px;">
+            開発は段階的に進めます。まずは一番効果が出やすい業務から取り組み、「本当に便利だ」と実感していただいてから、次の業務に広げていきます。いきなり大がかりなシステムを入れるわけではありません。小さく始めて、確実に成果を出す。それが私たちのやり方です。
+          </p>
+          <div style="margin-top:16px; padding:16px; background:var(--canvas); border-radius:8px; border:1px solid var(--border);">
+            <div style="font-size:13px; font-weight:600; color:var(--accent); margin-bottom:4px;">開発中にお渡しするもの</div>
+            <ul style="list-style:none; font-size:13px; color:var(--ink-secondary); line-height:1.8;">
+              <li>- 操作がかんたんなAIツール</li>
+              <li>- 図解つきの操作マニュアル</li>
+              <li>- 社員向け説明用の資料</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>使い始めてからも、ずっとサポート</h3>
+          <p>
+            「ここの動きを変えたい」「新しい機能を追加したい」。導入後のご要望にもすぐ対応します。月に1回の定期ミーティングで、AIの効果を一緒に確認します。
+          </p>
+          <p style="margin-top:12px;">
+            導入して終わりではありません。使い始めてから「もっとこうしたい」というご要望は必ず出てきます。そのたびに柔軟に対応し、AIを御社の業務にぴったりフィットさせていきます。困ったときはいつでもご連絡ください。チャットや電話ですぐにサポートいたします。
+          </p>
+          <div style="margin-top:16px; padding:16px; background:var(--canvas); border-radius:8px; border:1px solid var(--border);">
+            <div style="font-size:13px; font-weight:600; color:var(--accent); margin-bottom:4px;">導入後のサポート内容</div>
+            <ul style="list-style:none; font-size:13px; color:var(--ink-secondary); line-height:1.8;">
+              <li>- 月1回の定期ミーティング</li>
+              <li>- チャット・電話での質問対応</li>
+              <li>- 機能の追加や変更の対応</li>
+              <li>- 効果測定レポートのご報告</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 5: RESULTS TABLE ========== -->
+<section class="section">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2>数字で見る、導入効果</h2>
+      <p>実際にAIを導入したお客様の業務が、どれだけ変わったか。<br>具体的な数字でご覧ください。</p>
+    </div>
+    <div class="results-table-wrap">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">業務内容</th>
+            <th>導入前</th>
+            <th>導入後</th>
+            <th>削減効果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>請求書の処理</td><td>月40時間</td><td>月2時間</td><td>95%削減</td></tr>
+          <tr><td>見積書の作成</td><td>1件あたり30分</td><td>1件あたり3分</td><td>90%削減</td></tr>
+          <tr><td>問い合わせ対応</td><td>月80件（全件手動）</td><td>月20件（残りはAI対応）</td><td>75%削減</td></tr>
+          <tr><td>月次レポート作成</td><td>丸2日</td><td>ワンクリック</td><td>99%削減</td></tr>
+          <tr><td>社内の資料検索</td><td>平均15分</td><td>平均5秒</td><td>99%削減</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="results-summary">
+      <div class="big">年間で約1,200時間の業務削減</div>
+      <div class="sub">人件費に換算すると、年間約480万円のコスト削減に相当します</div>
+    </div>
+    <div style="max-width:720px; margin:32px auto 0; text-align:center;">
+      <p style="font-size:14px; color:var(--ink-secondary); line-height:1.8;">
+        上記は従業員30〜50名規模の企業様の平均的な数値です。御社の業務内容や規模によって効果は変わりますが、無料相談の際に御社の場合の試算をお出しすることも可能です。「うちの場合はどうなの？」というご質問、大歓迎です。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 6: TESTIMONIALS ========== -->
+<section class="section" style="background: var(--canvas);">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2>導入企業さまの声</h2>
+      <p>実際にAIを導入されたお客様に、率直なご感想をお聞きしました。<br>「うちと似てるな」と思ったら、ぜひ参考にしてください。</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-tag">製造業 / 社員30名</div>
+        <div class="testi-quote">
+          正直、AIなんてうちには関係ないと思っていました。でも話を聞いてみたら、毎日の在庫確認と発注業務がまるごと自動化できるとわかって。今では朝一番のルーティンが30分短縮。その分、現場の改善活動に時間を使えるようになりました。最初は「うちみたいな小さい会社で大丈夫かな」と不安でしたが、操作もかんたんで、現場のベテラン社員もすぐに使いこなしています。
+        </div>
+        <div class="testi-author">製造業 / 経営者様</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-tag">士業事務所 / 社員8名</div>
+        <div class="testi-quote">
+          契約書のチェックに毎回2時間かかっていたのが、AIで下読みしてくれるようになって15分に。「ここに注意」と教えてくれるので、見落としも減りました。少人数の事務所こそ、AIの恩恵は大きいと実感しています。特に助かっているのは、似たような案件の過去契約をすぐに引っ張ってきてくれるところ。これだけでも導入した価値がありました。
+        </div>
+        <div class="testi-author">士業事務所 / 代表様</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-tag">小売業 / 社員50名</div>
+        <div class="testi-quote">
+          5店舗の売上データを毎週まとめるのに半日かかっていました。AIを入れてからは、朝出社したらもうレポートが出来上がっています。おかげで、データを「見る」のではなく「考える」時間が増えました。「先週と比べてここが変わっています」とAIが教えてくれるので、対策も早くなりました。経営企画の仕事のやり方が根本から変わった感じがします。
+        </div>
+        <div class="testi-author">小売業 / 経営企画担当様</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-tag">サービス業 / 社員15名</div>
+        <div class="testi-quote">
+          お客様からの問い合わせ対応をAIチャットボットに任せたら、営業時間外の対応もできるようになって、お客様満足度が20%アップ。社員の残業時間も目に見えて減りました。導入前は「お客様がロボット対応を嫌がるのでは」と心配しましたが、「すぐに返事がもらえて便利」と好評です。むしろ人が対応するより満足度が上がったのは予想外でした。
+        </div>
+        <div class="testi-author">サービス業 / 経営者様</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 7: CONSULTATION ========== -->
+<section class="section">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2>料金・プランはご相談ください</h2>
+      <p>御社の業務内容やご要望をお聞きしたうえで、<br>最適なプランと費用をご提案します。</p>
+    </div>
+    <div style="max-width:720px; margin:0 auto;">
+      <div style="background:var(--canvas); border:1px solid var(--border); border-radius:12px; padding:40px 32px; text-align:center;">
+        <div style="font-size:18px; font-weight:700; color:var(--ink); margin-bottom:16px;">まずは30分の無料相談から</div>
+        <p style="font-size:15px; color:var(--ink-secondary); line-height:1.8; margin-bottom:12px;">
+          「うちの業務にAIが使えるか知りたい」<br>
+          「どのくらい費用がかかるのか聞いてみたい」<br>
+          「まだ具体的なイメージが湧かない」
+        </p>
+        <p style="font-size:15px; color:var(--ink-secondary); line-height:1.8; margin-bottom:32px;">
+          そんな段階で構いません。<br>
+          御社のお話をお聞きしたうえで、<strong style="color:var(--ink);">できること・かかる費用・期間の目安</strong>を<br>わかりやすくご説明します。
+        </p>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <a href="#" class="btn-primary" onclick="openBooking();return false;" style="padding:14px 32px; font-size:16px;">無料で相談する</a>
+          <a href="#" class="btn-secondary" onclick="openContact();return false;" style="padding:14px 32px; font-size:16px;">お問い合わせ</a>
+        </div>
+        <p style="font-size:13px; color:var(--ink-secondary); margin-top:20px;">
+          無理な営業は一切しません。相談だけでもOKです。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 8: FAQ ========== -->
+<section class="section" id="faq" style="background: var(--canvas);">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2>よくある質問</h2>
+      <p>お客様からよくいただくご質問をまとめました。<br>ここにない疑問は、お気軽にお問い合わせください。</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-badge">Q</div>
+          <div class="faq-q-text">AIの知識がまったくないのですが、大丈夫ですか？</div>
+          <div class="faq-toggle"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            はい、まったく問題ありません。お客様の約8割はAI未経験の方です。専門用語は使わず、「こんなことができます」「こう変わります」とわかりやすくご説明します。操作も「ボタンを押すだけ」「ファイルを置くだけ」のレベルで使えるように設計しますので、パソコンの基本操作ができれば十分です。導入時には社員のみなさま向けに操作説明会も実施いたします。
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-badge">Q</div>
+          <div class="faq-q-text">導入にどのくらい時間がかかりますか？</div>
+          <div class="faq-toggle"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            内容によりますが、シンプルなものなら1ヶ月、複雑なものでも3ヶ月程度です。段階的に導入するので、最初の効果は1ヶ月目から実感いただけます。たとえば「まず請求書の自動読み取りだけ」のように小さく始めて、効果を確認しながら少しずつ対象を広げていく進め方をお勧めしています。
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-badge">Q</div>
+          <div class="faq-q-text">社員がITに詳しくないのですが...</div>
+          <div class="faq-toggle"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            操作方法は徹底的にシンプルに設計します。「ボタンを押すだけ」「ファイルを置くだけ」のレベルで使えるように作ります。導入時には社員向け説明会も実施します。実際に、パソコンが苦手とおっしゃっていた60代の社員の方でも、翌日からスムーズに使いこなせたという事例もあります。もし「使い方がわからない」ということがあれば、いつでもサポート窓口にご連絡いただけます。
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-badge">Q</div>
+          <div class="faq-q-text">情報が漏れたりしませんか？</div>
+          <div class="faq-toggle"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            企業の機密情報を扱うため、セキュリティには最大限配慮しています。データは暗号化して保存し、アクセスできる人を細かく設定できます。大手企業と同等のセキュリティ基準でお守りしますので、ご安心ください。導入前にセキュリティに関する詳しいご説明もいたします。ご不安な点があれば、何でもお聞きください。
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-badge">Q</div>
+          <div class="faq-q-text">今使っているシステムと一緒に使えますか？</div>
+          <div class="faq-toggle"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            多くの場合、既存のシステム（会計ソフト、顧客管理、在庫管理など）と一緒に使えます。「このシステムとつなげたい」というご要望があれば、事前にお調べして対応可能かどうかをご回答します。もし直接つなげることが難しい場合でも、「ファイルを出力して読み込む」といった代替手段をご提案しますので、今のシステムを丸ごと入れ替える必要はありません。
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-badge">Q</div>
+          <div class="faq-q-text">元が取れるまでにどのくらいかかりますか？</div>
+          <div class="faq-toggle"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            多くのお客様が、導入から半年以内に投資した金額以上の効果を実感されています。事前に「どのくらいコストが減らせるか」「どのくらい時間が浮くか」の試算をお出ししますので、納得してから始められます。「月5万円のプランで、月20万円分の作業が減った」というケースも珍しくありません。無料相談の際に、御社の場合の概算をお出しすることも可能です。
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-badge">Q</div>
+          <div class="faq-q-text">まずは話を聞くだけでもいいですか？</div>
+          <div class="faq-toggle"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            もちろんです。「AIって何ができるの？」という段階の方も大歓迎です。30分のオンライン面談で、御社の業務にAIが活かせるかどうかを無料で診断します。お気軽にお申し込みください。面談後に「やっぱりまだ早いかな」と判断されても、まったく問題ありません。営業電話をかけたり、しつこくメールを送ったりすることは一切ありませんのでご安心ください。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 10: CTA DARK ========== -->
+<section class="cta-dark">
+  <div style="max-width:680px; margin:0 auto;">
+    <h2>「うちでもAI、使えるかな？」<br>そう思ったら、まず相談してください。</h2>
+    <p>
+      30分の無料相談で、御社の業務にAIが活かせるかどうかがわかります。<br>
+      無理な営業は一切しません。<br>
+      「ちょっと話を聞いてみたいだけ」でも大歓迎です。
+    </p>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:20px;">
+      <a href="#" class="btn-primary" onclick="openBooking();return false;">無料で相談する</a>
+      <a href="#" class="btn-secondary" onclick="openContact();return false;">お問い合わせ</a>
+    </div>
+    <div class="trust-bar" style="justify-content:center;">
+      <span class="trust-item" style="color:rgba(255,255,255,0.6);">オンライン30分</span>
+      <span class="trust-item" style="color:rgba(255,255,255,0.6);">相談だけでもOK</span>
+      <span class="trust-item" style="color:rgba(255,255,255,0.6);">押し売りしません</span>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/contact-modal') %>
+<%- include('../partials/booking-modal') %>
+<%- include('../partials/chatbot') %>
+<script src="/js/tracking.js"></script>
+<script src="/js/contact.js"></script>
+<script src="/js/booking.js"></script>
+<script src="/js/chatbot.js"></script>
+</body>
+</html>

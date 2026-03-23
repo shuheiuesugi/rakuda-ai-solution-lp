@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>ありがとうございます | RAKUDA AI SOLUTION</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<%- include('partials/header') %>
+
+<section class="hero" style="padding:120px 24px 80px;">
+  <div class="hero-inner">
+    <div class="check-anim" style="margin-bottom:32px;">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+
+    <% if (action === 'booking') { %>
+      <h1>ご予約ありがとうございます</h1>
+      <p style="font-size:16px;color:var(--text-sub);line-height:1.8;margin-bottom:40px;">
+        無料相談のご予約を承りました。<br>
+        確認メールをお送りしておりますので、ご確認ください。<br>
+        当日はオンラインでお会いできることを楽しみにしております。
+      </p>
+    <% } else if (action === 'diagnostic') { %>
+      <h1>診断結果をお送りしました</h1>
+      <p style="font-size:16px;color:var(--text-sub);line-height:1.8;margin-bottom:40px;">
+        AI活用度診断の結果をメールでお送りしました。<br>
+        より詳しい分析と具体的な改善提案については、<br>
+        無料相談でお伝えできます。
+      </p>
+    <% } else if (action === 'roi') { %>
+      <h1>ROI試算レポートをお送りしました</h1>
+      <p style="font-size:16px;color:var(--text-sub);line-height:1.8;margin-bottom:40px;">
+        ROI試算の詳細レポートをメールでお送りしました。<br>
+        御社に最適なAI導入プランについて、<br>
+        無料相談で詳しくお話しさせてください。
+      </p>
+    <% } else if (action === 'wp_download') { %>
+      <h1>ダウンロードありがとうございます</h1>
+      <p style="font-size:16px;color:var(--text-sub);line-height:1.8;margin-bottom:40px;">
+        AI導入完全ガイドのダウンロードリンクを<br>
+        メールでお送りしました。<br>
+        ご質問がございましたら、お気軽にご連絡ください。
+      </p>
+    <% } else { %>
+      <h1>お問い合わせありがとうございます</h1>
+      <p style="font-size:16px;color:var(--text-sub);line-height:1.8;margin-bottom:40px;">
+        お問い合わせを受け付けました。<br>
+        1営業日以内に担当者よりご連絡いたします。<br>
+        しばらくお待ちください。
+      </p>
+    <% } %>
+
+    <div class="hero-cta">
+      <a href="/" class="btn-primary">トップページに戻る</a>
+      <% if (action !== 'booking') { %>
+        <a href="#" class="btn-secondary" onclick="openBooking();return false;">無料相談を予約する</a>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+<%- include('partials/contact-modal') %>
+<%- include('partials/booking-modal') %>
+<%- include('partials/chatbot') %>
+<script src="/js/tracking.js"></script>
+<script src="/js/contact.js"></script>
+<script src="/js/booking.js"></script>
+<script src="/js/chatbot.js"></script>
+</body>
+</html>

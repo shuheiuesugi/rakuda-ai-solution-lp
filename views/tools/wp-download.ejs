@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>AI導入完全ガイド 2026年版 無料ダウンロード | RAKUDA AI SOLUTION</title>
+  <meta name="description" content="96ページのAI導入完全ガイド2026年版を無料ダウンロード。業界別成功事例12選、ROI試算テンプレート、ベンダー選定チェックリスト付き。">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* ── WP Download Styles ─────────────────────────────── */
+    .wp-hero {
+      padding: 64px 24px 40px;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--bg) 100%);
+    }
+    .wp-hero-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .wp-hero h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .wp-hero h1 span { color: var(--primary); }
+    .wp-hero p {
+      font-size: 15px;
+      color: var(--text-sub);
+      line-height: 1.7;
+    }
+
+    .wp-container {
+      max-width: 960px;
+      margin: 40px auto 80px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* Book cover mock */
+    .wp-book-area {
+      display: flex;
+      justify-content: center;
+    }
+    .wp-book {
+      width: 280px;
+      position: relative;
+      perspective: 800px;
+    }
+    .wp-book-cover {
+      width: 100%;
+      aspect-ratio: 210 / 297;
+      background: linear-gradient(145deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 4px 12px 12px 4px;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #FFF;
+      box-shadow:
+        8px 8px 24px rgba(30,58,95,0.25),
+        -2px 0 0 #CBD5E1,
+        -4px 0 0 #E2E8F0;
+      position: relative;
+      overflow: hidden;
+    }
+    .wp-book-cover::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%);
+      pointer-events: none;
+    }
+    .wp-book-top {
+      flex: 1;
+    }
+    .wp-book-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.2);
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+    .wp-book-title {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .wp-book-subtitle {
+      font-size: 14px;
+      font-weight: 400;
+      opacity: 0.85;
+      line-height: 1.5;
+    }
+    .wp-book-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .wp-book-brand {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      opacity: 0.8;
+    }
+    .wp-book-pages {
+      font-size: 12px;
+      font-weight: 600;
+      opacity: 0.8;
+    }
+
+    /* TOC preview */
+    .wp-toc-preview {
+      margin-top: 24px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+    }
+    .wp-toc-preview h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    .wp-toc-list {
+      list-style: none;
+      padding: 0;
+    }
+    .wp-toc-list li {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      padding: 6px 0;
+      font-size: 13px;
+      color: var(--text-sub);
+      border-bottom: 1px dashed var(--border);
+    }
+    .wp-toc-list li:last-child { border-bottom: none; }
+    .wp-toc-num {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 12px;
+      min-width: 20px;
+    }
+
+    /* Right column: description + form */
+    .wp-info {
+      padding-top: 8px;
+    }
+    .wp-info h2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    .wp-description {
+      margin-bottom: 24px;
+    }
+    .wp-description p {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    /* Chapter list */
+    .wp-chapters {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 24px;
+    }
+    .wp-chapters li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+    }
+    .wp-chapters li:last-child { border-bottom: none; }
+    .wp-ch-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Stats */
+    .wp-stats {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+    .wp-stat {
+      text-align: center;
+      flex: 1;
+      padding: 14px;
+      background: var(--bg-alt);
+      border-radius: var(--radius);
+    }
+    .wp-stat-value {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .wp-stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Form */
+    .wp-form-area {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+    .wp-form-area h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .wp-email-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .wp-email-row input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-family: inherit;
+    }
+    .wp-email-row input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(30,58,95,0.1);
+    }
+    .wp-email-row button {
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: #FFF;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .wp-email-row button:hover {
+      background: var(--primary-dark);
+    }
+    .wp-form-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .wp-form-note svg {
+      flex-shrink: 0;
+    }
+
+    /* Thank you / Download */
+    .wp-complete {
+      display: none;
+      text-align: center;
+      padding: 24px;
+    }
+    .wp-complete-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+    .wp-complete h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .wp-complete p {
+      font-size: 14px;
+      color: var(--text-sub);
+      margin-bottom: 16px;
+    }
+    .wp-download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: var(--radius);
+      background: var(--success);
+      color: #FFF;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .wp-download-link:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .wp-container { grid-template-columns: 1fr; gap: 32px; }
+      .wp-hero h1 { font-size: 24px; }
+      .wp-book { width: 220px; }
+      .wp-book-title { font-size: 18px; }
+      .wp-stats { flex-direction: row; }
+      .wp-email-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<%- include('../partials/header') %>
+
+<!-- Hero -->
+<section class="wp-hero">
+  <div class="wp-hero-inner">
+    <h1><span>AI導入 完全ガイド 2026年版</span><br>無料ダウンロード</h1>
+    <p>120社以上の支援実績から得たノウハウを凝縮。AI導入の全工程を網羅した実践的ガイドブックを無料でお届けします。</p>
+  </div>
+</section>
+
+<div class="wp-container">
+  <!-- Left: Book Preview -->
+  <div class="wp-book-area">
+    <div>
+      <div class="wp-book">
+        <div class="wp-book-cover">
+          <div class="wp-book-top">
+            <div class="wp-book-badge">2026年最新版</div>
+            <div class="wp-book-title">AI導入<br>完全ガイド</div>
+            <div class="wp-book-subtitle">戦略立案から運用定着まで<br>成功に導く実践フレームワーク</div>
+          </div>
+          <div class="wp-book-bottom">
+            <div class="wp-book-brand">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="14" height="14">
+                <path d="M10,75 C10,75 22,25 38,25 C52,25 44,65 56,65 C68,65 60,20 74,20 C90,20 100,75 100,75" stroke="#FFF" stroke-width="7" fill="none" stroke-linecap="round"/>
+              </svg>
+              RAKUDA AI
+            </div>
+            <div class="wp-book-pages">96ページ</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOC preview -->
+      <div class="wp-toc-preview">
+        <h4>目次プレビュー</h4>
+        <ol class="wp-toc-list">
+          <li><span class="wp-toc-num">01</span> フェーズ別AI導入手順</li>
+          <li><span class="wp-toc-num">02</span> 業界別成功事例12選</li>
+          <li><span class="wp-toc-num">03</span> ROI試算テンプレート</li>
+          <li><span class="wp-toc-num">04</span> ベンダー選定10のポイント</li>
+          <li><span class="wp-toc-num">05</span> 2026年AI技術トレンド</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Description + Form -->
+  <div class="wp-info">
+    <h2>AI導入を成功に導く<br>全てがこの一冊に</h2>
+    <div class="wp-description">
+      <p>「AIを導入したいが何から始めればいいかわからない」「PoCは成功したが本格導入で躓いた」――そんなお悩みを解決する実践ガイドです。</p>
+    </div>
+
+    <ul class="wp-chapters">
+      <li>
+        <span class="wp-ch-icon">1</span>
+        <span>フェーズ別AI導入手順 ― 企画から運用定着までのロードマップ</span>
+      </li>
+      <li>
+        <span class="wp-ch-icon">2</span>
+        <span>業界別成功事例12選 ― 製造・小売・金融・サービス業の実例</span>
+      </li>
+      <li>
+        <span class="wp-ch-icon">3</span>
+        <span>ROI試算テンプレート ― すぐに使える投資対効果の計算シート</span>
+      </li>
+      <li>
+        <span class="wp-ch-icon">4</span>
+        <span>ベンダー選定10のポイント ― 失敗しないパートナーの選び方</span>
+      </li>
+      <li>
+        <span class="wp-ch-icon">5</span>
+        <span>2026年AI技術トレンド ― 生成AI・マルチモーダルAIの最新動向</span>
+      </li>
+    </ul>
+
+    <div class="wp-stats">
+      <div class="wp-stat">
+        <div class="wp-stat-value">96</div>
+        <div class="wp-stat-label">ページ</div>
+      </div>
+      <div class="wp-stat">
+        <div class="wp-stat-value">12</div>
+        <div class="wp-stat-label">事例</div>
+      </div>
+      <div class="wp-stat">
+        <div class="wp-stat-value">3</div>
+        <div class="wp-stat-label">テンプレート付き</div>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="wp-form-area" id="wpFormArea">
+      <h3>無料ダウンロード</h3>
+      <div class="wp-email-row">
+        <input type="email" id="wpEmail" placeholder="example@company.com">
+        <button onclick="submitWPDownload()" id="wpSubmitBtn">ダウンロード</button>
+      </div>
+      <div class="wp-form-note">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        入力いただいたメールアドレスに資料をお送りします
+      </div>
+    </div>
+
+    <!-- Thank you / Download -->
+    <div class="wp-complete" id="wpComplete">
+      <div class="wp-complete-icon">&#127881;</div>
+      <h3>ダウンロード準備完了</h3>
+      <p>ご登録いただいたメールアドレスにも資料をお送りしました。</p>
+      <a href="#" id="wpDownloadLink" class="wp-download-link" download>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDFをダウンロード
+      </a>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/contact-modal') %>
+<%- include('../partials/booking-modal') %>
+<%- include('../partials/chatbot') %>
+
+<script src="/js/tracking.js"></script>
+<script src="/js/contact.js"></script>
+<script src="/js/booking.js"></script>
+<script src="/js/chatbot.js"></script>
+<script>
+  function submitWPDownload() {
+    var email = (document.getElementById('wpEmail') || {}).value.trim();
+    if (!email) {
+      alert('メールアドレスを入力してください。');
+      return;
+    }
+
+    var btn = document.getElementById('wpSubmitBtn');
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = '送信中...';
+    }
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/wp-download', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        var result = JSON.parse(xhr.responseText);
+
+        // Show thank you
+        var formArea = document.getElementById('wpFormArea');
+        var complete = document.getElementById('wpComplete');
+        if (formArea) formArea.style.display = 'none';
+        if (complete) complete.style.display = 'block';
+
+        // Set download link
+        var downloadLink = document.getElementById('wpDownloadLink');
+        if (downloadLink && result.downloadUrl) {
+          downloadLink.href = result.downloadUrl;
+        }
+
+        if (typeof trackEvent === 'function') {
+          trackEvent('wp_download_submit');
+        }
+      } else {
+        alert('送信に失敗しました。もう一度お試しください。');
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = 'ダウンロード';
+        }
+      }
+    };
+    xhr.onerror = function() {
+      alert('通信エラーが発生しました。');
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'ダウンロード';
+      }
+    };
+    xhr.send(JSON.stringify({ email: email }));
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>AI活用度診断 | RAKUDA AI SOLUTION</title>
+  <meta name="description" content="3分で御社のAI活用ポテンシャルがわかる無料診断ツール。10問の質問に回答するだけで、AI導入による効率化の可能性を即座にスコアリング。">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* ── Diagnostic Tool Styles ─────────────────────────── */
+    .diag-hero {
+      padding: 64px 24px 40px;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--bg) 100%);
+    }
+    .diag-hero-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .diag-hero h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.4;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .diag-hero h1 span { color: var(--primary); }
+    .diag-hero p {
+      font-size: 15px;
+      color: var(--text-sub);
+      line-height: 1.7;
+    }
+
+    /* Progress */
+    .diag-progress-bar {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .diag-progress-track {
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .diag-progress-track .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 3px;
+      transition: width 0.4s ease;
+      width: 0;
+    }
+    .diag-progress-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    /* Question area */
+    .diag-container {
+      max-width: 640px;
+      margin: 32px auto 80px;
+      padding: 0 24px;
+    }
+
+    .diag-question-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    .diag-question-number {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+    .diag-question-text {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    /* Options as cards */
+    .diag-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .diag-option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 14px 18px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+      line-height: 1.5;
+    }
+    .diag-option:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+    .diag-option.is-selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Navigation */
+    .diag-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .diag-btn {
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      border: none;
+      font-family: inherit;
+    }
+    .diag-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .diag-btn--prev {
+      background: transparent;
+      color: var(--text-sub);
+      border: 1px solid var(--border);
+    }
+    .diag-btn--prev:hover:not(:disabled) {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .diag-btn--next, .diag-btn--submit, .diag-btn--primary {
+      background: var(--primary);
+      color: #FFF;
+    }
+    .diag-btn--next:hover:not(:disabled),
+    .diag-btn--submit:hover:not(:disabled),
+    .diag-btn--primary:hover:not(:disabled) {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+    .diag-btn--secondary {
+      background: transparent;
+      color: var(--text-sub);
+      border: 1px solid var(--border);
+    }
+    .diag-btn--secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .diag-btn--outline {
+      background: transparent;
+      color: var(--text-sub);
+      border: 1px solid var(--border);
+    }
+    .diag-btn--outline:hover {
+      border-color: var(--text-sub);
+    }
+
+    /* Email step */
+    .diag-email-step {
+      text-align: center;
+      padding: 32px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      margin-bottom: 24px;
+    }
+    .diag-email-step h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .diag-email-step p {
+      font-size: 14px;
+      color: var(--text-sub);
+      margin-bottom: 20px;
+    }
+    .diag-email-form {
+      max-width: 360px;
+      margin: 0 auto 24px;
+    }
+    .diag-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-family: inherit;
+      text-align: center;
+    }
+    .diag-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(30,58,95,0.1);
+    }
+
+    /* Results */
+    .diag-results {
+      text-align: center;
+    }
+    .diag-score-section {
+      margin-bottom: 40px;
+    }
+    .diag-score-circle {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 16px;
+    }
+    .diag-score-svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+    .diag-score-bg {
+      fill: none;
+      stroke: var(--border);
+      stroke-width: 8;
+    }
+    .diag-score-fill {
+      fill: none;
+      stroke-width: 8;
+      stroke-linecap: round;
+      transition: stroke-dasharray 1.5s ease-out;
+    }
+    .diag-score-value {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .diag-score-number {
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1;
+    }
+    .diag-score-unit {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .diag-level-badge {
+      display: inline-block;
+      padding: 6px 20px;
+      border-radius: 100px;
+      color: #FFF;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    /* Recommendations */
+    .diag-recommendations {
+      text-align: left;
+      margin-bottom: 40px;
+    }
+    .diag-recommendations h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .diag-rec-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .diag-rec-item {
+      display: flex;
+      gap: 16px;
+      padding: 20px;
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+    }
+    .diag-rec-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .diag-rec-content h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .diag-rec-content p {
+      font-size: 13px;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+
+    /* CTA */
+    .diag-cta {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Error */
+    .diag-error {
+      text-align: center;
+      padding: 40px;
+    }
+    .diag-error p {
+      color: var(--text-sub);
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .diag-hero h1 { font-size: 24px; }
+      .diag-question-card { padding: 24px; }
+      .diag-score-circle { width: 140px; height: 140px; }
+      .diag-cta { flex-direction: column; align-items: center; }
+      .diag-cta .diag-btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<%- include('../partials/header') %>
+
+<!-- Hero -->
+<section class="diag-hero">
+  <div class="diag-hero-inner">
+    <h1><span>AI活用度診断</span><br>3分で御社のAI活用ポテンシャルがわかる</h1>
+    <p>10問の簡単な質問に回答するだけで、御社の業務におけるAI活用の可能性をスコアリング。業界別ベンチマークとの比較レポートを即時発行します。</p>
+  </div>
+</section>
+
+<!-- Progress bar -->
+<div class="diag-progress-bar">
+  <div id="diagProgress" class="diag-progress-track">
+    <div class="progress-fill"></div>
+  </div>
+  <div id="diagProgressText" class="diag-progress-text">0 / 10 回答済み</div>
+</div>
+
+<!-- Question Area -->
+<div class="diag-container">
+  <div id="diagQuestionArea">
+    <div style="text-align:center;padding:40px;color:var(--text-sub);">
+      質問を読み込み中...
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/contact-modal') %>
+<%- include('../partials/booking-modal') %>
+<%- include('../partials/chatbot') %>
+
+<script src="/js/tracking.js"></script>
+<script src="/js/contact.js"></script>
+<script src="/js/booking.js"></script>
+<script src="/js/chatbot.js"></script>
+<script src="/js/diagnostic.js"></script>
+</body>
+</html>

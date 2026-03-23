@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>AI導入支援・AI受託開発 | 戦略立案から開発・運用までワンストップ</title>
+  <meta name="description" content="AI戦略コンサルティング、オーダーメイドAI開発、運用定着支援の3本柱で、120社以上のAI導入を成功に導いてきたワンストップAIソリューション。">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<%- include('../partials/header') %>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner fade-in">
+    <div class="hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+      End-to-End AI Solution
+    </div>
+    <h1>AI戦略立案から開発・運用まで、<br><span>ワンストップ</span>で支援します。</h1>
+    <p>「AIを導入したいが、何から始めればいいかわからない」その悩みに、戦略コンサルティング・オーダーメイド開発・運用定着支援の3本柱でお応えします。50名以上のAIエンジニアが、御社の課題に最適なソリューションを設計・実装します。</p>
+    <div class="hero-cta">
+      <a href="/tools/wp-download" class="btn-primary large">サービス資料をダウンロード →</a>
+      <a href="#" class="btn-secondary" onclick="openBooking();return false;">初回面談を予約</a>
+    </div>
+    <div class="hero-note"><span>資料請求は無料</span><span>初回面談はオンラインOK</span></div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat"><div class="num">120社+</div><div class="lbl">支援実績</div></div>
+    <div class="stat"><div class="num">50名+</div><div class="lbl">AIエンジニア</div></div>
+    <div class="stat"><div class="num">98%</div><div class="lbl">継続率</div></div>
+    <div class="stat"><div class="num">最短2週</div><div class="lbl">PoC開始まで</div></div>
+  </div>
+</section>
+
+<!-- 3 Service Pillars -->
+<section class="section" id="features">
+  <div class="section-header"><h2>3つのサービスで、AI導入を成功に導く</h2><p>戦略立案から開発・運用まで、一気通貫の支援体制で御社のAI活用を加速させます。</p></div>
+  <div class="pillars-grid fade-in">
+    <div class="pillar-card">
+      <div class="pillar-num">01</div>
+      <h3>AI戦略コンサルティング</h3>
+      <p>御社の業務プロセスを深く理解した上で、AI導入による最大効果が見込める領域を特定。投資対効果を定量化し、経営層の意思決定に必要なデータを提供します。</p>
+      <ul class="pillar-list">
+        <li>業務プロセス分析・AI適用領域特定</li>
+        <li>ROI試算・投資対効果シミュレーション</li>
+        <li>段階的導入ロードマップ策定</li>
+      </ul>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">02</div>
+      <h3>オーダーメイドAI開発</h3>
+      <p>汎用AIツールでは解決できない御社固有の課題に対し、専用のAIモデルをゼロから設計・開発。小さく始めて素早く検証するPoCアプローチで、リスクを最小化します。</p>
+      <ul class="pillar-list">
+        <li>自然言語処理・画像認識・予測AI</li>
+        <li>既存システムとのAPI連携</li>
+        <li>PoC→本格開発の段階的アプローチ</li>
+      </ul>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">03</div>
+      <h3>運用定着・伴走支援</h3>
+      <p>AIは開発して終わりではありません。現場で確実に使いこなせるよう、トレーニングから効果測定、継続的な改善まで伴走。98%の高い継続率が品質の証です。</p>
+      <ul class="pillar-list">
+        <li>現場トレーニング・マニュアル整備</li>
+        <li>KPIモニタリング・効果測定レポート</li>
+        <li>モデル精度改善・機能追加対応</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="section process-section" id="process">
+  <div class="section-header"><h2>導入の流れ</h2><p>初回相談から本格運用まで、4つのステップで着実に進めます。</p></div>
+  <div class="process-grid fade-in">
+    <div class="process-step"><div class="step-num">1</div><h3>初回相談・課題整理</h3><p>御社の事業課題や業務プロセスをヒアリング。AI導入の目的を明確化し、最適なアプローチ方針を策定します。</p><span class="step-tag">無料・オンラインOK</span></div>
+    <div class="process-step"><div class="step-num">2</div><h3>戦略策定・要件定義</h3><p>業務分析の結果をもとに、AI適用領域の特定とROI試算を実施。段階的な導入ロードマップを策定します。</p><span class="step-tag">約2〜4週間</span></div>
+    <div class="process-step"><div class="step-num">3</div><h3>PoC・プロトタイプ開発</h3><p>実データを用いた概念実証で、AIモデルの精度と業務効果を検証。本格開発へのGo/No-Go判断をサポートします。</p><span class="step-tag">最短2週間</span></div>
+    <div class="process-step"><div class="step-num">4</div><h3>本格開発・運用定着</h3><p>検証結果を踏まえた本格開発を実施。システム連携、現場トレーニング、KPIモニタリングまで一貫してサポートします。</p><span class="step-tag">伴走支援付き</span></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq-section" id="faq">
+  <div class="section-header"><h2>よくある質問</h2><p>サービスに関してよくいただく質問にお答えします。</p></div>
+  <div class="faq-list fade-in">
+    <div class="faq-item"><div class="faq-q">コンサルティングだけの依頼も可能ですか？</div><div class="faq-a">はい、可能です。AI戦略コンサルティングのみ、開発のみなど、御社のニーズに合わせた柔軟な支援が可能です。まずは初回面談で御社の状況をお聞かせください。最適なサービスの組み合わせをご提案します。</div></div>
+    <div class="faq-item"><div class="faq-q">どのような業界の支援実績がありますか？</div><div class="faq-a">製造業、金融、不動産、小売、物流、医療、人材など幅広い業界で120社以上の支援実績があります。業界固有の課題やデータ特性を理解した上で、最適なAIソリューションを設計します。業界別の詳しい事例はサービス資料をご覧ください。</div></div>
+    <div class="faq-item"><div class="faq-q">既存のAIツールとの違いは何ですか？</div><div class="faq-a">汎用AIツール（ChatGPTなど）は幅広い用途に使えますが、御社固有の業務課題に最適化されているわけではありません。当社のオーダーメイドAI開発では、御社のデータと業務プロセスに特化したAIモデルを構築するため、精度と業務効果の両面で大きな差が生まれます。</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <h2>まずは御社の課題をお聞かせください</h2>
+  <p>AI戦略の策定から開発・運用まで、御社に最適なソリューションをご提案します。初回面談は無料、オンラインで30分から対応可能です。</p>
+  <div class="cta-buttons">
+    <a href="#" class="btn-primary large" onclick="openBooking();return false;">初回面談を予約する →</a>
+    <a href="#" class="btn-secondary" onclick="openContact();return false;">お問い合わせ</a>
+  </div>
+  <div class="cta-note"><span>オンライン面談OK</span><span>30分で完了</span></div>
+</section>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/contact-modal') %>
+<%- include('../partials/booking-modal') %>
+<%- include('../partials/chatbot') %>
+<script src="/js/tracking.js"></script>
+<script src="/js/contact.js"></script>
+<script src="/js/booking.js"></script>
+<script src="/js/chatbot.js"></script>
+</body>
+</html>

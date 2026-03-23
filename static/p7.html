@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>AI導入支援・AI受託開発ソリューション｜最適なAI導入アプローチを比較</title>
+<meta name="description" content="自社開発・SaaSツール・コンサルファーム——AI導入の選択肢を徹底比較。PoC 100万円〜、最短2週間で開始。運用定着まで伴走するAI導入支援サービス。">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+    --primary: #1E3A5F; --primary-dark: #152D4A; --primary-light: #E0E7FF;
+    --primary-border: #CBD5E1; --text: #1E293B; --text-sub: #64748B;
+    --text-muted: #94A3B8; --bg: #FFF; --bg-alt: #F1F5F9;
+    --border: #E2E8F0; --radius: 8px; --radius-lg: 12px;
+}
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; font-feature-settings: "palt"; line-height: 1.6; }
+.header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.header-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+.logo { font-size: 16px; font-weight: 700; color: var(--text); }
+.nav { display: flex; align-items: center; gap: 24px; }
+.nav a { font-size: 13px; font-weight: 500; color: var(--text-sub); text-decoration: none; }
+.nav-contact { font-size: 13px; font-weight: 500; padding: 7px 16px; border-radius: var(--radius); border: 1px solid var(--border); color: var(--text-sub); background: transparent; text-decoration: none; transition: all 0.15s; }
+.nav-contact:hover { border-color: var(--primary); color: var(--primary); }
+.nav-meeting { font-size: 13px; font-weight: 600; padding: 8px 20px; border-radius: var(--radius); background: var(--primary); color: #FFF !important; text-decoration: none; transition: all 0.15s; animation: pulse-glow 2s infinite; }
+.nav-meeting:hover { background: var(--primary-dark); transform: translateY(-1px); }
+@keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(30,58,95,0.4); } 50% { box-shadow: 0 0 0 8px rgba(30,58,95,0); } }
+.hero { padding: 80px 24px 64px; text-align: center; }
+.hero-inner { max-width: 720px; margin: 0 auto; }
+.hero h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.3; margin-bottom: 18px; }
+.hero h1 span { color: var(--primary); }
+.hero p { font-size: 16px; color: var(--text-sub); line-height: 1.8; margin-bottom: 36px; }
+.hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; border-radius: var(--radius); background: var(--primary); color: #FFF; font-size: 15px; font-weight: 600; border: none; cursor: pointer; text-decoration: none; transition: all 0.15s; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+.btn-primary.large { padding: 16px 36px; font-size: 16px; animation: pulse-glow 2s infinite; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; border-radius: var(--radius); background: transparent; color: var(--text-sub); font-size: 15px; font-weight: 500; border: 1px solid var(--border); cursor: pointer; text-decoration: none; transition: all 0.15s; }
+.btn-secondary:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+.section { padding: 80px 24px; }
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+.section-header p { font-size: 15px; color: var(--text-sub); max-width: 560px; margin: 0 auto; }
+.features-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feat-card { padding: 32px; border-radius: var(--radius-lg); background: var(--bg); border: 1px solid var(--border); }
+.feat-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 20px; }
+.feat-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.feat-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
+.faq-section { background: var(--bg-alt); }
+.faq-list { max-width: 720px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q { font-size: 15px; font-weight: 700; margin-bottom: 8px; display: flex; gap: 8px; }
+.faq-q::before { content: "Q"; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: var(--primary); color: #FFF; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+.faq-a { font-size: 14px; color: var(--text-sub); line-height: 1.7; padding-left: 32px; }
+.cta-banner { padding: 80px 24px; text-align: center; background: var(--primary-light); }
+.cta-banner h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+.cta-banner p { font-size: 15px; color: var(--text-sub); margin-bottom: 32px; }
+.cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-note { margin-top: 12px; font-size: 12px; color: var(--text-muted); }
+.footer { padding: 32px 24px; border-top: 1px solid var(--border); background: var(--bg-alt); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.footer span { font-size: 12px; color: var(--text-muted); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 12px; color: var(--text-muted); text-decoration: none; }
+
+/* Comparison table */
+.table-wrap { max-width: 1100px; margin: 0 auto; overflow-x: auto; }
+.cmp-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.cmp-table th, .cmp-table td { padding: 16px 20px; text-align: center; border: 1px solid var(--border); }
+.cmp-table thead th { background: var(--bg-alt); font-weight: 700; color: var(--text); font-size: 14px; }
+.cmp-table .hl { background: var(--primary-light); }
+.cmp-table .hl-head { background: var(--primary); color: #FFF; font-weight: 700; }
+.cmp-table td { color: var(--text-sub); font-size: 13px; }
+.cmp-table .hl td { color: var(--text); font-weight: 600; }
+.cmp-table td span { display: block; font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+@media (max-width: 768px) {
+    .nav a:not(.nav-contact):not(.nav-meeting) { display: none; }
+    .hero h1 { font-size: 28px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .cmp-table { font-size: 12px; }
+    .cmp-table th, .cmp-table td { padding: 10px 8px; }
+    .footer-inner { flex-direction: column; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== Header ========== -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">RAKUDA AI</div>
+    <nav class="nav">
+      <a href="#comparison">比較</a>
+      <a href="#reasons">選ばれる理由</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="nav-contact">お問い合わせ</a>
+      <a href="#meeting" class="nav-meeting">初回面談を予約</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== Hero ========== -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>なぜAI導入の<span>70%は失敗</span>するのか？<br>——そして、どう成功させるか。</h1>
+    <p>自社開発・SaaSツール・コンサルファーム——AI導入の3つの選択肢を比較し、御社に最適なアプローチを明らかにします。</p>
+    <div class="hero-cta">
+      <a href="#comparison" class="btn-primary large">最適なアプローチを診断する &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Comparison Table ========== -->
+<section id="comparison" class="section">
+  <div class="section-header">
+    <h2>AI導入アプローチの比較</h2>
+    <p>4つの選択肢を6つの観点で比較。御社の状況に最適なアプローチを見つけてください。</p>
+  </div>
+  <div class="table-wrap">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th style="text-align:left;">比較項目</th>
+          <th>自社開発</th>
+          <th>汎用SaaSツール</th>
+          <th>大手コンサル</th>
+          <th class="hl-head">当社サービス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 初期コスト -->
+        <tr>
+          <td style="text-align:left; font-weight:600;">初期コスト</td>
+          <td>高い<span>採用・内製化に数千万円</span></td>
+          <td>低い<span>月額数万円〜の課金</span></td>
+          <td>非常に高い<span>数千万〜数億円規模</span></td>
+          <td class="hl">適正<span>PoC 100万円〜で開始</span></td>
+        </tr>
+        <!-- カスタマイズ性 -->
+        <tr>
+          <td style="text-align:left; font-weight:600;">カスタマイズ性</td>
+          <td>高い<span>自由度は高いが人材依存</span></td>
+          <td>低い<span>汎用設計のため限定的</span></td>
+          <td>高い<span>要件定義から対応可能</span></td>
+          <td class="hl">高い<span>御社業務に合わせて設計</span></td>
+        </tr>
+        <!-- 導入スピード -->
+        <tr>
+          <td style="text-align:left; font-weight:600;">導入スピード</td>
+          <td>遅い<span>採用〜開発で6ヶ月以上</span></td>
+          <td>速い<span>即日〜数日で利用開始</span></td>
+          <td>遅い<span>要件定義含め6ヶ月以上</span></td>
+          <td class="hl">速い<span>PoC開始まで最短2週間</span></td>
+        </tr>
+        <!-- 業務フィット -->
+        <tr>
+          <td style="text-align:left; font-weight:600;">業務フィット</td>
+          <td>高い<span>ただし人材の質に依存</span></td>
+          <td>低い<span>汎用的で業務特化は困難</span></td>
+          <td>高い<span>業界知見を活用</span></td>
+          <td class="hl">高い<span>業務理解を重視した設計</span></td>
+        </tr>
+        <!-- 運用定着支援 -->
+        <tr>
+          <td style="text-align:left; font-weight:600;">運用定着支援</td>
+          <td>なし<span>自己責任・自前で体制構築</span></td>
+          <td>限定的<span>ヘルプデスク対応のみ</span></td>
+          <td>あり<span>ただし追加契約が必要</span></td>
+          <td class="hl">標準付帯<span>伴走型で運用定着まで支援</span></td>
+        </tr>
+        <!-- リスク -->
+        <tr>
+          <td style="text-align:left; font-weight:600;">リスク</td>
+          <td>高い<span>キーパーソン退職で頓挫</span></td>
+          <td>中<span>ベンダーロックインの懸念</span></td>
+          <td>中<span>コスト肥大・依存リスク</span></td>
+          <td class="hl">低い<span>段階投資でリスクを分散</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ========== 選ばれる理由 ========== -->
+<section id="reasons" class="section" style="background: var(--bg-alt);">
+  <div class="section-header">
+    <h2>当社が選ばれる理由</h2>
+    <p>比較表だけでは見えない、当社サービスならではの強みをご紹介します。</p>
+  </div>
+  <div class="features-grid">
+    <!-- Card 1 -->
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      </div>
+      <h3>段階投資でリスク最小化</h3>
+      <p>PoC（概念実証）を100万円〜の小さな投資で始めて効果を検証。成果を確認してから本格導入に進むため、数千万円の初期投資リスクを回避できます。効果が見込めない場合はPoCの段階で撤退でき、投資判断の柔軟性を確保します。</p>
+    </div>
+    <!-- Card 2 -->
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      </div>
+      <h3>最短2週間でPoC開始</h3>
+      <p>大手コンサルの要件定義だけで3ヶ月かかるところを、当社は業務ヒアリングからPoC開始まで最短2週間。スピード感のある検証サイクルで、経営判断に必要なデータを素早く取得できます。変化の速いビジネス環境で競争優位を確立します。</p>
+    </div>
+    <!-- Card 3 -->
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      </div>
+      <h3>運用定着まで伴走</h3>
+      <p>AI導入の失敗原因の多くは「作って終わり」の体制にあります。当社では追加契約なしで運用定着支援を標準付帯。現場スタッフへのトレーニング、KPIモニタリング、改善提案までワンストップで対応し、AIが実際に業務成果に結びつくまで伴走します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section id="faq" class="section faq-section">
+  <div class="section-header">
+    <h2>よくあるご質問</h2>
+    <p>AI導入アプローチの選択に関して、多くいただくご質問にお答えします。</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">汎用SaaSツールとの使い分けはどうすればよいですか？</div>
+      <div class="faq-a">ChatGPTやNotionAIなどの汎用SaaSツールは、議事録作成や文章校正といった「誰がやっても同じ作業」に最適です。一方、御社固有の業務プロセスに組み込むAI——たとえば自社データを活用した需要予測、独自の審査基準に基づくスコアリング、社内ナレッジを学習したFAQシステムなど——はカスタム開発が必要です。当社では、汎用ツールで十分な領域とカスタム開発が必要な領域を初回相談で切り分け、最もコスト効率の良い組み合わせをご提案します。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">大手コンサルティングファームとの違いは何ですか？</div>
+      <div class="faq-a">大きな違いは3点あります。第一に、コスト構造です。大手コンサルは要件定義だけで数百万〜数千万円かかりますが、当社はPoC 100万円〜で実際に動くプロトタイプを作成します。第二に、スピードです。大手の標準的なタイムラインは6ヶ月〜1年ですが、当社は最短2週間でPoCを開始します。第三に、運用定着です。大手コンサルは「提案と構築」がメインで運用は別途契約ですが、当社は運用定着支援を標準で含んでいます。ただし、全社横断の大規模DX戦略など、組織変革を伴うプロジェクトでは大手コンサルが適している場合もあります。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">将来的に自社開発に切り替えたくなったらどうなりますか？</div>
+      <div class="faq-a">全く問題ありません。当社はベンダーロックインを作りません。開発したAIモデル・ソースコード・学習データは全て御社に帰属します。自社エンジニアチームへの技術移管もサポートしており、移管期間中のドキュメント整備・技術トレーニングも対応可能です。むしろ「まずは当社でPoCと初期運用を行い、効果が実証できたら自社チームに移管する」というステップを推奨しています。最初から内製化を目指す場合のロードマップ策定も初回相談でお話しできます。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA Banner ========== -->
+<section id="contact" class="cta-banner">
+  <h2>御社に最適なAI導入アプローチを<br>一緒に見つけましょう</h2>
+  <p>無料相談で、自社開発・SaaS・当社サービスの最適な組み合わせをご提案します。</p>
+  <div class="cta-buttons">
+    <a href="#meeting" class="btn-primary large">初回面談を予約 &rarr;</a>
+    <a href="#contact-form" class="btn-secondary">お問い合わせ</a>
+  </div>
+  <div class="cta-note">※ 初回相談は無料です。オンラインで30分程度、お気軽にご相談ください。</div>
+</section>
+
+<!-- ========== Footer ========== -->
+<footer style="border-top: 1px solid #E5E5E5; background: #fff; padding: 40px 24px;">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 32px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20">
+        <path d="M10,75 C10,75 22,25 38,25 C52,25 44,65 56,65 C68,65 60,20 74,20 C90,20 100,75 100,75" stroke="#1A1A2E" stroke-width="7" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span style="font-size: 14px; font-weight: 300; letter-spacing: 0.15em; color: #111;">RAKUDA AI</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px;">
+      <div>
+        <h3 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #94A3B8; margin-bottom: 12px;">ラクダシリーズ</h3>
+        <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px;">
+          <li><a href="https://hub.rakuda-ai.com" style="font-size: 14px; color: #64748B; text-decoration: none;">ラクダHub</a></li>
+          <li><a href="https://mail.rakuda-ai.com" style="font-size: 14px; color: #64748B; text-decoration: none;">ラクダMail</a></li>
+          <li><a href="https://reception.rakuda-ai.com" style="font-size: 14px; color: #64748B; text-decoration: none;">ラクダReception</a></li>
+          <li><a href="https://research.rakuda-ai.com" style="font-size: 14px; color: #64748B; text-decoration: none;">ラクダResearch</a></li>
+          <li><a href="https://invoice.rakuda-ai.com" style="font-size: 14px; color: #64748B; text-decoration: none;">ラクダInvoice</a></li>
+          <li><a href="https://buddy.rakuda-ai.com" style="font-size: 14px; color: #64748B; text-decoration: none;">ラクダBuddy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #94A3B8; margin-bottom: 12px;">サポート</h3>
+        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+          <li><a href="mailto:info@rakuda-ai.com" style="font-size: 14px; color: #64748B; text-decoration: none;">info@rakuda-ai.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #E5E5E5; padding-top: 24px; text-align: center; font-size: 12px; color: #94A3B8;">
+      &copy; 2026 Rakuda AI Inc. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

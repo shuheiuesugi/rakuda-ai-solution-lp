@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>RAKUDA AI SOLUTION — LP Pattern Preview</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', sans-serif;
+            background: #111;
+            color: #FFF;
+            overflow: hidden;
+            height: 100vh;
+        }
+        .toolbar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0 20px;
+            height: 52px;
+            background: #1A1A1A;
+            border-bottom: 1px solid #333;
+            flex-shrink: 0;
+        }
+        .toolbar-title {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: #888;
+            white-space: nowrap;
+            padding-right: 8px;
+            border-right: 1px solid #333;
+        }
+        .toolbar-title span {
+            color: #FFF;
+        }
+        .tab-group {
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+            flex: 1;
+        }
+        .tab-btn {
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            border: 1px solid #333;
+            background: transparent;
+            color: #999;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.15s;
+        }
+        .tab-btn:hover {
+            border-color: #555;
+            color: #CCC;
+        }
+        .tab-btn.active {
+            background: #1E3A5F;
+            border-color: #1E3A5F;
+            color: #FFF;
+        }
+        .toolbar-links {
+            display: flex;
+            gap: 12px;
+            padding-left: 8px;
+            border-left: 1px solid #333;
+            white-space: nowrap;
+        }
+        .toolbar-links a {
+            font-size: 11px;
+            font-weight: 500;
+            color: #777;
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+        .toolbar-links a:hover {
+            color: #CCC;
+        }
+        .iframe-wrap {
+            height: calc(100vh - 52px);
+            background: #E2E8F0;
+        }
+        .iframe-wrap iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        @media (max-width: 768px) {
+            .toolbar {
+                padding: 0 12px;
+                gap: 8px;
+            }
+            .toolbar-title {
+                font-size: 11px;
+            }
+            .tab-btn {
+                padding: 5px 10px;
+                font-size: 10px;
+            }
+            .toolbar-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="toolbar">
+        <div class="toolbar-title">RAKUDA <span>AI SOLUTION</span></div>
+        <div class="tab-group">
+            <button class="tab-btn active" data-src="p1.html">P1 無料診断リード</button>
+            <button class="tab-btn" data-src="p2.html">P2 ソリューション説明</button>
+            <button class="tab-btn" data-src="p3.html">P3 課題起点</button>
+            <button class="tab-btn" data-src="p4.html">P4 ROI・数字訴求</button>
+            <button class="tab-btn" data-src="p5.html">P5 事例ドリブン</button>
+            <button class="tab-btn" data-src="p6.html">P6 WPダウンロード</button>
+            <button class="tab-btn" data-src="p7.html">P7 比較表</button>
+            <button class="tab-btn" data-src="p8.html">P8 Visual</button>
+            <button class="tab-btn" data-src="p9.html">P9 かんたん</button>
+        </div>
+        <div class="toolbar-links">
+            <a href="tones.html">トーン比較</a>
+            <a href="patterns.html">パターン一覧</a>
+        </div>
+    </div>
+    <div class="iframe-wrap">
+        <iframe id="preview" src="p1.html"></iframe>
+    </div>
+    <script>
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById('preview').src = btn.dataset.src;
+            });
+        });
+    </script>
+</body>
+</html>

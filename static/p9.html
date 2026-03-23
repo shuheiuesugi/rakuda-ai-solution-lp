@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>AI導入支援・AI受託開発 | はじめてのAI、かんたんに — RAKUDA AI SOLUTION</title>
+<meta name="description" content="AIの知識がなくても大丈夫。120社以上の支援実績をもつRAKUDA AIが、御社の業務をAIでかんたんに効率化します。まずは無料相談から。">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #1E293B;
+  --ink-secondary: #64748B;
+  --surface: #FFFFFF;
+  --canvas: #F9FAFB;
+  --border: #E2E8F0;
+  --accent: #1E3A5F;
+  --accent-hover: #152D4A;
+  --success: #059669;
+  --dark: #0F172A;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
+  --danger: #DC2626;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic Medium', 'Yu Gothic', Meiryo, sans-serif;
+  font-feature-settings: "palt";
+  background: var(--surface);
+  color: var(--ink);
+  line-height: 1.7;
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.modal-open { overflow: hidden; }
+
+/* ── HEADER ── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+}
+
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+nav a {
+  color: var(--ink-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: color 0.15s;
+}
+
+nav a:hover { color: var(--ink); }
+
+.btn-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent);
+  color: var(--surface) !important;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  margin-left: 8px;
+}
+
+.btn-nav:hover { opacity: 0.9; transform: translateY(-1px); }
+
+.btn-nav-secondary {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ink) !important;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-left: 8px;
+}
+.btn-nav-secondary:hover { border-color: var(--accent); color: var(--accent) !important; }
+
+/* ── SECTION COMMON ── */
+.section {
+  padding: 80px 24px;
+}
+
+.section-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.section-header h2 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+
+.section-header p {
+  font-size: 16px;
+  color: var(--ink-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 100px 24px 80px;
+  text-align: center;
+  background: var(--surface);
+}
+
+.hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  color: var(--ink);
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.hero-subtitle {
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.hero-desc {
+  font-size: 16px;
+  color: var(--ink-secondary);
+  line-height: 1.9;
+  margin-bottom: 40px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 32px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--surface);
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 32px;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink-secondary);
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+.trust-bar {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink-secondary);
+}
+
+.trust-item::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  flex-shrink: 0;
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--canvas);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+}
+
+.stats-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.stat {
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.stat:not(:last-child) {
+  border-right: 1px solid var(--border);
+}
+
+.stat .num {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+}
+
+.stat .lbl {
+  font-size: 13px;
+  color: var(--ink-secondary);
+  font-weight: 500;
+}
+
+/* ── PROBLEM CARDS ── */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.problem-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  transition: box-shadow 0.2s;
+}
+
+.problem-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.problem-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--surface);
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.problem-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+/* ── USE CASE GRID ── */
+.usecase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.usecase-card {
+  padding: 28px;
+  border-radius: 12px;
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.usecase-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.usecase-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(30,58,95,0.08);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  font-size: 20px;
+}
+
+.usecase-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.usecase-card .effect {
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.usecase-card p {
+  font-size: 13px;
+  color: var(--ink-secondary);
+  line-height: 1.7;
+}
+
+/* ── PROCESS STEPS ── */
+.process-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.process-step {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  padding: 40px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.step-num {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: var(--accent);
+  color: var(--surface);
+  font-size: 24px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-content h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+
+.step-content p {
+  font-size: 15px;
+  color: var(--ink-secondary);
+  line-height: 1.8;
+}
+
+/* ── RESULTS TABLE ── */
+.results-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 40px;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.results-table th,
+.results-table td {
+  padding: 16px 20px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+.results-table thead th {
+  background: var(--accent);
+  color: var(--surface);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.results-table tbody td {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.results-table tbody td:first-child {
+  font-weight: 600;
+  text-align: left;
+  background: var(--canvas);
+}
+
+.results-table tbody td:last-child {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.results-summary {
+  text-align: center;
+  padding: 32px;
+  background: var(--accent);
+  border-radius: 12px;
+  color: var(--surface);
+}
+
+.results-summary .big {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.results-summary .sub {
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+/* ── TESTIMONIAL ── */
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.testi-card {
+  padding: 32px;
+  border-radius: 12px;
+  background: var(--canvas);
+  border: 1px solid var(--border);
+}
+
+.testi-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(30,58,95,0.08);
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.testi-quote {
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.85;
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 20px;
+  border-left: 3px solid var(--accent);
+}
+
+.testi-author {
+  font-size: 13px;
+  color: var(--ink-secondary);
+  font-weight: 500;
+}
+
+/* ── PRICING ── */
+
+/* ── FAQ ── */
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.faq-q-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: var(--surface);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.faq-q-text {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.faq-toggle {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.faq-toggle::before,
+.faq-toggle::after {
+  content: "";
+  position: absolute;
+  background: var(--ink-secondary);
+  border-radius: 1px;
+}
+
+.faq-toggle::before {
+  width: 14px;
+  height: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.faq-toggle::after {
+  width: 2px;
+  height: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.faq-item.is-open .faq-toggle::after {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
+
+.faq-answer-inner {
+  padding: 0 0 20px 42px;
+  font-size: 14px;
+  color: var(--ink-secondary);
+  line-height: 1.85;
+}
+
+
+/* ── CTA DARK ── */
+.cta-dark {
+  background: var(--dark);
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.cta-dark h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--surface);
+  margin-bottom: 16px;
+  line-height: 1.45;
+}
+
+.cta-dark p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 36px;
+  line-height: 1.8;
+}
+
+.cta-dark .btn-primary {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.cta-dark .btn-primary:hover {
+  background: #f1f5f9;
+}
+
+.cta-dark .btn-secondary {
+  border-color: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+}
+
+.cta-dark .btn-secondary:hover {
+  border-color: rgba(255,255,255,0.5);
+  color: var(--surface);
+}
+
+/* ── FADE-IN ANIMATION ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── MODAL SHARED ── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s;
+  padding: 24px;
+}
+.modal-overlay.is-open { opacity: 1; visibility: visible; }
+.modal-card {
+  background: var(--surface);
+  border-radius: 16px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  position: relative;
+  width: 100%;
+  transform: translateY(16px) scale(0.97);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.modal-overlay.is-open .modal-card { transform: translateY(0) scale(1); }
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--canvas); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--ink-secondary); z-index: 2;
+  transition: background 0.15s;
+}
+.modal-close:hover { background: var(--border); }
+
+/* ── CONTACT MODAL ── */
+.contact-modal .modal-card { max-width: 820px; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.contact-left {
+  background: linear-gradient(160deg, #111113 0%, #0F1729 100%);
+  padding: 40px 32px; border-radius: 16px 0 0 16px;
+  color: var(--surface);
+}
+.contact-left-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 20px; font-weight: 500; }
+.contact-left h3 { font-size: 22px; font-weight: 700; margin-bottom: 28px; line-height: 1.35; }
+.contact-step-list { display: flex; flex-direction: column; gap: 20px; }
+.contact-step-item { display: flex; gap: 14px; align-items: flex-start; }
+.contact-step-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(30,58,95,0.3); color: rgba(255,255,255,0.8);
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.contact-step-text { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+.contact-step-text strong { color: var(--surface); font-weight: 600; }
+.contact-right { padding: 40px 32px; }
+.contact-right h3 { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 24px; }
+.form-group { margin-bottom: 16px; }
+.form-label { display: block; font-size: 12px; font-weight: 500; color: var(--ink-secondary); margin-bottom: 6px; }
+.form-label .req { color: #EF4444; margin-left: 2px; }
+.form-input, .form-select, .form-textarea {
+  width: 100%; border: 1px solid var(--border); border-radius: 6px;
+  padding: 10px 14px; font-size: 14px; font-family: inherit;
+  color: var(--ink); background: var(--surface); outline: none;
+  transition: border-color 0.15s;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--accent); }
+.form-textarea { resize: vertical; min-height: 80px; }
+.form-error { font-size: 11px; color: #EF4444; margin-top: 4px; display: none; }
+.form-error.show { display: block; }
+.btn-submit {
+  width: 100%; background: var(--accent); color: var(--surface);
+  font-size: 15px; font-weight: 500; padding: 12px; border-radius: 6px;
+  border: none; cursor: pointer; font-family: inherit;
+  transition: opacity 0.2s; margin-top: 8px;
+}
+.btn-submit:hover { opacity: 0.9; }
+.btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+.contact-complete { display: none; text-align: center; padding: 60px 32px; }
+.contact-complete.is-show { display: block; }
+.contact-form-area.is-hide { display: none; }
+.check-anim {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: rgba(5,150,105,0.1); margin: 0 auto 20px;
+  display: flex; align-items: center; justify-content: center;
+  animation: checkPop 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes checkPop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+.check-anim svg { color: var(--success); }
+.contact-complete h4 { font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.contact-complete p { font-size: 14px; color: var(--ink-secondary); line-height: 1.6; }
+
+/* ── BOOKING MODAL ── */
+.booking-modal .modal-card { max-width: 560px; padding: 32px; }
+.booking-progress { display: flex; gap: 8px; margin-bottom: 28px; }
+.booking-progress-bar { flex: 1; height: 3px; background: var(--border); border-radius: 2px; transition: background 0.3s; }
+.booking-progress-bar.active { background: var(--accent); }
+.booking-title { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.booking-sub { font-size: 13px; color: var(--ink-secondary); margin-bottom: 24px; }
+.booking-step { display: none; }
+.booking-step.is-active { display: block; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; margin-bottom: 20px; }
+.cal-header { font-size: 11px; color: var(--ink-secondary); font-weight: 500; padding: 4px 0; }
+.cal-day {
+  padding: 8px 4px; border-radius: 6px; font-size: 13px; cursor: pointer;
+  transition: background 0.15s, color 0.15s; color: var(--ink);
+}
+.cal-day:hover { background: rgba(30,58,95,0.08); }
+.cal-day.disabled { color: var(--border); pointer-events: none; }
+.cal-day.selected { background: var(--accent); color: var(--surface); font-weight: 600; }
+.cal-day.today { font-weight: 700; color: var(--accent); }
+.cal-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.cal-nav-btn { background: none; border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 13px; color: var(--ink-secondary); }
+.cal-nav-title { font-size: 14px; font-weight: 600; color: var(--ink); }
+.time-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.time-slot {
+  padding: 10px; border: 1px solid var(--border); border-radius: 8px;
+  text-align: center; cursor: pointer; font-size: 13px; font-weight: 500;
+  transition: border-color 0.15s, background 0.15s;
+}
+.time-slot:hover { border-color: var(--accent); }
+.time-slot.selected { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+.booking-nav { display: flex; gap: 10px; margin-top: 24px; }
+.btn-book-back {
+  flex: 1; padding: 10px; border: 1px solid var(--border); border-radius: 6px;
+  background: var(--surface); font-size: 14px; font-weight: 500; cursor: pointer;
+  font-family: inherit; color: var(--ink-secondary);
+}
+.btn-book-next {
+  flex: 2; padding: 10px; background: var(--accent); color: var(--surface);
+  border: none; border-radius: 6px; font-size: 14px; font-weight: 500;
+  cursor: pointer; font-family: inherit; transition: opacity 0.2s;
+}
+.btn-book-next:hover { opacity: 0.9; }
+.btn-book-next:disabled { opacity: 0.5; cursor: not-allowed; }
+.booking-confirm-summary {
+  background: var(--canvas); border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px; margin-bottom: 20px;
+}
+.booking-confirm-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px; }
+.booking-confirm-row .label { color: var(--ink-secondary); }
+.booking-confirm-row .value { font-weight: 600; color: var(--ink); }
+.booking-complete { display: none; text-align: center; padding: 40px 0; }
+.booking-complete.is-show { display: block; }
+.booking-steps-area.is-hide { display: none; }
+
+/* ── CHATBOT ── */
+.chatbot-fab {
+  position: fixed; bottom: 24px; right: 24px; z-index: 900;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--accent); color: var(--surface);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(30,58,95,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.chatbot-fab:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(30,58,95,0.45); }
+.chatbot-fab .fab-close { display: none; }
+.chatbot-fab.is-open .fab-open { display: none; }
+.chatbot-fab.is-open .fab-close { display: block; }
+.chatbot-window {
+  position: fixed; bottom: 92px; right: 24px; z-index: 900;
+  width: 360px; max-height: 500px;
+  background: var(--surface); border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  border: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  opacity: 0; visibility: hidden; transform: translateY(12px) scale(0.95);
+  transition: opacity 0.25s, visibility 0.25s, transform 0.25s;
+}
+.chatbot-window.is-open { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+.chatbot-header {
+  padding: 16px 20px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.chatbot-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--accent); color: var(--surface);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700;
+}
+.chatbot-header-info { flex: 1; }
+.chatbot-header-name { font-size: 14px; font-weight: 600; color: var(--ink); }
+.chatbot-header-status { font-size: 11px; color: var(--success); }
+.chatbot-messages {
+  flex: 1; overflow-y: auto; padding: 16px 20px;
+  display: flex; flex-direction: column; gap: 12px;
+  max-height: 320px; min-height: 200px;
+}
+.chat-msg { max-width: 85%; }
+.chat-msg.bot { align-self: flex-start; }
+.chat-msg.user { align-self: flex-end; }
+.chat-bubble {
+  padding: 10px 14px; border-radius: 12px;
+  font-size: 13px; line-height: 1.5;
+}
+.chat-msg.bot .chat-bubble { background: var(--canvas); color: var(--ink); border-bottom-left-radius: 4px; }
+.chat-msg.user .chat-bubble { background: var(--accent); color: var(--surface); border-bottom-right-radius: 4px; }
+.chat-quick-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.chat-quick-btn {
+  padding: 6px 12px; border: 1px solid var(--border); border-radius: 20px;
+  background: var(--surface); font-size: 12px; color: var(--accent);
+  cursor: pointer; font-family: inherit; font-weight: 500;
+  transition: background 0.15s, border-color 0.15s;
+}
+.chat-quick-btn:hover { border-color: var(--accent); background: rgba(30,58,95,0.04); }
+.chat-typing { display: flex; gap: 4px; padding: 10px 14px; align-self: flex-start; }
+.chat-typing span {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--ink-secondary);
+  animation: typingDot 1.4s infinite;
+}
+.chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+.chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typingDot { 0%,60%,100% { opacity: 0.3; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-4px); } }
+.chatbot-input-area {
+  padding: 12px 16px; border-top: 1px solid var(--border);
+  display: flex; gap: 8px; align-items: center;
+}
+.chatbot-input {
+  flex: 1; border: 1px solid var(--border); border-radius: 20px;
+  padding: 8px 14px; font-size: 13px; font-family: inherit;
+  outline: none; color: var(--ink);
+}
+.chatbot-input:focus { border-color: var(--accent); }
+.chatbot-send {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--accent); color: var(--surface);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.15s;
+}
+.chatbot-send:hover { opacity: 0.85; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav a:not(.btn-nav):not(.btn-nav-secondary) { display: none; }
+  .hero h1 { font-size: 26px; }
+  .hero { padding: 60px 20px 48px; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .usecase-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(2) { border-right: none; }
+  .process-step { flex-direction: column; padding: 28px; }
+  .step-num { width: 48px; height: 48px; font-size: 20px; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-left { border-radius: 16px 16px 0 0; padding: 28px 24px; }
+  .contact-right { padding: 28px 24px; }
+  .chatbot-window { width: calc(100vw - 32px); right: 16px; bottom: 80px; }
+  .time-grid { grid-template-columns: repeat(2, 1fr); }
+  .booking-modal .modal-card { padding: 24px; }
+  .section { padding: 56px 20px; }
+  .section-header h2 { font-size: 22px; }
+  .results-table { font-size: 13px; }
+  .results-table th, .results-table td { padding: 10px 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="24" height="24">
+        <path d="M10,75 C10,75 22,25 38,25 C52,25 44,65 56,65 C68,65 60,20 74,20 C90,20 100,75 100,75" stroke="#1a1a2e" stroke-width="7" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span style="font-size:15px; font-weight:300; letter-spacing:0.12em; color:#1a1a2e;">RAKUDA AI SOLUTION</span>
+    </a>
+    <nav>
+      <a href="#flow">ながれ</a>
+      <a href="#examples">活用例</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#" class="btn-nav-secondary" onclick="openContact();return false;">お問い合わせ</a>
+      <a href="#" class="btn-nav" onclick="openBooking();return false;">無料で相談する</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-inner fade-in">
+    <h1>「<em>AI</em>って、うちの会社でも<br>使えるの？」</h1>
+    <div class="hero-subtitle">はい、使えます。<br>むしろ中小企業こそ、AIで大きく変われます。</div>
+    <p class="hero-desc">
+      人手が足りない、同じ作業に時間がかかる、データはあるけど活用できていない——<br>
+      そんなお悩みを、AIがまるごと解決します。<br>
+      専門知識は不要。私たちが御社の「やりたいこと」を一緒に形にします。
+    </p>
+    <div class="hero-cta">
+      <a href="#" class="btn-primary" onclick="openBooking();return false;">まずは無料で相談してみる</a>
+      <a href="#examples" class="btn-secondary">どんなことができるか見る</a>
+    </div>
+    <div class="trust-bar">
+      <span class="trust-item">相談だけでもOK</span>
+      <span class="trust-item">押し売りしません</span>
+      <span class="trust-item">オンラインで完結</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STATS BAR ========== -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="num">120+</div>
+      <div class="lbl">お手伝いした会社</div>
+    </div>
+    <div class="stat">
+      <div class="num">30%</div>
+      <div class="lbl">平均の業務削減率</div>
+    </div>
+    <div class="stat">
+      <div class="num">3ヶ月</div>
+      <div class="lbl">平均の導入期間</div>
+    </div>
+    <div class="stat">
+      <div class="num">98%</div>
+      <div class="lbl">お客様の満足度</div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SECTION 2: PROBLEMS ========== -->
+<section class="section" style="background: var(--canvas);">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2>こんなお悩み、ありませんか？</h2>
+      <p>一つでも当てはまったら、AIで解決できるかもしれません。<br>「これってAIで何とかなる？」という程度の疑問でも、お気軽にご相談ください。</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-num">1</div>
+        <div>
+          <div class="problem-text">毎月の請求書処理に、丸1日かかっている</div>
+          <p style="font-size:13px; color:var(--ink-secondary); margin-top:6px; line-height:1.6;">紙の請求書を1枚ずつ確認して、システムに手入力。ミスがないか何度もチェック。気づけば丸1日が終わっている。そんな経験はありませんか？</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">2</div>
+        <div>
+          <div class="problem-text">お客様への見積もり作成が遅く、機会を逃すことがある</div>
+          <p style="font-size:13px; color:var(--ink-secondary); margin-top:6px; line-height:1.6;">見積もりを作るのに過去の案件を調べたり、上司に確認したり。その間にお客様が他社に流れてしまうことも。</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">3</div>
+        <div>
+          <div class="problem-text">過去の契約書や資料を探すのに、いつも時間がかかる</div>
+          <p style="font-size:13px; color:var(--ink-secondary); margin-top:6px; line-height:1.6;">「あの資料どこだっけ？」とパソコンやキャビネットを探し回る時間。1日に何回もそんなことが起きていませんか？</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">4</div>
+        <div>
+          <div class="problem-text">問い合わせの電話やメールの対応で、本来の業務に集中できない</div>
+          <p style="font-size:13px; color:var(--ink-secondary); margin-top:6px; line-height:1.6;">同じような質問が何度も来る。その度に作業が中断されて、大事な仕事が後回しになってしまう。</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">5</div>
+        <div>
+          <div class="problem-text">属人化した業務があり、その人が休むと業務が止まる</div>
+          <p style="font-size:13px; color:var(--ink-secondary); margin-top:6px; line-height:1.6;">「この作業は○○さんしかできない」という業務。その方が体調を崩したら？辞めてしまったら？</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">6</div>
+        <div>
+          <div class="problem-text">データはたまっているのに、分析や活用ができていない</div>
+          <p style="font-size:13px; color:var(--ink-secondary); margin-top:6px; line-height:1.6;">売上データ、顧客データ、在庫データ。せっかくのデータが活かされず、「なんとなく」の経営判断になっていませんか？</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 3: USE CASES ========== -->
+<section class="section" id="examples">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2>AIでできること、こんなにあります</h2>
+      <p>「AIって難しそう」と思っていませんか？<br>実は、毎日の業務の中に、AIが活躍できる場面がたくさんあります。<br>ここでは、実際にお客様の会社で導入された具体的な例をご紹介します。</p>
+    </div>
+    <div class="usecase-grid">
+      <!-- 1 -->
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>請求書の自動読み取り・仕分け</h3>
+        <div class="effect">月40時間の事務作業を自動化</div>
+        <p>紙やPDFの請求書をAIが読み取り、金額・取引先・日付を自動で抽出。会計ソフトへの入力まで自動化できます。手入力のミスもなくなります。</p>
+      </div>
+      <!-- 2 -->
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>見積書の自動作成</h3>
+        <div class="effect">過去データから最適価格を即提案</div>
+        <p>お客様の要望を入力するだけで、過去の取引データをもとにAIが最適な見積もりを自動作成。1件30分かかっていた作業が3分で完了します。</p>
+      </div>
+      <!-- 3 -->
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>社内文書のAI検索</h3>
+        <div class="effect">必要な資料を5秒で発見</div>
+        <p>「去年の契約書のあの部分」「先月の会議で決まったこと」。AIに聞くだけで、何千もの文書の中からピンポイントで必要な情報を見つけ出します。</p>
+      </div>
+      <!-- 4 -->
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>問い合わせ自動応答</h3>
+        <div class="effect">よくある質問はAIが24時間対応</div>
+        <p>「営業時間は？」「料金はいくら？」といったよくある質問にAIが自動で回答。営業時間外でもお客様をお待たせしません。社員は複雑な問い合わせだけに集中できます。</p>
+      </div>
+      <!-- 5 -->
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <h3>在庫の需要予測</h3>
+        <div class="effect">発注タイミングをAIが最適化</div>
+        <p>「何を」「いつ」「いくつ」仕入れるか。過去の販売データや季節の傾向をAIが分析して、在庫切れも過剰在庫も防ぎます。発注業務の負担が大幅に減ります。</p>
+      </div>
+      <!-- 6 -->
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3>売上データの自動分析</h3>
+        <div class="effect">月次レポートが1クリックで完成</div>
+        <p>毎月の売上をまとめるのに丸2日かかっていませんか？AIなら、データを読み込んでグラフ付きレポートを自動で作成。傾向や異常値もお知らせします。</p>
+      </div>
+      <!-- 7 -->
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </div>
+        <h3>議事録の自動作成</h3>
+        <div class="effect">会議後すぐに要約と次のアクションを共有</div>
+        <p>会議の内容をAIが自動で文字起こし、さらに要約まで作成。「誰が何を担当するか」も整理してくれるので、会議の後すぐに次のアクションに移れます。</p>
+      </div>
+      <!-- 8 -->
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>顧客データの一元管理</h3>
+        <div class="effect">営業状況がひと目でわかるダッシュボード</div>
+        <p>バラバラだった顧客情報をAIが整理・統合。「この顧客にはいつ連絡した？」「商談の進み具合は？」がひと目でわかるようになり、対応漏れを防ぎます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 4: PROCESS ========== -->
+<section class="section" id="flow" style="background: var(--canvas);">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2>3つのステップで、かんたん導入</h2>
+      <p>「難しいことは全部おまかせ」。<br>御社は「やりたいこと」を教えてくれるだけ。<br>あとは私たちが形にします。</p>
+    </div>
+    <div class="process-grid">
+      <!-- Step 1 -->
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>まずはお話を聞かせてください</h3>
+          <p>
+            御社の業務内容やお困りごとを、30分のオンライン面談でヒアリングします。専門用語は使いません。「こんなこと自動化できたらいいな」くらいの気軽なお話でOKです。
+          </p>
+          <p style="margin-top:12px;">
+            面談では、御社の業務の流れをお聞きしながら、「ここはAIで自動化できそうですね」「これはこういうやり方にすると楽になりますよ」と、その場で具体的なアイデアをお伝えします。面談だけで「なるほど！」と新しい発見がある方も多いです。
+          </p>
+          <div style="margin-top:16px; padding:16px; background:var(--canvas); border-radius:8px; border:1px solid var(--border);">
+            <div style="font-size:13px; font-weight:600; color:var(--accent); margin-bottom:4px;">面談でわかること</div>
+            <ul style="list-style:none; font-size:13px; color:var(--ink-secondary); line-height:1.8;">
+              <li>- 御社の業務でAIが活かせるポイント</li>
+              <li>- おおまかな費用感とスケジュール</li>
+              <li>- どのくらいの効果が見込めるか</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Step 2 -->
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>御社にぴったりのAIをつくります</h3>
+          <p>
+            ヒアリング内容をもとに、御社専用のAIツールを設計・開発します。画面の使い方も、操作マニュアルも、すべてお渡しします。開発中も定期的に進捗をご報告するので安心です。
+          </p>
+          <p style="margin-top:12px;">
+            開発は段階的に進めます。まずは一番効果が出やすい業務から取り組み、「本当に便利だ」と実感していただいてから、次の業務に広げていきます。いきなり大がかりなシステムを入れるわけではありません。小さく始めて、確実に成果を出す。それが私たちのやり方です。
+          </p>
+          <div style="margin-top:16px; padding:16px; background:var(--canvas); border-radius:8px; border:1px solid var(--border);">
+            <div style="font-size:13px; font-weight:600; color:var(--accent); margin-bottom:4px;">開発中にお渡しするもの</div>
+            <ul style="list-style:none; font-size:13px; color:var(--ink-secondary); line-height:1.8;">
+              <li>- 操作がかんたんなAIツール</li>
+              <li>- 図解つきの操作マニュアル</li>
+              <li>- 社員向け説明用の資料</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Step 3 -->
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>使い始めてからも、ずっとサポート</h3>
+          <p>
+            「ここの動きを変えたい」「新しい機能を追加したい」。導入後のご要望にもすぐ対応します。月に1回の定期ミーティングで、AIの効果を一緒に確認します。
+          </p>
+          <p style="margin-top:12px;">
+            導入して終わりではありません。使い始めてから「もっとこうしたい」というご要望は必ず出てきます。そのたびに柔軟に対応し、AIを御社の業務にぴったりフィットさせていきます。困ったときはいつでもご連絡ください。チャットや電話ですぐにサポートいたします。
+          </p>
+          <div style="margin-top:16px; padding:16px; background:var(--canvas); border-radius:8px; border:1px solid var(--border);">
+            <div style="font-size:13px; font-weight:600; color:var(--accent); margin-bottom:4px;">導入後のサポート内容</div>
+            <ul style="list-style:none; font-size:13px; color:var(--ink-secondary); line-height:1.8;">
+              <li>- 月1回の定期ミーティング</li>
+              <li>- チャット・電話での質問対応</li>
+              <li>- 機能の追加や変更の対応</li>
+              <li>- 効果測定レポートのご報告</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 5: RESULTS TABLE ========== -->
+<section class="section">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2>数字で見る、導入効果</h2>
+      <p>実際にAIを導入したお客様の業務が、どれだけ変わったか。<br>具体的な数字でご覧ください。</p>
+    </div>
+    <div class="results-table-wrap">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">業務内容</th>
+            <th>導入前</th>
+            <th>導入後</th>
+            <th>削減効果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>請求書の処理</td>
+            <td>月40時間</td>
+            <td>月2時間</td>
+            <td>95%削減</td>
+          </tr>
+          <tr>
+            <td>見積書の作成</td>
+            <td>1件あたり30分</td>
+            <td>1件あたり3分</td>
+            <td>90%削減</td>
+          </tr>
+          <tr>
+            <td>問い合わせ対応</td>
+            <td>月80件（全件手動）</td>
+            <td>月20件（残りはAI対応）</td>
+            <td>75%削減</td>
+          </tr>
+          <tr>
+            <td>月次レポート作成</td>
+            <td>丸2日</td>
+            <td>ワンクリック</td>
+            <td>99%削減</td>
+          </tr>
+          <tr>
+            <td>社内の資料検索</td>
+            <td>平均15分</td>
+            <td>平均5秒</td>
+            <td>99%削減</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="results-summary">
+      <div class="big">年間で約1,200時間の業務削減</div>
+      <div class="sub">人件費に換算すると、年間約480万円のコスト削減に相当します</div>
+    </div>
+    <div style="max-width:720px; margin:32px auto 0; text-align:center;">
+      <p style="font-size:14px; color:var(--ink-secondary); line-height:1.8;">
+        上記は従業員30〜50名規模の企業様の平均的な数値です。御社の業務内容や規模によって効果は変わりますが、無料相談の際に御社の場合の試算をお出しすることも可能です。「うちの場合はどうなの？」というご質問、大歓迎です。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 6: TESTIMONIALS ========== -->
+<section class="section" style="background: var(--canvas);">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2>導入企業さまの声</h2>
+      <p>実際にAIを導入されたお客様に、率直なご感想をお聞きしました。<br>「うちと似てるな」と思ったら、ぜひ参考にしてください。</p>
+    </div>
+    <div class="testi-grid">
+      <!-- Testimonial 1 -->
+      <div class="testi-card">
+        <div class="testi-tag">製造業 / 社員30名</div>
+        <div class="testi-quote">
+          正直、AIなんてうちには関係ないと思っていました。でも話を聞いてみたら、毎日の在庫確認と発注業務がまるごと自動化できるとわかって。今では朝一番のルーティンが30分短縮。その分、現場の改善活動に時間を使えるようになりました。最初は「うちみたいな小さい会社で大丈夫かな」と不安でしたが、操作もかんたんで、現場のベテラン社員もすぐに使いこなしています。
+        </div>
+        <div class="testi-author">製造業 / 経営者様</div>
+      </div>
+      <!-- Testimonial 2 -->
+      <div class="testi-card">
+        <div class="testi-tag">士業事務所 / 社員8名</div>
+        <div class="testi-quote">
+          契約書のチェックに毎回2時間かかっていたのが、AIで下読みしてくれるようになって15分に。「ここに注意」と教えてくれるので、見落としも減りました。少人数の事務所こそ、AIの恩恵は大きいと実感しています。特に助かっているのは、似たような案件の過去契約をすぐに引っ張ってきてくれるところ。これだけでも導入した価値がありました。
+        </div>
+        <div class="testi-author">士業事務所 / 代表様</div>
+      </div>
+      <!-- Testimonial 3 -->
+      <div class="testi-card">
+        <div class="testi-tag">小売業 / 社員50名</div>
+        <div class="testi-quote">
+          5店舗の売上データを毎週まとめるのに半日かかっていました。AIを入れてからは、朝出社したらもうレポートが出来上がっています。おかげで、データを「見る」のではなく「考える」時間が増えました。「先週と比べてここが変わっています」とAIが教えてくれるので、対策も早くなりました。経営企画の仕事のやり方が根本から変わった感じがします。
+        </div>
+        <div class="testi-author">小売業 / 経営企画担当様</div>
+      </div>
+      <!-- Testimonial 4 -->
+      <div class="testi-card">
+        <div class="testi-tag">サービス業 / 社員15名</div>
+        <div class="testi-quote">
+          お客様からの問い合わせ対応をAIチャットボットに任せたら、営業時間外の対応もできるようになって、お客様満足度が20%アップ。社員の残業時間も目に見えて減りました。導入前は「お客様がロボット対応を嫌がるのでは」と心配しましたが、「すぐに返事がもらえて便利」と好評です。むしろ人が対応するより満足度が上がったのは予想外でした。
+        </div>
+        <div class="testi-author">サービス業 / 経営者様</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 7: CONSULTATION ========== -->
+<section class="section">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2>料金・プランはご相談ください</h2>
+      <p>御社の業務内容やご要望をお聞きしたうえで、<br>最適なプランと費用をご提案します。</p>
+    </div>
+    <div style="max-width:720px; margin:0 auto;">
+      <div style="background:var(--canvas); border:1px solid var(--border); border-radius:12px; padding:40px 32px; text-align:center;">
+        <div style="font-size:18px; font-weight:700; color:var(--ink); margin-bottom:16px;">まずは30分の無料相談から</div>
+        <p style="font-size:15px; color:var(--ink-secondary); line-height:1.8; margin-bottom:12px;">
+          「うちの業務にAIが使えるか知りたい」<br>
+          「どのくらい費用がかかるのか聞いてみたい」<br>
+          「まだ具体的なイメージが湧かない」
+        </p>
+        <p style="font-size:15px; color:var(--ink-secondary); line-height:1.8; margin-bottom:32px;">
+          そんな段階で構いません。<br>
+          御社のお話をお聞きしたうえで、<strong style="color:var(--ink);">できること・かかる費用・期間の目安</strong>を<br>わかりやすくご説明します。
+        </p>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <a href="#" class="btn-primary" onclick="openBooking();return false;" style="padding:14px 32px; font-size:16px;">無料で相談する</a>
+          <a href="#" class="btn-outline" onclick="openContact();return false;" style="padding:14px 32px; font-size:16px;">お問い合わせ</a>
+        </div>
+        <p style="font-size:13px; color:var(--ink-secondary); margin-top:20px;">
+          無理な営業は一切しません。相談だけでもOKです。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 8: FAQ ========== -->
+<section class="section" id="faq" style="background: var(--canvas);">
+  <div class="section-inner fade-in">
+    <div class="section-header">
+      <h2>よくある質問</h2>
+      <p>お客様からよくいただくご質問をまとめました。<br>ここにない疑問は、お気軽にお問い合わせください。</p>
+    </div>
+    <div class="faq-list">
+      <!-- Q1 -->
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-badge">Q</div>
+          <div class="faq-q-text">AIの知識がまったくないのですが、大丈夫ですか？</div>
+          <div class="faq-toggle"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            はい、まったく問題ありません。お客様の約8割はAI未経験の方です。専門用語は使わず、「こんなことができます」「こう変わります」とわかりやすくご説明します。操作も「ボタンを押すだけ」「ファイルを置くだけ」のレベルで使えるように設計しますので、パソコンの基本操作ができれば十分です。導入時には社員のみなさま向けに操作説明会も実施いたします。
+          </div>
+        </div>
+      </div>
+      <!-- Q2 -->
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-badge">Q</div>
+          <div class="faq-q-text">導入にどのくらい時間がかかりますか？</div>
+          <div class="faq-toggle"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            内容によりますが、シンプルなものなら1ヶ月、複雑なものでも3ヶ月程度です。段階的に導入するので、最初の効果は1ヶ月目から実感いただけます。たとえば「まず請求書の自動読み取りだけ」のように小さく始めて、効果を確認しながら少しずつ対象を広げていく進め方をお勧めしています。
+          </div>
+        </div>
+      </div>
+      <!-- Q3 -->
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-badge">Q</div>
+          <div class="faq-q-text">社員がITに詳しくないのですが...</div>
+          <div class="faq-toggle"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            操作方法は徹底的にシンプルに設計します。「ボタンを押すだけ」「ファイルを置くだけ」のレベルで使えるように作ります。導入時には社員向け説明会も実施します。実際に、パソコンが苦手とおっしゃっていた60代の社員の方でも、翌日からスムーズに使いこなせたという事例もあります。もし「使い方がわからない」ということがあれば、いつでもサポート窓口にご連絡いただけます。
+          </div>
+        </div>
+      </div>
+      <!-- Q5 -->
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-badge">Q</div>
+          <div class="faq-q-text">情報が漏れたりしませんか？</div>
+          <div class="faq-toggle"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            企業の機密情報を扱うため、セキュリティには最大限配慮しています。データは暗号化して保存し、アクセスできる人を細かく設定できます。大手企業と同等のセキュリティ基準でお守りしますので、ご安心ください。導入前にセキュリティに関する詳しいご説明もいたします。ご不安な点があれば、何でもお聞きください。
+          </div>
+        </div>
+      </div>
+      <!-- Q6 -->
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-badge">Q</div>
+          <div class="faq-q-text">今使っているシステムと一緒に使えますか？</div>
+          <div class="faq-toggle"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            多くの場合、既存のシステム（会計ソフト、顧客管理、在庫管理など）と一緒に使えます。「このシステムとつなげたい」というご要望があれば、事前にお調べして対応可能かどうかをご回答します。もし直接つなげることが難しい場合でも、「ファイルを出力して読み込む」といった代替手段をご提案しますので、今のシステムを丸ごと入れ替える必要はありません。
+          </div>
+        </div>
+      </div>
+      <!-- Q7 -->
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-badge">Q</div>
+          <div class="faq-q-text">元が取れるまでにどのくらいかかりますか？</div>
+          <div class="faq-toggle"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            多くのお客様が、導入から半年以内に投資した金額以上の効果を実感されています。事前に「どのくらいコストが減らせるか」「どのくらい時間が浮くか」の試算をお出ししますので、納得してから始められます。「月5万円のプランで、月20万円分の作業が減った」というケースも珍しくありません。無料相談の際に、御社の場合の概算をお出しすることも可能です。
+          </div>
+        </div>
+      </div>
+      <!-- Q8 -->
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-badge">Q</div>
+          <div class="faq-q-text">まずは話を聞くだけでもいいですか？</div>
+          <div class="faq-toggle"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            もちろんです。「AIって何ができるの？」という段階の方も大歓迎です。30分のオンライン面談で、御社の業務にAIが活かせるかどうかを無料で診断します。お気軽にお申し込みください。面談後に「やっぱりまだ早いかな」と判断されても、まったく問題ありません。営業電話をかけたり、しつこくメールを送ったりすることは一切ありませんのでご安心ください。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== SECTION 10: CTA DARK ========== -->
+<section class="cta-dark">
+  <div style="max-width:680px; margin:0 auto;">
+    <h2>「うちでもAI、使えるかな？」<br>そう思ったら、まず相談してください。</h2>
+    <p>
+      30分の無料相談で、御社の業務にAIが活かせるかどうかがわかります。<br>
+      無理な営業は一切しません。<br>
+      「ちょっと話を聞いてみたいだけ」でも大歓迎です。
+    </p>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:20px;">
+      <a href="#" class="btn-primary" onclick="openBooking();return false;">無料で相談する</a>
+      <a href="#" class="btn-secondary" onclick="openContact();return false;">お問い合わせ</a>
+    </div>
+    <div class="trust-bar" style="justify-content:center;">
+      <span class="trust-item" style="color:rgba(255,255,255,0.6);">オンライン30分</span>
+      <span class="trust-item" style="color:rgba(255,255,255,0.6);">相談だけでもOK</span>
+      <span class="trust-item" style="color:rgba(255,255,255,0.6);">押し売りしません</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer style="border-top: 1px solid #E5E5E5; background: #fff; padding: 40px 24px;">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 32px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20">
+        <path d="M10,75 C10,75 22,25 38,25 C52,25 44,65 56,65 C68,65 60,20 74,20 C90,20 100,75 100,75" stroke="#1A1A2E" stroke-width="7" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span style="font-size: 14px; font-weight: 300; letter-spacing: 0.15em; color: #111;">RAKUDA AI</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px;">
+      <div>
+        <h3 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #94A3B8; margin-bottom: 12px;">ラクダシリーズ</h3>
+        <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px;">
+          <li><a href="https://hub.rakuda-ai.com" style="font-size: 14px; color: #64748B; text-decoration: none;">ラクダHub</a></li>
+          <li><a href="https://mail.rakuda-ai.com" style="font-size: 14px; color: #64748B; text-decoration: none;">ラクダMail</a></li>
+          <li><a href="https://reception.rakuda-ai.com" style="font-size: 14px; color: #64748B; text-decoration: none;">ラクダReception</a></li>
+          <li><a href="https://research.rakuda-ai.com" style="font-size: 14px; color: #64748B; text-decoration: none;">ラクダResearch</a></li>
+          <li><a href="https://invoice.rakuda-ai.com" style="font-size: 14px; color: #64748B; text-decoration: none;">ラクダInvoice</a></li>
+          <li><a href="https://buddy.rakuda-ai.com" style="font-size: 14px; color: #64748B; text-decoration: none;">ラクダBuddy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #94A3B8; margin-bottom: 12px;">サポート</h3>
+        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+          <li><a href="mailto:info@rakuda-ai.com" style="font-size: 14px; color: #64748B; text-decoration: none;">info@rakuda-ai.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #E5E5E5; padding-top: 24px; text-align: center; font-size: 12px; color: #94A3B8;">
+      &copy; 2026 Rakuda AI Inc. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ CONTACT MODAL ═══ -->
+<div class="modal-overlay contact-modal" id="contactModal" onclick="if(event.target===this)closeContact()">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeContact()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="contact-left-label">RAKUDA AI SOLUTION</div>
+        <h3>はじめてのAI導入を<br>かんたんに</h3>
+        <div class="contact-step-list">
+          <div class="contact-step-item">
+            <div class="contact-step-num">1</div>
+            <div class="contact-step-text"><strong>お話を聞く</strong><br>御社の業務やお困りごとをヒアリング</div>
+          </div>
+          <div class="contact-step-item">
+            <div class="contact-step-num">2</div>
+            <div class="contact-step-text"><strong>AIをつくる</strong><br>御社にぴったりのAIツールを設計・開発</div>
+          </div>
+          <div class="contact-step-item">
+            <div class="contact-step-num">3</div>
+            <div class="contact-step-text"><strong>ずっとサポート</strong><br>導入後もしっかり伴走します</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-right contact-form-area" id="contactFormArea">
+        <h3>お問い合わせ</h3>
+        <form id="contactForm" onsubmit="submitContact(event)">
+          <div class="form-group">
+            <label class="form-label">会社名<span class="req">*</span></label>
+            <input class="form-input" id="cCompany" required placeholder="株式会社〇〇">
+          </div>
+          <div class="form-group">
+            <label class="form-label">お名前<span class="req">*</span></label>
+            <input class="form-input" id="cName" required placeholder="山田 太郎">
+          </div>
+          <div class="form-group">
+            <label class="form-label">メールアドレス<span class="req">*</span></label>
+            <input class="form-input" id="cEmail" type="email" required placeholder="taro@example.co.jp">
+          </div>
+          <div class="form-group">
+            <label class="form-label">電話番号</label>
+            <input class="form-input" id="cPhone" placeholder="03-1234-5678">
+          </div>
+          <div class="form-group">
+            <label class="form-label">従業員数</label>
+            <select class="form-select" id="cSize">
+              <option value="">選択してください</option>
+              <option>1〜10名</option>
+              <option>11〜30名</option>
+              <option>31〜100名</option>
+              <option>101〜300名</option>
+              <option>301名以上</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">ご相談内容</label>
+            <textarea class="form-textarea" id="cMessage" placeholder="「こんな業務を楽にしたい」など、何でもお気軽にどうぞ"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">送信する</button>
+        </form>
+      </div>
+      <div class="contact-right contact-complete" id="contactComplete">
+        <div class="check-anim">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h4>お問い合わせを受け付けました</h4>
+        <p>1営業日以内にご連絡いたします。<br>しばらくお待ちください。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BOOKING MODAL ═══ -->
+<div class="modal-overlay booking-modal" id="bookingModal" onclick="if(event.target===this)closeBooking()">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeBooking()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="booking-steps-area" id="bookingStepsArea">
+      <div class="booking-progress" id="bookingProgress">
+        <div class="booking-progress-bar active"></div>
+        <div class="booking-progress-bar"></div>
+        <div class="booking-progress-bar"></div>
+      </div>
+      <!-- Step 1: Date -->
+      <div class="booking-step is-active" id="bookStep1">
+        <div class="booking-title">日程を選択</div>
+        <div class="booking-sub">ご希望の日付を選んでください</div>
+        <div class="cal-nav">
+          <button class="cal-nav-btn" onclick="calPrev()">&larr;</button>
+          <div class="cal-nav-title" id="calTitle"></div>
+          <button class="cal-nav-btn" onclick="calNext()">&rarr;</button>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="booking-nav">
+          <button class="btn-book-next" id="btnDate" disabled onclick="goBookStep(2)">次へ：時間を選択</button>
+        </div>
+      </div>
+      <!-- Step 2: Time -->
+      <div class="booking-step" id="bookStep2">
+        <div class="booking-title">時間を選択</div>
+        <div class="booking-sub" id="bookDateLabel">選択した日付の空き枠</div>
+        <div class="time-grid" id="timeGrid"></div>
+        <div class="booking-nav">
+          <button class="btn-book-back" onclick="goBookStep(1)">戻る</button>
+          <button class="btn-book-next" id="btnTime" disabled onclick="goBookStep(3)">次へ：情報入力</button>
+        </div>
+      </div>
+      <!-- Step 3: Info + Confirm -->
+      <div class="booking-step" id="bookStep3">
+        <div class="booking-title">無料で相談する</div>
+        <div class="booking-sub">情報を入力して予約を確定してください<br><span style="font-size:12px;color:#64748B;">※ 営業電話は一切しません</span></div>
+        <div class="booking-confirm-summary" id="bookSummary">
+          <div class="booking-confirm-row"><span class="label">日付</span><span class="value" id="sumDate">-</span></div>
+          <div class="booking-confirm-row"><span class="label">時間</span><span class="value" id="sumTime">-</span></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">お名前<span class="req">*</span></label>
+          <input class="form-input" id="bName" required placeholder="山田 太郎">
+        </div>
+        <div class="form-group">
+          <label class="form-label">メールアドレス<span class="req">*</span></label>
+          <input class="form-input" id="bEmail" type="email" required placeholder="taro@example.co.jp">
+        </div>
+        <div class="form-group">
+          <label class="form-label">会社名</label>
+          <input class="form-input" id="bCompany" placeholder="株式会社〇〇">
+        </div>
+        <div class="booking-nav">
+          <button class="btn-book-back" onclick="goBookStep(2)">戻る</button>
+          <button class="btn-book-next" onclick="confirmBooking()">予約を確定する</button>
+        </div>
+      </div>
+    </div>
+    <div class="booking-complete" id="bookingComplete">
+      <div class="check-anim">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h4 style="font-size:20px;font-weight:700;color:var(--ink);margin-bottom:8px">予約が確定しました</h4>
+      <p style="font-size:14px;color:var(--ink-secondary);line-height:1.6">確認メールをお送りしました。<br>当日はオンラインでお会いしましょう。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CHATBOT ═══ -->
+<button class="chatbot-fab" id="chatFab" onclick="toggleChat()">
+  <svg class="fab-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  <svg class="fab-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+</button>
+<div class="chatbot-window" id="chatWindow">
+  <div class="chatbot-header">
+    <div class="chatbot-avatar">R</div>
+    <div class="chatbot-header-info">
+      <div class="chatbot-header-name">RAKUDA AI</div>
+      <div class="chatbot-header-status">オンライン</div>
+    </div>
+  </div>
+  <div class="chatbot-messages" id="chatMessages">
+    <div class="chat-msg bot">
+      <div class="chat-bubble">こんにちは！RAKUDA AIのアシスタントです。AI導入について、何でもお気軽にご質問ください。</div>
+    </div>
+    <div class="chat-quick-actions" id="chatQuickActions">
+      <button class="chat-quick-btn" onclick="sendQuickChat('どんなことができますか？')">できること</button>
+      <button class="chat-quick-btn" onclick="sendQuickChat('料金を知りたい')">料金について</button>
+      <button class="chat-quick-btn" onclick="sendQuickChat('まずは相談したい')">無料相談</button>
+    </div>
+  </div>
+  <div class="chatbot-input-area">
+    <input class="chatbot-input" id="chatInput" placeholder="メッセージを入力..." onkeydown="if(event.key==='Enter'){event.preventDefault();sendChat()}">
+    <button class="chatbot-send" onclick="sendChat()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+/* ========================================================
+   FADE-IN ON SCROLL (IntersectionObserver)
+   ======================================================== */
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(function(el) {
+    observer.observe(el);
+  });
+})();
+
+/* ========================================================
+   FAQ ACCORDION
+   ======================================================== */
+function toggleFaq(questionEl) {
+  var item = questionEl.parentElement;
+  var answer = item.querySelector('.faq-answer');
+  var isOpen = item.classList.contains('is-open');
+
+  // Close all
+  document.querySelectorAll('.faq-item.is-open').forEach(function(openItem) {
+    openItem.classList.remove('is-open');
+    openItem.querySelector('.faq-answer').style.maxHeight = '0';
+  });
+
+  // Open clicked if it was closed
+  if (!isOpen) {
+    item.classList.add('is-open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+
+/* ========================================================
+   CONTACT MODAL
+   ======================================================== */
+function openContact() {
+  document.getElementById('contactFormArea').classList.remove('is-hide');
+  document.getElementById('contactComplete').classList.remove('is-show');
+  document.getElementById('contactModal').classList.add('is-open');
+  document.body.classList.add('modal-open');
+}
+function closeContact() {
+  document.getElementById('contactModal').classList.remove('is-open');
+  document.body.classList.remove('modal-open');
+}
+function submitContact(e) {
+  e.preventDefault();
+  document.getElementById('contactFormArea').classList.add('is-hide');
+  document.getElementById('contactComplete').classList.add('is-show');
+}
+
+/* ========================================================
+   BOOKING MODAL
+   ======================================================== */
+var bookState = { date: null, time: null, calOffset: 0 };
+var timeSlots = ['10:00', '11:00', '13:00', '14:00', '15:00', '16:00'];
+
+function openBooking() {
+  bookState = { date: null, time: null, calOffset: 0 };
+  document.getElementById('bookingStepsArea').classList.remove('is-hide');
+  document.getElementById('bookingComplete').classList.remove('is-show');
+  goBookStep(1);
+  renderCal();
+  document.getElementById('bookingModal').classList.add('is-open');
+  document.body.classList.add('modal-open');
+}
+function closeBooking() {
+  document.getElementById('bookingModal').classList.remove('is-open');
+  document.body.classList.remove('modal-open');
+}
+function goBookStep(n) {
+  for (var i = 1; i <= 3; i++) {
+    var s = document.getElementById('bookStep' + i);
+    s.classList.toggle('is-active', i === n);
+  }
+  var bars = document.querySelectorAll('#bookingProgress .booking-progress-bar');
+  bars.forEach(function(b, idx) { b.classList.toggle('active', idx < n); });
+  if (n === 2) {
+    document.getElementById('bookDateLabel').textContent = bookState.date + ' の空き枠';
+    renderTimeSlots();
+  }
+  if (n === 3) {
+    document.getElementById('sumDate').textContent = bookState.date || '-';
+    document.getElementById('sumTime').textContent = bookState.time || '-';
+  }
+}
+function renderCal() {
+  var today = new Date();
+  var start = new Date(today);
+  start.setDate(start.getDate() + bookState.calOffset * 14);
+  if (start < today) start = new Date(today);
+  var end = new Date(start);
+  end.setDate(end.getDate() + 13);
+  var months = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+  document.getElementById('calTitle').textContent = start.getFullYear() + '年 ' + months[start.getMonth()];
+  var grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+  var headers = ['日','月','火','水','木','金','土'];
+  headers.forEach(function(h) {
+    var d = document.createElement('div');
+    d.className = 'cal-header';
+    d.textContent = h;
+    grid.appendChild(d);
+  });
+  var firstDay = new Date(start);
+  var dow = firstDay.getDay();
+  for (var i = 0; i < dow; i++) {
+    var blank = document.createElement('div');
+    blank.className = 'cal-day disabled';
+    grid.appendChild(blank);
+  }
+  var cur = new Date(start);
+  while (cur <= end) {
+    var el = document.createElement('div');
+    el.className = 'cal-day';
+    el.textContent = cur.getDate();
+    var dayOfWeek = cur.getDay();
+    var dateStr = cur.getFullYear() + '/' + (cur.getMonth()+1) + '/' + cur.getDate();
+    if (dayOfWeek === 0 || dayOfWeek === 6 || cur < today) {
+      el.classList.add('disabled');
+    } else {
+      el.setAttribute('data-date', dateStr);
+      el.onclick = (function(ds, elem) {
+        return function() {
+          document.querySelectorAll('.cal-day.selected').forEach(function(c) { c.classList.remove('selected'); });
+          elem.classList.add('selected');
+          bookState.date = ds;
+          document.getElementById('btnDate').disabled = false;
+        };
+      })(dateStr, el);
+    }
+    if (cur.toDateString() === today.toDateString()) el.classList.add('today');
+    if (bookState.date === dateStr) el.classList.add('selected');
+    grid.appendChild(el);
+    cur.setDate(cur.getDate() + 1);
+  }
+}
+function calPrev() { if (bookState.calOffset > 0) { bookState.calOffset--; renderCal(); } }
+function calNext() { bookState.calOffset++; renderCal(); }
+function renderTimeSlots() {
+  var grid = document.getElementById('timeGrid');
+  grid.innerHTML = '';
+  timeSlots.forEach(function(t) {
+    var el = document.createElement('div');
+    el.className = 'time-slot';
+    el.textContent = t;
+    if (bookState.time === t) el.classList.add('selected');
+    el.onclick = function() {
+      document.querySelectorAll('.time-slot.selected').forEach(function(c) { c.classList.remove('selected'); });
+      el.classList.add('selected');
+      bookState.time = t;
+      document.getElementById('btnTime').disabled = false;
+    };
+    grid.appendChild(el);
+  });
+}
+function confirmBooking() {
+  var name = document.getElementById('bName').value.trim();
+  var email = document.getElementById('bEmail').value.trim();
+  if (!name || !email) { alert('お名前とメールアドレスを入力してください'); return; }
+  document.getElementById('bookingStepsArea').classList.add('is-hide');
+  document.getElementById('bookingComplete').classList.add('is-show');
+}
+
+/* ========================================================
+   CHATBOT
+   ======================================================== */
+function toggleChat() {
+  var fab = document.getElementById('chatFab');
+  var win = document.getElementById('chatWindow');
+  fab.classList.toggle('is-open');
+  win.classList.toggle('is-open');
+}
+function sendQuickChat(text) {
+  var qa = document.getElementById('chatQuickActions');
+  if (qa) qa.remove();
+  addChatMsg(text, 'user');
+  showTyping();
+  setTimeout(function() { removeTyping(); addChatMsg(getBotReply(text), 'bot'); }, 1200);
+}
+function sendChat() {
+  var input = document.getElementById('chatInput');
+  var text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  addChatMsg(text, 'user');
+  showTyping();
+  setTimeout(function() { removeTyping(); addChatMsg(getBotReply(text), 'bot'); }, 1200);
+}
+function addChatMsg(text, who) {
+  var msgs = document.getElementById('chatMessages');
+  var div = document.createElement('div');
+  div.className = 'chat-msg ' + who;
+  div.innerHTML = '<div class="chat-bubble">' + text + '</div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function showTyping() {
+  var msgs = document.getElementById('chatMessages');
+  var div = document.createElement('div');
+  div.className = 'chat-typing';
+  div.id = 'chatTyping';
+  div.innerHTML = '<span></span><span></span><span></span>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function removeTyping() {
+  var t = document.getElementById('chatTyping');
+  if (t) t.remove();
+}
+function getBotReply(text) {
+  var t = text.toLowerCase();
+  if (t.includes('料金') || t.includes('価格') || t.includes('費用') || t.includes('いくら')) {
+    return 'お試しプラン（月5万円〜）、標準プラン（月15万円〜）、フルサポートプラン（月30万円〜）の3つをご用意しています。御社のご要望に合わせてお見積もりしますので、まずは無料相談でお気軽にご相談ください。';
+  }
+  if (t.includes('できる') || t.includes('サービス') || t.includes('何が')) {
+    return '請求書の自動処理、見積書の自動作成、問い合わせ自動応答、売上データの分析、在庫の需要予測など、幅広い業務でAIを活用できます。「こんな業務を楽にしたい」というご要望があれば、何でもご相談ください。';
+  }
+  if (t.includes('相談') || t.includes('無料') || t.includes('予約')) {
+    return '30分のオンライン無料相談を受け付けています。ページ上の「無料で相談する」ボタンから日程をお選びください。押し売りは一切しませんので、お気軽にどうぞ。';
+  }
+  if (t.includes('時間') || t.includes('期間') || t.includes('どのくらい')) {
+    return 'シンプルなものなら1ヶ月、複雑なものでも3ヶ月程度です。段階的に導入するので、最初の効果は1ヶ月目から実感いただけます。';
+  }
+  if (t.includes('実績') || t.includes('事例')) {
+    return '120社以上の導入実績があります。製造業、士業、小売業、サービス業など幅広い業界のお客様にご利用いただいています。導入事例はページ中ほどでご紹介しています。';
+  }
+  if (t.includes('セキュリティ') || t.includes('安全') || t.includes('情報漏')) {
+    return 'データは暗号化して保存し、アクセス権限も細かく設定可能です。大手企業と同等のセキュリティ基準で御社の情報をお守りします。詳しくは無料相談でご説明いたします。';
+  }
+  return 'ご質問ありがとうございます。より詳しいご説明は、30分の無料相談でお伝えできます。ページ上の「無料で相談する」ボタンからお気軽にお申し込みください。';
+}
+</script>
+
+</body>
+</html>

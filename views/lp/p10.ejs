@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>戦略ファーム品質の課題解決をAIで実現｜RAKUDA AI</title>
+  <meta name="description" content="コンサルティングファームと同じクオリティの課題解決を、AIを活用して実現。提案だけにとどまらず、業務の自動化・改善まで実践的に支援します。">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* ── P10: Consulting Quality LP ── */
+    .compare-section { max-width: 900px; margin: 0 auto; }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .compare-table th,
+    .compare-table td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--border); }
+    .compare-table thead th { background: var(--primary); color: #fff; font-weight: 600; font-size: 13px; letter-spacing: 0.04em; }
+    .compare-table thead th:first-child { border-radius: var(--radius) 0 0 0; background: var(--bg-alt); color: var(--text-sub); }
+    .compare-table thead th:last-child { border-radius: 0 var(--radius) 0 0; }
+    .compare-table thead th.highlight-col { background: var(--primary); position: relative; }
+    .compare-table thead th.highlight-col::after { content: "おすすめ"; position: absolute; top: -10px; right: 12px; background: var(--success); color: #fff; font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+    .compare-table tbody td:last-child { color: var(--primary); font-weight: 600; }
+    .compare-table tbody tr:hover { background: var(--bg-alt); }
+    .compare-table .check { color: var(--success); font-weight: 700; }
+    .compare-table .cross { color: var(--text-muted); }
+
+    .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
+    .pain-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px 24px; position: relative; }
+    .pain-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--danger); border-radius: var(--radius-lg) var(--radius-lg) 0 0; opacity: 0.7; }
+    .pain-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+    .pain-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
+
+    .solution-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 960px; margin: 0 auto; }
+    .solution-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 24px; text-align: center; transition: box-shadow 0.2s; }
+    .solution-card:hover { box-shadow: var(--shadow-lg); }
+    .solution-num { font-size: 11px; font-weight: 800; letter-spacing: 0.15em; color: var(--primary); margin-bottom: 12px; }
+    .solution-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .solution-card .sub { font-size: 12px; color: var(--primary); font-weight: 600; margin-bottom: 12px; }
+    .solution-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
+    .solution-card ul { text-align: left; list-style: none; margin-top: 14px; }
+    .solution-card ul li { font-size: 12.5px; color: var(--text-sub); padding: 4px 0; padding-left: 18px; position: relative; }
+    .solution-card ul li::before { content: "\2713"; position: absolute; left: 0; color: var(--success); font-weight: 700; font-size: 12px; }
+
+    .deliverable-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 800px; margin: 0 auto; }
+    .deliverable-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+    .deliverable-card .tag { display: inline-block; font-size: 11px; font-weight: 600; color: var(--primary); background: var(--primary-light); padding: 3px 10px; border-radius: 4px; margin-bottom: 10px; }
+    .deliverable-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .deliverable-card p { font-size: 13px; color: var(--text-sub); line-height: 1.65; }
+
+    @media (max-width: 768px) {
+      .pain-grid, .solution-grid { grid-template-columns: 1fr; }
+      .deliverable-grid { grid-template-columns: 1fr; }
+      .compare-table { font-size: 12px; }
+      .compare-table th, .compare-table td { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+<%- include('../partials/header') %>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner fade-in">
+    <div class="hero-badge">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Strategy + AI Execution
+    </div>
+    <h1>戦略ファーム品質の課題解決を、<br><span>AIで、実行まで。</span></h1>
+    <p>コンサルティングファームと同等の分析力・構造化力に、AIによる自動化・実装力を掛け合わせる。<br>「提案書をもらって終わり」ではなく、業務が実際に変わるところまで伴走します。</p>
+    <div class="hero-cta">
+      <a href="#" class="btn-primary large" onclick="openBooking();return false;">無料相談を予約 →</a>
+      <a href="#compare" class="btn-secondary">従来コンサルとの違い</a>
+    </div>
+    <div class="hero-note"><span>初回面談は無料</span><span>オンライン30分</span></div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat"><div class="num">1/3</div><div class="lbl">戦略ファーム比コスト</div></div>
+    <div class="stat"><div class="num">120社+</div><div class="lbl">課題解決実績</div></div>
+    <div class="stat"><div class="num">実装まで</div><div class="lbl">提案で終わらない</div></div>
+    <div class="stat"><div class="num">98%</div><div class="lbl">継続率</div></div>
+  </div>
+</section>
+
+<!-- Pain Points -->
+<section class="section" style="background: var(--bg-alt);">
+  <div class="section-header"><h2>コンサルティング、こんな経験ありませんか？</h2><p>多くの企業が「コンサル疲れ」を感じています。</p></div>
+  <div class="pain-grid fade-in">
+    <div class="pain-card">
+      <h3>提案書は立派だが、実行されない</h3>
+      <p>数百ページの報告書を受け取ったものの、社内リソースが足りず実装フェーズで頓挫。「絵に描いた餅」になった経験はありませんか。</p>
+    </div>
+    <div class="pain-card">
+      <h3>フィーが高すぎて継続できない</h3>
+      <p>月額数百万円のリテイナー契約。プロジェクト型でも数千万円。成果が出る前に予算が尽き、中途半端な状態で契約終了。</p>
+    </div>
+    <div class="pain-card">
+      <h3>属人的で再現性がない</h3>
+      <p>優秀なコンサルタントが抜けた途端にプロジェクトが失速。ナレッジが個人に紐付き、組織に残らない構造的な課題。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Solution -->
+<section class="section" id="solution">
+  <div class="section-header"><h2>AI × コンサル品質で、課題解決を再定義する</h2><p>戦略ファームの分析力と、AIの実行力。両方を一つのチームで提供します。</p></div>
+  <div class="solution-grid fade-in">
+    <div class="solution-card">
+      <div class="solution-num">PHASE 01</div>
+      <h3>構造化診断</h3>
+      <div class="sub">Strategy-Grade Analysis</div>
+      <p>戦略ファーム出身メンバーが業務プロセスを構造化。課題の優先順位をMECEに整理し、AI適用領域を特定します。</p>
+      <ul>
+        <li>業務プロセスの可視化・構造化</li>
+        <li>課題のインパクト × 実現性マトリクス</li>
+        <li>AI適用シナリオ策定とROI試算</li>
+      </ul>
+    </div>
+    <div class="solution-card">
+      <div class="solution-num">PHASE 02</div>
+      <h3>AI実装・自動化</h3>
+      <div class="sub">Beyond Recommendations</div>
+      <p>提案書を書いて終わりにしません。特定した課題に対し、AIモデルの開発・業務フローの自動化を実装します。</p>
+      <ul>
+        <li>カスタムAIモデル開発・API連携</li>
+        <li>既存業務フローへの組み込み</li>
+        <li>PoC → 本番の段階的アプローチ</li>
+      </ul>
+    </div>
+    <div class="solution-card">
+      <div class="solution-num">PHASE 03</div>
+      <h3>継続改善・定着</h3>
+      <div class="sub">Sustainable Impact</div>
+      <p>AIが組織に定着し、成果が持続する仕組みをつくります。コンサルが去った後も改善が回り続ける状態を実現。</p>
+      <ul>
+        <li>KPIモニタリング・月次レポート</li>
+        <li>AIモデル精度の継続的改善</li>
+        <li>社内人材の育成・ナレッジ移管</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison Table -->
+<section class="section" style="background: var(--bg-alt);" id="compare">
+  <div class="section-header"><h2>従来コンサルティングとの比較</h2><p>同じ品質の課題解決を、よりリーズナブルに、より確実に実現します。</p></div>
+  <div class="compare-section fade-in">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>従来の戦略コンサル</th>
+          <th class="highlight-col">RAKUDA AI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>分析・戦略立案</td><td>コンサルタントの経験ベース</td><td>データ分析 + コンサル知見</td></tr>
+        <tr><td>成果物</td><td>提案書・報告書</td><td>提案書 + <strong>実装済みAIシステム</strong></td></tr>
+        <tr><td>実行・自動化</td><td class="cross">対象外（別途SI発注が必要）</td><td class="check">自社チームで開発・実装まで</td></tr>
+        <tr><td>コスト</td><td>月額 300〜800万円</td><td>月額 100〜300万円</td></tr>
+        <tr><td>プロジェクト期間</td><td>6〜12ヶ月</td><td>2〜6ヶ月</td></tr>
+        <tr><td>導入後の改善</td><td class="cross">契約終了で支援も終了</td><td class="check">AIが継続的に学習・最適化</td></tr>
+        <tr><td>ナレッジの属人性</td><td>コンサルタント個人に依存</td><td>AIモデル・ドキュメントとして組織に残る</td></tr>
+        <tr><td>スケーラビリティ</td><td>人員追加が必要</td><td>AIが処理能力を自動スケール</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Deliverables -->
+<section class="section">
+  <div class="section-header"><h2>提供する成果物</h2><p>コンサルティング品質のドキュメントと、動くAIシステムの両方を納品します。</p></div>
+  <div class="deliverable-grid fade-in">
+    <div class="deliverable-card">
+      <div class="tag">戦略ドキュメント</div>
+      <h3>業務プロセス診断レポート</h3>
+      <p>現状の業務フローを可視化し、AI適用による改善インパクトを定量化。経営会議でそのまま使える品質。</p>
+    </div>
+    <div class="deliverable-card">
+      <div class="tag">戦略ドキュメント</div>
+      <h3>AI導入ロードマップ</h3>
+      <p>優先順位・投資額・期待ROI・KPIを整理した段階的導入計画。フェーズごとのGo/No-Go基準も明記。</p>
+    </div>
+    <div class="deliverable-card">
+      <div class="tag">実装成果物</div>
+      <h3>カスタムAIシステム</h3>
+      <p>御社の業務に最適化されたAIモデル。既存システムとAPI連携し、即座に業務で利用可能な状態で納品。</p>
+    </div>
+    <div class="deliverable-card">
+      <div class="tag">実装成果物</div>
+      <h3>自動化ワークフロー</h3>
+      <p>定型業務を自動化するワークフローシステム。手作業のデータ入力・レポート生成・承認プロセスをAIで代替。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Cases -->
+<section class="section" style="background: var(--bg-alt);" id="cases">
+  <div class="section-header"><h2>課題解決事例</h2><p>「提案書止まり」にしない。実際に業務が変わった事例をご紹介します。</p></div>
+  <div class="cases-grid fade-in">
+    <div class="case-card">
+      <span class="case-tag">製造業・業務改革</span>
+      <h3>生産計画の属人化を解消、AIで需要予測を自動化</h3>
+      <p>ベテラン担当者の勘と経験に依存していた生産計画を、AIモデルに置き換え。過去の受注データ・市場動向・季節要因を学習し、精度の高い需要予測を自動生成。従来コンサルでは「属人化解消」の提案書で終わっていたプロジェクトを、実装まで完遂。</p>
+      <div class="case-result">
+        <div class="case-result-item"><div class="val">予測精度92%</div><div class="label">需要予測精度</div></div>
+        <div class="case-result-item"><div class="val">月40h削減</div><div class="label">計画策定工数</div></div>
+        <div class="case-result-item"><div class="val">4ヶ月</div><div class="label">分析〜実装</div></div>
+      </div>
+    </div>
+    <div class="case-card">
+      <span class="case-tag">金融・営業効率化</span>
+      <h3>営業プロセスを可視化、AIスコアリングで成約率2倍</h3>
+      <p>営業組織の生産性課題を構造的に分析し、ハイパフォーマーの行動パターンをAIで抽出。リード優先度スコアリングモデルを開発し、営業チーム全体の成約率を底上げ。分析から実装、現場定着までを一気通貫で支援。</p>
+      <div class="case-result">
+        <div class="case-result-item"><div class="val">成約率2倍</div><div class="label">営業成績</div></div>
+        <div class="case-result-item"><div class="val">3ヶ月</div><div class="label">効果発現まで</div></div>
+        <div class="case-result-item"><div class="val">1/4</div><div class="label">コンサル比コスト</div></div>
+      </div>
+    </div>
+    <div class="case-card">
+      <span class="case-tag">小売・データ活用</span>
+      <h3>散在する顧客データを統合、AI分析基盤を構築</h3>
+      <p>POS・EC・会員データが別々のシステムに散在し、顧客理解が不十分だった課題を解決。データ統合基盤を設計・構築し、顧客セグメンテーション・購買予測のAIモデルを実装。パーソナライズドマーケティングで売上15%向上。</p>
+      <div class="case-result">
+        <div class="case-result-item"><div class="val">売上15%↑</div><div class="label">マーケ効果</div></div>
+        <div class="case-result-item"><div class="val">顧客LTV1.3倍</div><div class="label">顧客価値向上</div></div>
+        <div class="case-result-item"><div class="val">5ヶ月</div><div class="label">基盤構築期間</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="section process-section" id="process">
+  <div class="section-header"><h2>プロジェクトの進め方</h2><p>戦略立案から実装・定着まで、一つのチームでシームレスに推進します。</p></div>
+  <div class="process-grid fade-in">
+    <div class="process-step"><div class="step-num">1</div><h3>課題の構造化</h3><p>戦略ファーム水準のフレームワークで業務課題を分解・整理。AI適用による改善インパクトを定量化し、優先順位を決定します。</p><span class="step-tag">1〜2週間</span></div>
+    <div class="process-step"><div class="step-num">2</div><h3>ソリューション設計</h3><p>特定した課題に対し、最適なAIモデル・自動化アプローチを設計。PoC計画とROI試算を含むロードマップを策定します。</p><span class="step-tag">2〜3週間</span></div>
+    <div class="process-step"><div class="step-num">3</div><h3>PoC・実装</h3><p>提案だけで終わらせません。AIモデルの開発、業務フローへの組み込み、既存システムとの連携まで自社チームで一貫して実行します。</p><span class="step-tag">1〜3ヶ月</span></div>
+    <div class="process-step"><div class="step-num">4</div><h3>定着・継続改善</h3><p>現場トレーニング、KPIモニタリング、AIモデルの精度改善。コンサルが去った後も成果が持続する仕組みを構築します。</p><span class="step-tag">継続支援</span></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq-section" id="faq">
+  <div class="section-header"><h2>よくあるご質問</h2></div>
+  <div class="faq-list fade-in">
+    <div class="faq-item"><div class="faq-q">戦略コンサルと同じ品質とは具体的に何ですか？</div><div class="faq-a">当社メンバーにはMcKinsey・BCG・Bain等の戦略ファーム出身者が在籍しています。業務の構造化、課題のMECE分解、仮説検証のアプローチ、経営層向けの明快なドキュメンテーションなど、戦略コンサルティングの方法論をそのまま適用しています。</div></div>
+    <div class="faq-item"><div class="faq-q">なぜ従来コンサルより低コストで提供できるのですか？</div><div class="faq-a">AIによる分析・処理の自動化で、従来コンサルタントが手作業で行っていた工数を大幅に削減しています。データ収集・分析・レポーティングの多くをAIが担うため、少人数でも高品質なアウトプットを生み出せます。</div></div>
+    <div class="faq-item"><div class="faq-q">既にコンサルの提案書があるのですが、実装だけ依頼できますか？</div><div class="faq-a">はい、可能です。既存の戦略レポートや提案書をベースに、AI開発・業務自動化の実装フェーズのみをお引き受けすることもできます。ただし、実装の実現可能性を確認するための短期アセスメント（1〜2週間）を最初に実施させていただきます。</div></div>
+    <div class="faq-item"><div class="faq-q">AIを入れる必要がない課題でも相談できますか？</div><div class="faq-a">もちろんです。初回面談では、まず御社の課題を正しく理解することを優先します。AIが最適なソリューションでない場合は、率直にお伝えした上で、別のアプローチをご提案します。無理にAIを押し売りすることはありません。</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <h2>「提案書止まり」の課題解決を<br>終わりにしませんか？</h2>
+  <p>戦略ファーム品質の課題分析と、AIによる実装・自動化を一つのチームで提供します。<br>まずは30分の無料相談で、御社の課題をお聞かせください。</p>
+  <div class="cta-buttons">
+    <a href="#" class="btn-primary large" onclick="openBooking();return false;">無料相談を予約する →</a>
+    <a href="#" class="btn-secondary" onclick="openContact();return false;">お問い合わせ</a>
+  </div>
+  <div class="cta-note"><span>初回面談は無料</span><span>オンライン30分</span><span>戦略ファーム出身者が対応</span></div>
+</section>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/contact-modal') %>
+<%- include('../partials/booking-modal') %>
+<%- include('../partials/chatbot') %>
+<script src="/js/tracking.js"></script>
+<script src="/js/contact.js"></script>
+<script src="/js/booking.js"></script>
+<script src="/js/chatbot.js"></script>
+</body>
+</html>

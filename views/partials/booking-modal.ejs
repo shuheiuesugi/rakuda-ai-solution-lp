@@ -1,0 +1,67 @@
+<div class="modal-overlay booking-modal" id="bookingModal">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeBooking()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="booking-steps-area" id="bookingStepsArea">
+      <div class="booking-progress" id="bookingProgress">
+        <div class="booking-progress-bar active"></div>
+        <div class="booking-progress-bar"></div>
+        <div class="booking-progress-bar"></div>
+      </div>
+      <div class="booking-step is-active" id="bookStep1">
+        <div class="booking-title">日程を選択</div>
+        <div class="booking-sub">ご希望の日付を選んでください</div>
+        <div class="cal-nav">
+          <button class="cal-nav-btn" onclick="calPrev()">&larr;</button>
+          <div class="cal-nav-title" id="calTitle"></div>
+          <button class="cal-nav-btn" onclick="calNext()">&rarr;</button>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="booking-nav">
+          <button class="btn-book-next" id="btnDate" disabled onclick="goBookStep(2)">次へ：時間を選択</button>
+        </div>
+      </div>
+      <div class="booking-step" id="bookStep2">
+        <div class="booking-title">時間を選択</div>
+        <div class="booking-sub" id="bookDateLabel">選択した日付の空き枠</div>
+        <div class="time-grid" id="timeGrid"></div>
+        <div class="booking-nav">
+          <button class="btn-book-back" onclick="goBookStep(1)">戻る</button>
+          <button class="btn-book-next" id="btnTime" disabled onclick="goBookStep(3)">次へ：情報入力</button>
+        </div>
+      </div>
+      <div class="booking-step" id="bookStep3">
+        <div class="booking-title">無料で相談する</div>
+        <div class="booking-sub">情報を入力して予約を確定してください</div>
+        <div class="booking-confirm-summary" id="bookSummary">
+          <div class="booking-confirm-row"><span class="label">日付</span><span class="value" id="sumDate">-</span></div>
+          <div class="booking-confirm-row"><span class="label">時間</span><span class="value" id="sumTime">-</span></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">お名前<span class="req">*</span></label>
+          <input class="form-input" id="bName" required placeholder="山田 太郎">
+        </div>
+        <div class="form-group">
+          <label class="form-label">メールアドレス<span class="req">*</span></label>
+          <input class="form-input" id="bEmail" type="email" required placeholder="taro@example.co.jp">
+        </div>
+        <div class="form-group">
+          <label class="form-label">会社名</label>
+          <input class="form-input" id="bCompany" placeholder="株式会社〇〇">
+        </div>
+        <div class="booking-nav">
+          <button class="btn-book-back" onclick="goBookStep(2)">戻る</button>
+          <button class="btn-book-next" onclick="confirmBooking()">予約を確定する</button>
+        </div>
+      </div>
+    </div>
+    <div class="booking-complete" id="bookingComplete">
+      <div class="check-anim">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h4 style="font-size:20px;font-weight:700;margin-bottom:8px">予約が確定しました</h4>
+      <p style="font-size:14px;color:var(--text-sub);line-height:1.6">確認メールをお送りしました。<br>当日はオンラインでお会いしましょう。</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="modal-overlay contact-modal" id="contactModal">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeContact()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="contact-left-label">RAKUDA AI SOLUTION</div>
+        <h3>はじめてのAI導入を<br>かんたんに</h3>
+        <div class="contact-step-list">
+          <div class="contact-step-item">
+            <div class="contact-step-num">1</div>
+            <div class="contact-step-text"><strong>お話を聞く</strong><br>御社の業務やお困りごとをヒアリング</div>
+          </div>
+          <div class="contact-step-item">
+            <div class="contact-step-num">2</div>
+            <div class="contact-step-text"><strong>AIをつくる</strong><br>御社にぴったりのAIツールを設計・開発</div>
+          </div>
+          <div class="contact-step-item">
+            <div class="contact-step-num">3</div>
+            <div class="contact-step-text"><strong>ずっとサポート</strong><br>導入後もしっかり伴走します</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-right contact-form-area" id="contactFormArea">
+        <h3>お問い合わせ</h3>
+        <form id="contactForm" onsubmit="submitContact(event)">
+          <div class="form-group">
+            <label class="form-label">会社名<span class="req">*</span></label>
+            <input class="form-input" id="cCompany" required placeholder="株式会社〇〇">
+          </div>
+          <div class="form-group">
+            <label class="form-label">お名前<span class="req">*</span></label>
+            <input class="form-input" id="cName" required placeholder="山田 太郎">
+          </div>
+          <div class="form-group">
+            <label class="form-label">メールアドレス<span class="req">*</span></label>
+            <input class="form-input" id="cEmail" type="email" required placeholder="taro@example.co.jp">
+          </div>
+          <div class="form-group">
+            <label class="form-label">電話番号</label>
+            <input class="form-input" id="cPhone" placeholder="03-1234-5678">
+          </div>
+          <div class="form-group">
+            <label class="form-label">従業員数</label>
+            <select class="form-select" id="cSize">
+              <option value="">選択してください</option>
+              <option>1〜10名</option>
+              <option>11〜30名</option>
+              <option>31〜100名</option>
+              <option>101〜300名</option>
+              <option>301名以上</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">ご相談内容</label>
+            <textarea class="form-textarea" id="cMessage" placeholder="「こんな業務を楽にしたい」など、何でもお気軽にどうぞ"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">送信する</button>
+        </form>
+      </div>
+      <div class="contact-right contact-complete" id="contactComplete">
+        <div class="check-anim">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h4 style="font-size:20px;font-weight:700;margin-bottom:8px">お問い合わせを受け付けました</h4>
+        <p style="font-size:14px;color:var(--text-sub);line-height:1.6">1営業日以内にご連絡いたします。<br>しばらくお待ちください。</p>
+      </div>
+    </div>
+  </div>
+</div>

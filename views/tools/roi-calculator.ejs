@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>AI導入 ROI試算ツール | RAKUDA AI SOLUTION</title>
+  <meta name="description" content="業種・従業員数・業務内容を入力するだけで、AI導入による年間削減時間・削減金額・ROI倍率・投資回収期間をリアルタイムでシミュレーション。">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* ── ROI Calculator Styles ──────────────────────────── */
+    .roi-hero {
+      padding: 64px 24px 40px;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--bg) 100%);
+    }
+    .roi-hero-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .roi-hero h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .roi-hero h1 span { color: var(--primary); }
+    .roi-hero p {
+      font-size: 15px;
+      color: var(--text-sub);
+      line-height: 1.7;
+    }
+
+    .roi-container {
+      max-width: 960px;
+      margin: 40px auto 80px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* Input panel */
+    .roi-input-panel {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+    .roi-input-panel h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .roi-field {
+      margin-bottom: 20px;
+    }
+    .roi-field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .roi-field select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .roi-field select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(30,58,95,0.1);
+    }
+    .roi-slider-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .roi-slider-row input[type="range"] {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--border);
+      outline: none;
+    }
+    .roi-slider-row input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary);
+      cursor: pointer;
+      border: 2px solid #FFF;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+    .roi-slider-value {
+      min-width: 64px;
+      text-align: right;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* Checkbox group */
+    .roi-checkbox-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .roi-checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.15s;
+      font-size: 13px;
+    }
+    .roi-checkbox-item:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+    .roi-checkbox-item input[type="checkbox"] {
+      accent-color: var(--primary);
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Results panel */
+    .roi-results-panel {
+      position: sticky;
+      top: 80px;
+    }
+    .roi-results-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .roi-results-header h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .roi-results-header p {
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    .roi-result-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .roi-result-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      text-align: center;
+      transition: border-color 0.3s;
+    }
+    .roi-result-card.highlight {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+    .roi-result-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .roi-result-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .roi-result-label {
+      font-size: 12px;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+
+    /* Email form */
+    .roi-email-section {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .roi-email-section h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .roi-email-row {
+      display: flex;
+      gap: 8px;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+    .roi-email-row input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-family: inherit;
+    }
+    .roi-email-row input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .roi-email-row button {
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: #FFF;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .roi-email-row button:hover {
+      background: var(--primary-dark);
+    }
+    .roi-email-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+    .roi-email-done {
+      display: none;
+      text-align: center;
+      padding: 12px;
+    }
+    .roi-email-done p {
+      color: var(--success);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    /* CTA */
+    .roi-cta {
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .roi-container { grid-template-columns: 1fr; }
+      .roi-results-panel { position: static; }
+      .roi-hero h1 { font-size: 24px; }
+      .roi-checkbox-group { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<%- include('../partials/header') %>
+
+<!-- Hero -->
+<section class="roi-hero">
+  <div class="roi-hero-inner">
+    <h1><span>AI導入 ROI試算ツール</span><br>投資対効果をシミュレーション</h1>
+    <p>業種・従業員数・業務内容を入力するだけで、AI導入による削減効果をリアルタイムで試算。具体的な数字で投資判断をサポートします。</p>
+  </div>
+</section>
+
+<div class="roi-container">
+  <!-- Input Panel -->
+  <div class="roi-input-panel">
+    <h2>入力項目</h2>
+
+    <div class="roi-field">
+      <label>業種</label>
+      <select id="roiIndustry" onchange="calcROI()">
+        <option value="製造業">製造業</option>
+        <option value="小売業">小売業</option>
+        <option value="サービス業">サービス業</option>
+        <option value="金融">金融</option>
+        <option value="不動産">不動産</option>
+        <option value="IT">IT</option>
+        <option value="その他">その他</option>
+      </select>
+    </div>
+
+    <div class="roi-field">
+      <label>従業員数</label>
+      <div class="roi-slider-row">
+        <input type="range" id="roiEmployees" min="1" max="500" value="30" oninput="updateSliderDisplay('roiEmployees','roiEmployeesVal','名');calcROI()">
+        <span id="roiEmployeesVal" class="roi-slider-value">30名</span>
+      </div>
+    </div>
+
+    <div class="roi-field">
+      <label>月間平均業務時間/人</label>
+      <div class="roi-slider-row">
+        <input type="range" id="roiHours" min="80" max="200" value="160" oninput="updateSliderDisplay('roiHours','roiHoursVal','時間');calcROI()">
+        <span id="roiHoursVal" class="roi-slider-value">160時間</span>
+      </div>
+    </div>
+
+    <div class="roi-field">
+      <label>平均時給単価</label>
+      <div class="roi-slider-row">
+        <input type="range" id="roiRate" min="1500" max="8000" step="100" value="3000" oninput="updateSliderDisplay('roiRate','roiRateVal','円',true);calcROI()">
+        <span id="roiRateVal" class="roi-slider-value">&yen;3,000</span>
+      </div>
+    </div>
+
+    <div class="roi-field">
+      <label>自動化対象業務（複数選択可）</label>
+      <div class="roi-checkbox-group">
+        <label class="roi-checkbox-item">
+          <input type="checkbox" value="請求書処理" checked onchange="calcROI()">
+          請求書処理
+        </label>
+        <label class="roi-checkbox-item">
+          <input type="checkbox" value="見積作成" onchange="calcROI()">
+          見積作成
+        </label>
+        <label class="roi-checkbox-item">
+          <input type="checkbox" value="問い合わせ対応" checked onchange="calcROI()">
+          問い合わせ対応
+        </label>
+        <label class="roi-checkbox-item">
+          <input type="checkbox" value="レポート作成" onchange="calcROI()">
+          レポート作成
+        </label>
+        <label class="roi-checkbox-item">
+          <input type="checkbox" value="資料検索" onchange="calcROI()">
+          資料検索
+        </label>
+        <label class="roi-checkbox-item">
+          <input type="checkbox" value="データ分析" onchange="calcROI()">
+          データ分析
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results Panel -->
+  <div class="roi-results-panel">
+    <div class="roi-results-header">
+      <h2>シミュレーション結果</h2>
+      <p>入力に応じてリアルタイムで更新されます</p>
+    </div>
+
+    <div class="roi-result-cards">
+      <div class="roi-result-card">
+        <div class="roi-result-icon">&#9201;</div>
+        <div class="roi-result-value" id="roiResultHours">--</div>
+        <div class="roi-result-label">年間削減時間</div>
+      </div>
+      <div class="roi-result-card highlight">
+        <div class="roi-result-icon">&#128176;</div>
+        <div class="roi-result-value" id="roiResultCost">--</div>
+        <div class="roi-result-label">年間削減金額</div>
+      </div>
+      <div class="roi-result-card highlight">
+        <div class="roi-result-icon">&#128200;</div>
+        <div class="roi-result-value" id="roiResultMultiple">--</div>
+        <div class="roi-result-label">ROI倍率</div>
+      </div>
+      <div class="roi-result-card">
+        <div class="roi-result-icon">&#128197;</div>
+        <div class="roi-result-value" id="roiResultPayback">--</div>
+        <div class="roi-result-label">投資回収期間</div>
+      </div>
+    </div>
+
+    <!-- Email Section -->
+    <div class="roi-email-section" id="roiEmailSection">
+      <h3>メールで詳細レポートを受け取る</h3>
+      <div class="roi-email-row">
+        <input type="email" id="roiEmail" placeholder="example@company.com">
+        <button onclick="submitROI()">送信</button>
+      </div>
+      <div class="roi-email-note">入力いただいたメールアドレスに詳細な試算レポートをお送りします</div>
+      <div id="roiEmailDone" class="roi-email-done">
+        <p>&#10003; レポートをお送りしました</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="roi-cta">
+      <button class="btn-primary large" onclick="openBooking()" data-track="roi_cta_booking">
+        無料相談で詳しく聞く &rarr;
+      </button>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/contact-modal') %>
+<%- include('../partials/booking-modal') %>
+<%- include('../partials/chatbot') %>
+
+<script src="/js/tracking.js"></script>
+<script src="/js/contact.js"></script>
+<script src="/js/booking.js"></script>
+<script src="/js/chatbot.js"></script>
+<script>
+  // ── Helper functions ──────────────────────────────────
+  function updateSliderDisplay(sliderId, displayId, unit, isCurrency) {
+    var slider = document.getElementById(sliderId);
+    var display = document.getElementById(displayId);
+    if (!slider || !display) return;
+    var val = parseInt(slider.value);
+    if (isCurrency) {
+      display.innerHTML = '&yen;' + val.toLocaleString();
+    } else {
+      display.textContent = val.toLocaleString() + unit;
+    }
+  }
+
+  // ── ROI Calculation (client-side, real-time) ──────────
+  function calcROI() {
+    var employees = parseInt(document.getElementById('roiEmployees').value) || 10;
+    var monthlyHours = parseInt(document.getElementById('roiHours').value) || 160;
+    var hourlyRate = parseInt(document.getElementById('roiRate').value) || 3000;
+
+    // Count selected tasks
+    var checkboxes = document.querySelectorAll('.roi-checkbox-group input[type="checkbox"]');
+    var selectedTasks = [];
+    checkboxes.forEach(function(cb) {
+      if (cb.checked) selectedTasks.push(cb.value);
+    });
+
+    // Base automation rate 30%, adjusted by number of tasks selected
+    var taskFactor = Math.max(selectedTasks.length, 1) / 6;
+    var automationRate = 0.3 * taskFactor;
+
+    // Annual hours saved
+    var annualHoursSaved = Math.round(employees * monthlyHours * automationRate * 12);
+
+    // Annual cost saved
+    var annualCostSaved = annualHoursSaved * hourlyRate;
+
+    // Investment cost estimate based on company size
+    var investmentCost;
+    if (employees <= 30) investmentCost = 3000000;
+    else if (employees <= 100) investmentCost = 8000000;
+    else investmentCost = 15000000;
+
+    // ROI multiple
+    var roiMultiple = Math.round((annualCostSaved / investmentCost) * 10) / 10;
+
+    // Payback period in months
+    var monthlySaving = annualCostSaved / 12;
+    var paybackMonths = monthlySaving > 0 ? Math.round(investmentCost / monthlySaving) : 99;
+
+    // Update display
+    document.getElementById('roiResultHours').textContent = annualHoursSaved.toLocaleString() + '時間';
+    document.getElementById('roiResultCost').innerHTML = '&yen;' + annualCostSaved.toLocaleString();
+    document.getElementById('roiResultMultiple').textContent = roiMultiple + '倍';
+    document.getElementById('roiResultPayback').textContent = paybackMonths + 'ヶ月';
+  }
+
+  // ── Submit ROI + email to server ──────────────────────
+  function submitROI() {
+    var email = (document.getElementById('roiEmail') || {}).value.trim();
+    if (!email) {
+      alert('メールアドレスを入力してください。');
+      return;
+    }
+
+    var industry = (document.getElementById('roiIndustry') || {}).value;
+    var employees = (document.getElementById('roiEmployees') || {}).value;
+    var hours = (document.getElementById('roiHours') || {}).value;
+    var rate = (document.getElementById('roiRate') || {}).value;
+
+    var checkboxes = document.querySelectorAll('.roi-checkbox-group input[type="checkbox"]');
+    var tasks = [];
+    checkboxes.forEach(function(cb) { if (cb.checked) tasks.push(cb.value); });
+
+    var data = {
+      industry: industry,
+      employees: employees,
+      monthly_hours: hours,
+      hourly_rate: rate,
+      target_tasks: tasks,
+      email: email
+    };
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/roi-calc', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        var emailRow = document.querySelector('.roi-email-row');
+        var emailNote = document.querySelector('.roi-email-note');
+        var emailDone = document.getElementById('roiEmailDone');
+        if (emailRow) emailRow.style.display = 'none';
+        if (emailNote) emailNote.style.display = 'none';
+        if (emailDone) emailDone.style.display = 'block';
+
+        if (typeof trackEvent === 'function') {
+          trackEvent('roi_email_submit');
+        }
+      } else {
+        alert('送信に失敗しました。もう一度お試しください。');
+      }
+    };
+    xhr.onerror = function() {
+      alert('通信エラーが発生しました。');
+    };
+    xhr.send(JSON.stringify(data));
+  }
+
+  // Initial calculation on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    calcROI();
+  });
+</script>
+</body>
+</html>

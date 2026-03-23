@@ -37,7 +37,16 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
 .btn-primary.large { padding: 16px 36px; font-size: 16px; animation: pulse-glow 2s infinite; }
 .btn-secondary { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; border-radius: var(--radius); background: transparent; color: var(--text-sub); font-size: 15px; font-weight: 500; border: 1px solid var(--border); cursor: pointer; text-decoration: none; transition: all 0.15s; }
 .btn-secondary:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
-.hero-note { margin-top: 14px; font-size: 12px; color: var(--text-muted); }
+.hero-note, .cta-note {
+    margin-top: 16px; font-size: 13px; color: var(--text-sub);
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+}
+.hero-note span, .cta-note span {
+    display: inline-flex; align-items: center; gap: 4px;
+}
+.hero-note span::before, .cta-note span::before {
+    content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--primary); flex-shrink: 0;
+}
 .section { padding: 80px 24px; }
 .section-header { text-align: center; margin-bottom: 48px; }
 .section-header h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
@@ -50,7 +59,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
 .stat .lbl { font-size: 13px; color: var(--text-sub); font-weight: 500; }
 .features-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .feat-card { padding: 32px; border-radius: var(--radius-lg); background: var(--bg-alt); border: 1px solid var(--border); }
-.feat-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 20px; }
+.feat-icon { font-size: 13px; font-weight: 800; color: var(--primary); letter-spacing: 0.05em; margin-bottom: 12px; }
 .feat-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
 .feat-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
 .cases-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
@@ -66,7 +75,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
 .cta-banner h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
 .cta-banner p { font-size: 15px; color: var(--text-sub); margin-bottom: 32px; }
 .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.cta-note { margin-top: 12px; font-size: 12px; color: var(--text-muted); }
 .footer { padding: 32px 24px; border-top: 1px solid var(--border); background: var(--bg-alt); }
 .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
 .footer span { font-size: 12px; color: var(--text-muted); }
@@ -82,7 +90,21 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
 
 /* WP card */
 .wp-section { max-width: 680px; margin: 0 auto; padding: 40px; border-radius: var(--radius-lg); background: var(--bg); border: 1px solid var(--border); display: flex; gap: 32px; align-items: center; }
-.wp-cover { width: 140px; height: 190px; border-radius: var(--radius-lg); background: linear-gradient(135deg, var(--primary), var(--primary-dark)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #FFF; font-size: 13px; font-weight: 600; text-align: center; padding: 16px; line-height: 1.5; }
+.wp-cover {
+    width: 180px; height: 240px; border-radius: 4px; flex-shrink: 0; position: relative; overflow: hidden;
+    background: #1A1A2E; box-shadow: 4px 4px 16px rgba(0,0,0,0.15);
+}
+.wp-cover-inner {
+    height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 24px 20px;
+}
+.wp-cover-top { font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.5); letter-spacing: 0.15em; text-transform: uppercase; }
+.wp-cover-title { color: #FFF; }
+.wp-cover-title .main { font-size: 18px; font-weight: 800; line-height: 1.3; letter-spacing: -0.02em; }
+.wp-cover-title .sub { font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.7); margin-top: 6px; }
+.wp-cover-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+.wp-cover-bottom .year { font-size: 32px; font-weight: 800; color: rgba(255,255,255,0.12); letter-spacing: -0.03em; }
+.wp-cover-bottom .logo { font-size: 9px; font-weight: 300; color: rgba(255,255,255,0.4); letter-spacing: 0.15em; }
+.wp-cover-accent { position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #2563EB, #60A5FA); }
 .wp-info h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
 .wp-info p { font-size: 14px; color: var(--text-sub); line-height: 1.7; margin-bottom: 16px; }
 .wp-info ul { list-style: none; margin-bottom: 20px; }
@@ -133,7 +155,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
                 <a href="#download" class="btn-primary large">無料でダウンロード →</a>
                 <a href="#meeting" class="btn-secondary">初回面談を予約</a>
             </div>
-            <p class="hero-note">メールアドレスの入力だけで即ダウンロード可能。営業電話はいたしません。</p>
+            <div class="hero-note"><span>メールアドレスのみで即ダウンロード</span><span>営業電話なし</span></div>
         </div>
     </section>
 
@@ -166,7 +188,20 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
             <p>AI導入を検討するすべてのビジネスリーダーに向けた実践的ガイドブックです。</p>
         </div>
         <div class="wp-section">
-            <div class="wp-cover">AI導入<br>完全ガイド<br>2026年版</div>
+            <div class="wp-cover">
+                <div class="wp-cover-accent"></div>
+                <div class="wp-cover-inner">
+                    <div class="wp-cover-top">WHITEPAPER</div>
+                    <div class="wp-cover-title">
+                        <div class="main">AI導入<br>完全ガイド</div>
+                        <div class="sub">戦略立案から運用定着まで</div>
+                    </div>
+                    <div class="wp-cover-bottom">
+                        <span class="year">2026</span>
+                        <span class="logo">RAKUDA AI</span>
+                    </div>
+                </div>
+            </div>
             <div class="wp-info">
                 <h3>AI導入 完全ガイド 2026年版</h3>
                 <p>中堅〜大企業の経営者・DX推進担当者向けに、AI導入の戦略立案から本番運用までの全工程を体系的に解説。すぐに使えるテンプレート付き。</p>
@@ -182,40 +217,101 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
         </div>
     </section>
 
-    <!-- Recommend Section -->
+    <!-- Table of Contents Preview -->
     <section class="section" style="background: var(--bg-alt);">
+        <div class="section-header">
+            <h2>ガイドの構成</h2>
+            <p>全96ページ、5章構成で体系的に解説しています。</p>
+        </div>
+        <div style="max-width: 640px; margin: 0 auto;">
+            <div style="display: flex; flex-direction: column; gap: 0;">
+                <div style="display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border);">
+                    <div style="font-size: 12px; font-weight: 800; color: var(--primary); width: 60px; flex-shrink: 0;">第1章</div>
+                    <div>
+                        <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">AI導入の全体像</div>
+                        <div style="font-size: 13px; color: var(--text-sub); line-height: 1.6;">AIでできること・できないこと。生成AI・予測AI・画像認識の使い分け。業界別のAI活用トレンド2026年版。</div>
+                    </div>
+                    <div style="font-size: 12px; color: var(--text-muted); white-space: nowrap;">p.8-24</div>
+                </div>
+                <div style="display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border);">
+                    <div style="font-size: 12px; font-weight: 800; color: var(--primary); width: 60px; flex-shrink: 0;">第2章</div>
+                    <div>
+                        <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">導入プロジェクトの進め方</div>
+                        <div style="font-size: 13px; color: var(--text-sub); line-height: 1.6;">5フェーズの実践手順。要件定義のテンプレート。PoC設計のベストプラクティス。関係者への説明資料の作り方。</div>
+                    </div>
+                    <div style="font-size: 12px; color: var(--text-muted); white-space: nowrap;">p.25-44</div>
+                </div>
+                <div style="display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border);">
+                    <div style="font-size: 12px; font-weight: 800; color: var(--primary); width: 60px; flex-shrink: 0;">第3章</div>
+                    <div>
+                        <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">業界別 導入事例12選</div>
+                        <div style="font-size: 13px; color: var(--text-sub); line-height: 1.6;">製造・金融・小売・不動産・物流・サービスの各業界から厳選した事例。課題→施策→成果→学びの構成で詳細解説。</div>
+                    </div>
+                    <div style="font-size: 12px; color: var(--text-muted); white-space: nowrap;">p.45-68</div>
+                </div>
+                <div style="display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border);">
+                    <div style="font-size: 12px; font-weight: 800; color: var(--primary); width: 60px; flex-shrink: 0;">第4章</div>
+                    <div>
+                        <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">ROI試算と投資判断</div>
+                        <div style="font-size: 13px; color: var(--text-sub); line-height: 1.6;">投資対効果の算出方法。稟議書テンプレート。段階的投資によるリスクコントロール。</div>
+                    </div>
+                    <div style="font-size: 12px; color: var(--text-muted); white-space: nowrap;">p.69-82</div>
+                </div>
+                <div style="display: flex; gap: 20px; padding: 20px 0;">
+                    <div style="font-size: 12px; font-weight: 800; color: var(--primary); width: 60px; flex-shrink: 0;">第5章</div>
+                    <div>
+                        <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">ベンダー選定と運用定着</div>
+                        <div style="font-size: 13px; color: var(--text-sub); line-height: 1.6;">7つの評価基準によるベンダー選定フレームワーク。契約交渉のポイント。導入後の運用定着チェックリスト。</div>
+                    </div>
+                    <div style="font-size: 12px; color: var(--text-muted); white-space: nowrap;">p.83-96</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommend Section -->
+    <section class="section">
         <div class="section-header">
             <h2>こんな方におすすめ</h2>
             <p>AI導入を検討中の以下のような方に、特にお役立ていただける内容です。</p>
         </div>
         <div class="recommend-grid">
             <div class="recommend-card">
-                <div class="feat-icon">
-                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                </div>
+                <div class="feat-icon">01</div>
                 <h3>経営者・役員</h3>
                 <p>AI投資の判断基準がわからない、競合のAI活用状況が気になる方へ。経営視点でのAI戦略の立て方、投資対効果の考え方、段階的な導入アプローチを解説しています。「とりあえずAI」で失敗しないための意思決定フレームワークが手に入ります。</p>
             </div>
             <div class="recommend-card">
-                <div class="feat-icon">
-                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                </div>
+                <div class="feat-icon">02</div>
                 <h3>DX推進担当者</h3>
                 <p>AI導入プロジェクトの進め方がわからない、社内説得用の資料が欲しい方へ。5フェーズの導入手順、ベンダー選定基準、稟議書に使えるROI試算テンプレートなど、プロジェクト推進に必要な実践ツールを網羅しています。</p>
             </div>
             <div class="recommend-card">
-                <div class="feat-icon">
-                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                </div>
+                <div class="feat-icon">03</div>
                 <h3>情報システム部門</h3>
                 <p>AI導入時の技術選定やセキュリティ要件が不安な方へ。オンプレミス vs クラウドの比較、データガバナンスの設計指針、既存システムとの統合パターンなど、技術担当者が押さえるべきポイントを整理しています。</p>
             </div>
             <div class="recommend-card">
-                <div class="feat-icon">
-                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-                </div>
+                <div class="feat-icon">04</div>
                 <h3>事業部門リーダー</h3>
                 <p>自部門の業務にAIを活用したいが具体的なイメージが湧かない方へ。営業・マーケティング・製造・物流・カスタマーサポートなど、部門別のAI活用パターンと期待効果を具体的な事例とともに紹介しています。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reader Testimonials -->
+    <section class="section" style="background: var(--bg-alt);">
+        <div class="section-header">
+            <h2>ダウンロードされた方の声</h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testi-card">
+                <div class="testi-quote">社内でAI導入の議論が空中戦になっていたが、このガイドのフレームワークを使って整理したら、経営会議で一発で通った。特にROI試算テンプレートは稟議書にそのまま使えて助かった。</div>
+                <div class="testi-who">— 製造業 経営企画部長・従業員300名</div>
+            </div>
+            <div class="testi-card">
+                <div class="testi-quote">ベンダー選定で3社の提案を比較する際、第5章の評価基準チェックリストが非常に役立った。感覚的な判断ではなく、客観的な比較ができるようになった。</div>
+                <div class="testi-who">— 小売業 DX推進室マネージャー・従業員500名</div>
             </div>
         </div>
     </section>
@@ -304,7 +400,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
             <a href="#meeting" class="btn-primary large" id="meeting">初回面談を予約 →</a>
             <a href="#contact-form" class="btn-secondary">お問い合わせ</a>
         </div>
-        <p class="cta-note">初回面談は無料・オンライン30分。資料の内容に関するご質問もお気軽にどうぞ。</p>
+        <div class="cta-note"><span>初回面談は無料</span><span>オンライン30分</span><span>資料に関するご質問もOK</span></div>
     </section>
 
     <!-- Footer -->

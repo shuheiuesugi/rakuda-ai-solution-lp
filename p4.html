@@ -37,7 +37,16 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
 .btn-primary.large { padding: 16px 36px; font-size: 16px; animation: pulse-glow 2s infinite; }
 .btn-secondary { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; border-radius: var(--radius); background: transparent; color: var(--text-sub); font-size: 15px; font-weight: 500; border: 1px solid var(--border); cursor: pointer; text-decoration: none; transition: all 0.15s; }
 .btn-secondary:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
-.hero-note { margin-top: 14px; font-size: 12px; color: var(--text-muted); }
+.hero-note, .cta-note {
+    margin-top: 16px; font-size: 13px; color: var(--text-sub);
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+}
+.hero-note span, .cta-note span {
+    display: inline-flex; align-items: center; gap: 4px;
+}
+.hero-note span::before, .cta-note span::before {
+    content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--primary); flex-shrink: 0;
+}
 .section { padding: 80px 24px; }
 .section-header { text-align: center; margin-bottom: 48px; }
 .section-header h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
@@ -50,7 +59,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
 .stat .lbl { font-size: 13px; color: var(--text-sub); font-weight: 500; }
 .features-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .feat-card { padding: 32px; border-radius: var(--radius-lg); background: var(--bg-alt); border: 1px solid var(--border); }
-.feat-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 20px; }
+.feat-icon { font-size: 13px; font-weight: 800; color: var(--primary); letter-spacing: 0.05em; margin-bottom: 12px; }
 .feat-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
 .feat-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
 .cases-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
@@ -80,7 +89,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
 .cta-banner h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
 .cta-banner p { font-size: 15px; color: var(--text-sub); margin-bottom: 32px; }
 .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.cta-note { margin-top: 12px; font-size: 12px; color: var(--text-muted); }
 .footer { padding: 32px 24px; border-top: 1px solid var(--border); background: var(--bg-alt); }
 .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
 .footer span { font-size: 12px; color: var(--text-muted); }
@@ -97,16 +105,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
 .solution-section { background: var(--primary-light); }
 
 /* P4 ROI styles */
-.roi-calc { max-width: 520px; margin: 0 auto; padding: 32px; border-radius: var(--radius-lg); background: var(--bg); border: 1px solid var(--border); }
-.roi-calc h3 { font-size: 16px; font-weight: 700; text-align: center; margin-bottom: 24px; }
-.roi-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #F3F4F6; }
-.roi-row:last-child { border-bottom: none; }
-.roi-row .rl { font-size: 14px; color: var(--text-sub); }
-.roi-row .rv { font-size: 15px; font-weight: 700; color: var(--text); }
-.roi-row .rv.blue { color: var(--primary); }
-.roi-result { margin-top: 20px; padding: 20px; border-radius: var(--radius); background: var(--primary-light); text-align: center; }
-.roi-result .big { font-size: 32px; font-weight: 800; color: var(--primary); }
-.roi-result .sub { font-size: 12px; color: var(--text-sub); }
+.roi-calc { max-width: 600px; margin: 0 auto; }
+.roi-table { width: 100%; border-collapse: collapse; }
+.roi-table tr { border-bottom: 1px solid var(--border); }
+.roi-table td { padding: 16px 0; font-size: 14px; }
+.roi-table td:first-child { color: var(--text-sub); }
+.roi-table td:last-child { text-align: right; font-weight: 700; font-size: 15px; }
+.roi-table td.highlight { color: var(--primary); font-size: 16px; }
+.roi-summary { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.roi-summary-item { padding: 24px; border-radius: var(--radius-lg); border: 1px solid var(--border); text-align: center; }
+.roi-summary-item .big { font-size: 28px; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+.roi-summary-item .big em { font-style: normal; color: var(--primary); }
+.roi-summary-item .sub { font-size: 12px; color: var(--text-sub); font-weight: 500; }
 
 @media (max-width: 768px) {
     .nav a:not(.nav-contact):not(.nav-meeting) { display: none; }
@@ -149,7 +159,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
             <a href="#meeting" class="btn-primary large">無料ROI試算を予約する →</a>
             <a href="#roi" class="btn-secondary">ROI試算を見る</a>
         </div>
-        <div class="hero-note">※ オンライン面談OK・30分で完了・営業電話なし</div>
+        <div class="hero-note"><span>オンライン面談OK</span><span>30分で完了</span><span>営業電話なし</span></div>
     </div>
 </section>
 
@@ -179,36 +189,39 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
 <section class="section" style="background: var(--bg-alt);" id="roi">
     <div class="section-header">
         <h2>ROI簡易シミュレーション</h2>
-        <p>AI導入の投資対効果を具体的な数字でご確認いただけます。実際の面談では御社の業務データに基づいた詳細試算をご提供します。</p>
+        <p>AI導入の投資対効果を具体的な数字でご確認いただけます。</p>
     </div>
     <div class="roi-calc">
-        <h3>AI導入 ROI試算ツール（簡易版）</h3>
-        <div class="roi-row">
-            <span class="rl">対象業務の月間人件費</span>
-            <span class="rv">&yen;5,000,000</span>
+        <table class="roi-table">
+            <tr>
+                <td>対象業務の月間人件費</td>
+                <td>&yen;5,000,000</td>
+            </tr>
+            <tr>
+                <td>想定自動化率</td>
+                <td>30%</td>
+            </tr>
+            <tr>
+                <td>月間コスト削減額</td>
+                <td class="highlight">&yen;1,500,000</td>
+            </tr>
+            <tr>
+                <td>初期開発費</td>
+                <td>&yen;8,000,000</td>
+            </tr>
+        </table>
+        <div class="roi-summary">
+            <div class="roi-summary-item">
+                <div class="big">約<em>5.3</em>ヶ月</div>
+                <div class="sub">投資回収期間</div>
+            </div>
+            <div class="roi-summary-item">
+                <div class="big"><em>&yen;18,000,000</em></div>
+                <div class="sub">年間削減額</div>
+            </div>
         </div>
-        <div class="roi-row">
-            <span class="rl">想定自動化率</span>
-            <span class="rv">30%</span>
-        </div>
-        <div class="roi-row">
-            <span class="rl">月間コスト削減額</span>
-            <span class="rv blue">&yen;1,500,000</span>
-        </div>
-        <div class="roi-row">
-            <span class="rl">初期開発費</span>
-            <span class="rv">&yen;8,000,000</span>
-        </div>
-        <div class="roi-result">
-            <div class="big">約5.3ヶ月</div>
-            <div class="sub">投資回収期間</div>
-        </div>
-        <div class="roi-result" style="margin-top: 12px;">
-            <div class="big">&yen;18,000,000</div>
-            <div class="sub">年間削減額</div>
-        </div>
+        <p style="text-align: center; margin-top: 24px; font-size: 13px; color: var(--text-muted);">※ 上記は一般的なケースに基づく簡易試算です。御社の業務内容に応じた詳細試算は初回面談にてご提供いたします。</p>
     </div>
-    <p style="text-align: center; margin-top: 24px; font-size: 13px; color: var(--text-muted);">※ 上記は一般的なケースに基づく簡易試算です。御社の業務内容に応じた詳細試算は初回面談にてご提供いたします。</p>
 </section>
 
 <!-- Features -->
@@ -219,23 +232,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
     </div>
     <div class="features-grid">
         <div class="feat-card">
-            <div class="feat-icon">
-                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20V10M6 20V4M18 20v-4"/></svg>
-            </div>
+            <div class="feat-icon">01</div>
             <h3>導入前ROI試算</h3>
             <p>業務プロセスの工数・コストを可視化し、AI導入による削減効果を定量的に試算。経営層への投資判断材料として活用できるレポートを提供します。</p>
         </div>
         <div class="feat-card">
-            <div class="feat-icon">
-                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            </div>
+            <div class="feat-icon">02</div>
             <h3>段階的な投資設計</h3>
             <p>一括投資ではなく、フェーズ分割で効果を確認しながら投資を拡大。各フェーズごとにKPIを設定し、投資対効果を検証しながら進めます。</p>
         </div>
         <div class="feat-card">
-            <div class="feat-icon">
-                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            </div>
+            <div class="feat-icon">03</div>
             <h3>導入後の効果測定</h3>
             <p>導入前後のコスト・工数・品質を定量比較する月次レポートを提供。実際のROIを継続的にモニタリングし、改善提案を行います。</p>
         </div>
@@ -361,7 +368,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
         <a href="#" class="btn-primary large">初回面談を予約する →</a>
         <a href="#contact" class="btn-secondary">お問い合わせ</a>
     </div>
-    <div class="cta-note">オンライン面談OK・30分で完了・営業電話なし</div>
+    <div class="cta-note"><span>オンライン面談OK</span><span>30分で完了</span><span>営業電話なし</span></div>
 </section>
 
 <!-- Footer -->

@@ -53,12 +53,14 @@ body {
 .btn-primary.large { padding: 16px 36px; font-size: 16px; animation: pulse-glow 2s infinite; }
 .btn-secondary { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; border-radius: var(--radius); background: transparent; color: var(--text-sub); font-size: 15px; font-weight: 500; border: 1px solid var(--border); cursor: pointer; text-decoration: none; transition: all 0.15s; }
 .btn-secondary:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
-.hero-note { margin-top: 14px; font-size: 12px; color: var(--text-muted); }
+.hero-note, .cta-note { margin-top: 16px; font-size: 13px; color: var(--text-sub); display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.hero-note span, .cta-note span { display: inline-flex; align-items: center; gap: 4px; }
+.hero-note span::before, .cta-note span::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--primary); flex-shrink: 0; }
 .freetool { padding: 0 24px 64px; }
-.freetool-inner { max-width: 680px; margin: 0 auto; padding: 32px; border-radius: var(--radius-lg); background: var(--primary-light); border: 1px solid var(--primary-border); display: flex; align-items: center; gap: 24px; }
+.freetool-inner { max-width: 680px; margin: 0 auto; padding: 28px 32px; border-radius: var(--radius-lg); background: var(--bg); border: 1px solid var(--border); border-left: 4px solid var(--primary); display: flex; align-items: center; gap: 20px; }
 .freetool-icon { width: 56px; height: 56px; border-radius: 12px; background: var(--primary); color: #FFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .freetool-text { flex: 1; }
-.freetool-text h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.freetool-text h3 { font-size: 14px; font-weight: 700; margin-bottom: 4px; color: var(--primary); }
 .freetool-text p { font-size: 13px; color: var(--text-sub); line-height: 1.6; }
 .freetool-btn { padding: 10px 20px; border-radius: var(--radius); background: var(--primary); color: #FFF; font-size: 13px; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; text-decoration: none; }
 .stats { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -74,7 +76,7 @@ body {
 .features-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .feat-card { padding: 32px; border-radius: var(--radius-lg); background: var(--bg-alt); border: 1px solid var(--border); transition: border-color 0.2s, box-shadow 0.2s; }
 .feat-card:hover { border-color: var(--primary-border); box-shadow: 0 4px 16px rgba(37,99,235,0.08); }
-.feat-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 20px; }
+.feat-icon { font-size: 13px; font-weight: 800; color: var(--primary); letter-spacing: 0.05em; margin-bottom: 12px; }
 .feat-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
 .feat-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
 .process-section { background: var(--bg-alt); }
@@ -104,7 +106,6 @@ body {
 .cta-banner h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
 .cta-banner p { font-size: 15px; color: var(--text-sub); margin-bottom: 32px; }
 .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.cta-note { margin-top: 12px; font-size: 12px; color: var(--text-muted); }
 .footer { padding: 32px 24px; border-top: 1px solid var(--border); background: var(--bg-alt); }
 .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
 .footer span { font-size: 12px; color: var(--text-muted); }
@@ -153,16 +154,13 @@ body {
             <a href="#" class="btn-primary large">無料でAI診断する →</a>
             <a href="#cases" class="btn-secondary">導入事例を見る</a>
         </div>
-        <div class="hero-note">メールアドレスのみで診断可能・3分で完了・営業電話なし</div>
+        <div class="hero-note"><span>メールアドレスのみで診断可能</span><span>3分で完了</span><span>営業電話なし</span></div>
     </div>
 </section>
 
 <!-- Free Tool Banner -->
 <section class="freetool">
     <div class="freetool-inner">
-        <div class="freetool-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-        </div>
         <div class="freetool-text">
             <h3>無料AI活用診断ツール</h3>
             <p>10問の簡単な質問に回答するだけで、御社の業務におけるAI活用ポテンシャルをスコアリング。業界別ベンチマークとの比較レポートを即時発行します。</p>
@@ -201,23 +199,17 @@ body {
     </div>
     <div class="features-grid">
         <div class="feat-card">
-            <div class="feat-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-            </div>
+            <div class="feat-icon">01</div>
             <h3>無料診断で即効果を実感</h3>
             <p>独自開発のAI活用診断ツールで、御社の業務プロセスにおけるAI導入効果を即座にスコアリング。業界別のベンチマークと比較し、最も効果の高い領域を特定します。診断結果は具体的なROI試算付きでレポート化。</p>
         </div>
         <div class="feat-card">
-            <div class="feat-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            </div>
+            <div class="feat-icon">02</div>
             <h3>オーダーメイドAI開発</h3>
             <p>汎用AIツールの導入ではなく、御社の業務課題に特化したAIソリューションをゼロから開発。自然言語処理、画像認識、需要予測など、幅広い技術領域に対応。既存システムとのシームレスな連携も実現します。</p>
         </div>
         <div class="feat-card">
-            <div class="feat-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-            </div>
+            <div class="feat-icon">03</div>
             <h3>導入後の伴走支援</h3>
             <p>AIは導入して終わりではありません。現場への定着支援、KPIモニタリング、モデルの精度改善まで、継続的にサポート。98%の高い継続率は、導入後のきめ細かな伴走支援の証です。</p>
         </div>
@@ -366,7 +358,7 @@ body {
         <a href="#" class="btn-primary large">初回面談を予約する →</a>
         <a href="#contact" class="btn-secondary">お問い合わせ</a>
     </div>
-    <div class="cta-note">オンライン面談OK・30分で完了・営業電話なし</div>
+    <div class="cta-note"><span>オンライン面談OK</span><span>30分で完了</span><span>営業電話なし</span></div>
 </section>
 
 <!-- Footer -->

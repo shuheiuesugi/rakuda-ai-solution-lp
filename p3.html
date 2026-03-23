@@ -37,7 +37,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
 .btn-primary.large { padding: 16px 36px; font-size: 16px; animation: pulse-glow 2s infinite; }
 .btn-secondary { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; border-radius: var(--radius); background: transparent; color: var(--text-sub); font-size: 15px; font-weight: 500; border: 1px solid var(--border); cursor: pointer; text-decoration: none; transition: all 0.15s; }
 .btn-secondary:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
-.hero-note { margin-top: 14px; font-size: 12px; color: var(--text-muted); }
+.hero-note, .cta-note { margin-top: 16px; font-size: 13px; color: var(--text-sub); display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.hero-note span, .cta-note span { display: inline-flex; align-items: center; gap: 4px; }
+.hero-note span::before, .cta-note span::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--primary); flex-shrink: 0; }
 .section { padding: 80px 24px; }
 .section-header { text-align: center; margin-bottom: 48px; }
 .section-header h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
@@ -50,7 +52,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
 .stat .lbl { font-size: 13px; color: var(--text-sub); font-weight: 500; }
 .features-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .feat-card { padding: 32px; border-radius: var(--radius-lg); background: var(--bg-alt); border: 1px solid var(--border); }
-.feat-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 20px; }
+.feat-icon { font-size: 13px; font-weight: 800; color: var(--primary); letter-spacing: 0.05em; margin-bottom: 12px; }
 .feat-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
 .feat-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
 .cases-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
@@ -80,7 +82,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
 .cta-banner h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
 .cta-banner p { font-size: 15px; color: var(--text-sub); margin-bottom: 32px; }
 .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.cta-note { margin-top: 12px; font-size: 12px; color: var(--text-muted); }
 .footer { padding: 32px 24px; border-top: 1px solid var(--border); background: var(--bg-alt); }
 .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
 .footer span { font-size: 12px; color: var(--text-muted); }
@@ -89,10 +90,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
 
 /* P3 Pain point styles */
 .pains-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.pain-card { padding: 24px; border-radius: var(--radius-lg); background: #FEF2F2; border: 1px solid #FECACA; display: flex; gap: 16px; align-items: flex-start; }
-.pain-icon { font-size: 24px; flex-shrink: 0; }
-.pain-card h3 { font-size: 15px; font-weight: 700; color: #991B1B; margin-bottom: 6px; }
-.pain-card p { font-size: 13px; color: #B91C1C; line-height: 1.6; }
+.pain-card { padding: 24px 24px 24px 28px; border-radius: var(--radius-lg); background: #FFF; border: 1px solid var(--border); border-left: 4px solid #DC2626; display: flex; gap: 16px; align-items: flex-start; }
+.pain-num { font-size: 13px; font-weight: 800; color: #DC2626; flex-shrink: 0; margin-top: 2px; }
+.pain-card h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.pain-card p { font-size: 13px; color: var(--text-sub); line-height: 1.6; }
 .arrow-down { text-align: center; padding: 24px; font-size: 32px; color: var(--primary); }
 .solution-section { background: var(--primary-light); }
 
@@ -145,7 +146,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
             <a href="#meeting" class="btn-primary large">無料相談を予約する →</a>
             <a href="#pains" class="btn-secondary">よくある課題を見る</a>
         </div>
-        <div class="hero-note">※ オンライン面談OK・30分で完了・営業電話なし</div>
+        <div class="hero-note"><span>オンライン面談OK</span><span>30分で完了</span><span>営業電話なし</span></div>
     </div>
 </section>
 
@@ -157,28 +158,28 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
     </div>
     <div class="pains-grid">
         <div class="pain-card">
-            <div class="pain-icon">&#x1F6A7;</div>
+            <div class="pain-num">01</div>
             <div>
                 <h3>何から始めればいいかわからない</h3>
                 <p>AI導入の優先領域が不明確で、検討が進まない。社内の業務プロセスのどこにAIを適用すれば最大の効果が得られるのか、判断基準がない。</p>
             </div>
         </div>
         <div class="pain-card">
-            <div class="pain-icon">&#x26A0;&#xFE0F;</div>
+            <div class="pain-num">02</div>
             <div>
                 <h3>PoC止まりで本番化できない</h3>
                 <p>検証はしたが、現場への実装・定着に至らない。技術的には動くが、既存システムとの統合や業務フローへの組み込みで頓挫するケースが多い。</p>
             </div>
         </div>
         <div class="pain-card">
-            <div class="pain-icon">&#x1F465;</div>
+            <div class="pain-num">03</div>
             <div>
                 <h3>社内にAI人材がいない</h3>
                 <p>開発も運用もできる人材がおらず、外注依存になる。ベンダーに丸投げすると、ブラックボックス化して自社でコントロールできなくなる。</p>
             </div>
         </div>
         <div class="pain-card">
-            <div class="pain-icon">&#x1F4B0;</div>
+            <div class="pain-num">04</div>
             <div>
                 <h3>費用対効果が見えない</h3>
                 <p>投資に見合う成果が出るのか、経営層を説得できない。AI導入の投資対効果を定量的に示せず、予算確保が難航している。</p>
@@ -188,7 +189,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
 </section>
 
 <!-- Arrow -->
-<div class="arrow-down">&#x2193;</div>
+<div style="text-align: center; padding: 32px 24px;">
+    <div style="display: inline-flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; color: var(--primary); letter-spacing: 0.05em;">
+        <span style="width: 32px; height: 1px; background: var(--primary-border);"></span>
+        SOLUTION
+        <span style="width: 32px; height: 1px; background: var(--primary-border);"></span>
+    </div>
+</div>
 
 <!-- Solution Section -->
 <section class="section solution-section" id="features">
@@ -198,23 +205,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
     </div>
     <div class="features-grid">
         <div class="feat-card" style="background: #FFF;">
-            <div class="feat-icon">
-                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            </div>
+            <div class="feat-icon">01</div>
             <h3>AI適用領域の特定</h3>
             <p>業務プロセスを可視化し、AIによる自動化・効率化のインパクトが最大となる領域を特定。優先順位を付けたロードマップを策定し、「何から始めるか」を明確にします。</p>
         </div>
         <div class="feat-card" style="background: #FFF;">
-            <div class="feat-icon">
-                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            </div>
+            <div class="feat-icon">02</div>
             <h3>PoC→本番の一気通貫</h3>
             <p>PoCで終わらせません。検証結果をもとに本番環境への実装、既存システムとの統合、現場トレーニングまで一貫して対応。確実に業務に定着させます。</p>
         </div>
         <div class="feat-card" style="background: #FFF;">
-            <div class="feat-icon">
-                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20V10M6 20V4M18 20v-4"/></svg>
-            </div>
+            <div class="feat-icon">03</div>
             <h3>ROI可視化レポート</h3>
             <p>導入前後の業務コスト・工数・品質を定量比較するレポートを提供。経営層への報告に使える形で、投資対効果を明確に可視化します。</p>
         </div>
@@ -344,7 +345,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
         <a href="#" class="btn-primary large">初回面談を予約する →</a>
         <a href="#contact" class="btn-secondary">お問い合わせ</a>
     </div>
-    <div class="cta-note">オンライン面談OK・30分で完了・営業電話なし</div>
+    <div class="cta-note"><span>オンライン面談OK</span><span>30分で完了</span><span>営業電話なし</span></div>
 </section>
 
 <!-- Footer -->

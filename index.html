@@ -1,142 +1,241 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <title>RAKUDA AI SOLUTION — LP Pattern Preview</title>
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', sans-serif;
-            background: #111;
-            color: #FFF;
-            overflow: hidden;
-            height: 100vh;
-        }
-        .toolbar {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 0 20px;
-            height: 52px;
-            background: #1A1A1A;
-            border-bottom: 1px solid #333;
-            flex-shrink: 0;
-        }
-        .toolbar-title {
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            color: #888;
-            white-space: nowrap;
-            padding-right: 8px;
-            border-right: 1px solid #333;
-        }
-        .toolbar-title span {
-            color: #FFF;
-        }
-        .tab-group {
-            display: flex;
-            gap: 4px;
-            overflow-x: auto;
-            flex: 1;
-        }
-        .tab-btn {
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 600;
-            border: 1px solid #333;
-            background: transparent;
-            color: #999;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.15s;
-        }
-        .tab-btn:hover {
-            border-color: #555;
-            color: #CCC;
-        }
-        .tab-btn.active {
-            background: #1E3A5F;
-            border-color: #1E3A5F;
-            color: #FFF;
-        }
-        .toolbar-links {
-            display: flex;
-            gap: 12px;
-            padding-left: 8px;
-            border-left: 1px solid #333;
-            white-space: nowrap;
-        }
-        .toolbar-links a {
-            font-size: 11px;
-            font-weight: 500;
-            color: #777;
-            text-decoration: none;
-            transition: color 0.15s;
-        }
-        .toolbar-links a:hover {
-            color: #CCC;
-        }
-        .iframe-wrap {
-            height: calc(100vh - 52px);
-            background: #E2E8F0;
-        }
-        .iframe-wrap iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        @media (max-width: 768px) {
-            .toolbar {
-                padding: 0 12px;
-                gap: 8px;
-            }
-            .toolbar-title {
-                font-size: 11px;
-            }
-            .tab-btn {
-                padding: 5px 10px;
-                font-size: 10px;
-            }
-            .toolbar-links {
-                display: none;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAKUDA AI SOLUTION – 中小企業向けAI導入支援</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="description" content="中小企業のAI導入をワンストップで支援。無料AI診断で最適な導入プランをご提案します。">
+  <meta property="og:title" content="RAKUDA AI SOLUTION – 中小企業向けAI導入支援">
+  <meta property="og:description" content="中小企業のAI導入をワンストップで支援。無料AI診断で最適な導入プランをご提案。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://solution.rakuda-ai.com/">
+  <meta property="og:image" content="https://solution.rakuda-ai.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #111113;
+    }
+
+    /* Loading overlay */
+    #loading {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111113;
+      transition: opacity 0.2s ease-out;
+    }
+    #loading.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loader {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .loader-logo {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #FFFFFF;
+    }
+    .loader-bar {
+      width: 120px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 1px;
+      overflow: hidden;
+    }
+    .loader-bar::after {
+      content: '';
+      display: block;
+      width: 40%;
+      height: 100%;
+      background: #1E3A5F;
+      border-radius: 1px;
+      animation: slide 0.8s ease-in-out infinite;
+    }
+    @keyframes slide {
+      0%   { transform: translateX(-100%); }
+      100% { transform: translateX(350%); }
+    }
+
+    /* Fullscreen iframe */
+    #variant-frame {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      visibility: hidden;
+    }
+    #variant-frame.ready {
+      visibility: visible;
+    }
+  </style>
 </head>
 <body>
-    <div class="toolbar">
-        <div class="toolbar-title">RAKUDA <span>AI SOLUTION</span></div>
-        <div class="tab-group">
-            <button class="tab-btn active" data-src="p1.html">P1 無料診断リード</button>
-            <button class="tab-btn" data-src="p2.html">P2 ソリューション説明</button>
-            <button class="tab-btn" data-src="p3.html">P3 課題起点</button>
-            <button class="tab-btn" data-src="p4.html">P4 ROI・数字訴求</button>
-            <button class="tab-btn" data-src="p5.html">P5 事例ドリブン</button>
-            <button class="tab-btn" data-src="p6.html">P6 WPダウンロード</button>
-            <button class="tab-btn" data-src="p7.html">P7 比較表</button>
-            <button class="tab-btn" data-src="p8.html">P8 Visual</button>
-            <button class="tab-btn" data-src="p9.html">P9 かんたん</button>
-        </div>
-        <div class="toolbar-links">
-            <a href="tones.html">トーン比較</a>
-            <a href="patterns.html">パターン一覧</a>
-        </div>
+
+  <!-- Loading overlay -->
+  <div id="loading">
+    <div class="loader">
+      <div class="loader-logo">RAKUDA</div>
+      <div class="loader-bar"></div>
     </div>
-    <div class="iframe-wrap">
-        <iframe id="preview" src="p1.html"></iframe>
-    </div>
-    <script>
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                document.getElementById('preview').src = btn.dataset.src;
-            });
+  </div>
+
+  <!-- Variant iframe -->
+  <iframe id="variant-frame" title="RAKUDA AI SOLUTION"></iframe>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // ============================================================
+      //  Config
+      // ============================================================
+
+      var AB_API = 'https://rakuda-solution-api.rakuda-costcut.workers.dev/api/ab/assign';
+
+      var VARIANT_MAP = {
+        p1: 'diagnostic.html',
+        p2: 'solution.html',
+        p4: 'roi.html',
+        p9: 'simple.html',
+        p10: 'consulting.html'
+      };
+
+      var DEFAULT_VARIANT = 'p1';
+
+      var UTM_KEYS = ['gclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+
+      // ============================================================
+      //  UTM extraction
+      // ============================================================
+
+      function extractUTMParams() {
+        var params = new URLSearchParams(window.location.search);
+        var utm = {};
+        UTM_KEYS.forEach(function (key) {
+          var val = params.get(key);
+          if (val) utm[key] = val;
         });
-    </script>
+        return utm;
+      }
+
+      function buildQueryString(utmParams) {
+        var parts = [];
+        Object.keys(utmParams).forEach(function (key) {
+          parts.push(encodeURIComponent(key) + '=' + encodeURIComponent(utmParams[key]));
+        });
+        return parts.length > 0 ? '?' + parts.join('&') : '';
+      }
+
+      // ============================================================
+      //  localStorage persistence
+      // ============================================================
+
+      function storeTrackingData(variant, utmParams) {
+        try {
+          localStorage.setItem('rakuda_ab_variant', variant);
+          localStorage.setItem('rakuda_ab_assigned_at', new Date().toISOString());
+          if (Object.keys(utmParams).length > 0) {
+            localStorage.setItem('rakuda_utm_params', JSON.stringify(utmParams));
+          }
+        } catch (e) {
+          // localStorage unavailable - silently continue
+        }
+      }
+
+      // ============================================================
+      //  AB assignment
+      // ============================================================
+
+      function assignVariant(callback) {
+        var controller;
+        var timeoutId;
+
+        // Abort if takes longer than 2 seconds
+        if (typeof AbortController !== 'undefined') {
+          controller = new AbortController();
+          timeoutId = setTimeout(function () { controller.abort(); }, 2000);
+        }
+
+        var fetchOptions = {
+          method: 'GET',
+          credentials: 'include'
+        };
+        if (controller) fetchOptions.signal = controller.signal;
+
+        fetch(AB_API, fetchOptions)
+          .then(function (res) {
+            if (!res.ok) throw new Error('API error: ' + res.status);
+            return res.json();
+          })
+          .then(function (data) {
+            if (timeoutId) clearTimeout(timeoutId);
+            var variant = data && data.page ? data.page : DEFAULT_VARIANT;
+            // Validate variant exists in map
+            if (!VARIANT_MAP[variant]) variant = DEFAULT_VARIANT;
+            callback(variant);
+          })
+          .catch(function () {
+            if (timeoutId) clearTimeout(timeoutId);
+            callback(DEFAULT_VARIANT);
+          });
+      }
+
+      // ============================================================
+      //  Load variant into iframe
+      // ============================================================
+
+      function loadVariant(variant, utmParams) {
+        var file = VARIANT_MAP[variant];
+        if (!file) file = VARIANT_MAP[DEFAULT_VARIANT];
+
+        var qs = buildQueryString(utmParams);
+        var src = file + qs;
+
+        var frame = document.getElementById('variant-frame');
+        var loading = document.getElementById('loading');
+
+        frame.onload = function () {
+          // Show iframe, fade out loading
+          frame.classList.add('ready');
+          loading.classList.add('fade-out');
+
+          // Remove loading element after transition
+          setTimeout(function () {
+            if (loading.parentNode) loading.parentNode.removeChild(loading);
+          }, 300);
+        };
+
+        frame.src = src;
+      }
+
+      // ============================================================
+      //  Init
+      // ============================================================
+
+      var utmParams = extractUTMParams();
+
+      assignVariant(function (variant) {
+        storeTrackingData(variant, utmParams);
+        loadVariant(variant, utmParams);
+      });
+
+    })();
+  </script>
 </body>
 </html>

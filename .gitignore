@@ -3,3 +3,6 @@ db/*.sqlite
 db/*.sqlite-shm
 db/*.sqlite-wal
 .env
+.wrangler/
+.dev.vars
+.vercel

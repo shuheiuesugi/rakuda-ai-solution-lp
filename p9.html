@@ -542,112 +542,6 @@ nav a:hover { color: var(--ink); }
 }
 
 /* ── PRICING ── */
-.pricing-intro {
-  text-align: center;
-  font-size: 16px;
-  color: var(--ink-secondary);
-  margin-bottom: 40px;
-  line-height: 1.8;
-}
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.pricing-card {
-  padding: 32px;
-  border-radius: 12px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  text-align: center;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-
-.pricing-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-}
-
-.pricing-card.popular {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent);
-  position: relative;
-}
-
-.pricing-card.popular::before {
-  content: "おすすめ";
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--accent);
-  color: var(--surface);
-  font-size: 11px;
-  font-weight: 600;
-  padding: 3px 14px;
-  border-radius: 100px;
-}
-
-.pricing-name {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 8px;
-}
-
-.pricing-price {
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--accent);
-  margin-bottom: 4px;
-}
-
-.pricing-price small {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--ink-secondary);
-}
-
-.pricing-desc {
-  font-size: 13px;
-  color: var(--ink-secondary);
-  margin-bottom: 20px;
-  line-height: 1.6;
-}
-
-.pricing-features {
-  list-style: none;
-  text-align: left;
-}
-
-.pricing-features li {
-  font-size: 13px;
-  color: var(--ink);
-  padding: 8px 0;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.pricing-features li:last-child {
-  border-bottom: none;
-}
-
-.pricing-features li::before {
-  content: "";
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: rgba(5,150,105,0.1);
-  flex-shrink: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 10px;
-}
 
 /* ── FAQ ── */
 .faq-list {
@@ -745,32 +639,6 @@ nav a:hover { color: var(--ink); }
   line-height: 1.85;
 }
 
-/* ── COMPANY INFO ── */
-.company-table {
-  max-width: 600px;
-  margin: 0 auto;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.company-table th,
-.company-table td {
-  padding: 14px 20px;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-  font-size: 14px;
-}
-
-.company-table th {
-  color: var(--ink-secondary);
-  font-weight: 500;
-  width: 140px;
-}
-
-.company-table td {
-  color: var(--ink);
-  font-weight: 500;
-}
 
 /* ── CTA DARK ── */
 .cta-dark {
@@ -1063,7 +931,6 @@ nav a:hover { color: var(--ink); }
   .hero { padding: 60px 20px 48px; }
   .problem-grid { grid-template-columns: 1fr; }
   .usecase-grid { grid-template-columns: 1fr; }
-  .pricing-grid { grid-template-columns: 1fr; }
   .testi-grid { grid-template-columns: 1fr; }
   .stats-inner { grid-template-columns: repeat(2, 1fr); }
   .stat:nth-child(2) { border-right: none; }
@@ -1438,7 +1305,7 @@ nav a:hover { color: var(--ink); }
         <div class="testi-quote">
           正直、AIなんてうちには関係ないと思っていました。でも話を聞いてみたら、毎日の在庫確認と発注業務がまるごと自動化できるとわかって。今では朝一番のルーティンが30分短縮。その分、現場の改善活動に時間を使えるようになりました。最初は「うちみたいな小さい会社で大丈夫かな」と不安でしたが、操作もかんたんで、現場のベテラン社員もすぐに使いこなしています。
         </div>
-        <div class="testi-author">田中製作所 代表取締役 田中様</div>
+        <div class="testi-author">製造業 / 経営者様</div>
       </div>
       <!-- Testimonial 2 -->
       <div class="testi-card">
@@ -1446,7 +1313,7 @@ nav a:hover { color: var(--ink); }
         <div class="testi-quote">
           契約書のチェックに毎回2時間かかっていたのが、AIで下読みしてくれるようになって15分に。「ここに注意」と教えてくれるので、見落としも減りました。少人数の事務所こそ、AIの恩恵は大きいと実感しています。特に助かっているのは、似たような案件の過去契約をすぐに引っ張ってきてくれるところ。これだけでも導入した価値がありました。
         </div>
-        <div class="testi-author">山田法律事務所 所長 山田様</div>
+        <div class="testi-author">士業事務所 / 代表様</div>
       </div>
       <!-- Testimonial 3 -->
       <div class="testi-card">
@@ -1454,7 +1321,7 @@ nav a:hover { color: var(--ink); }
         <div class="testi-quote">
           5店舗の売上データを毎週まとめるのに半日かかっていました。AIを入れてからは、朝出社したらもうレポートが出来上がっています。おかげで、データを「見る」のではなく「考える」時間が増えました。「先週と比べてここが変わっています」とAIが教えてくれるので、対策も早くなりました。経営企画の仕事のやり方が根本から変わった感じがします。
         </div>
-        <div class="testi-author">花咲商事 経営企画部長 佐藤様</div>
+        <div class="testi-author">小売業 / 経営企画担当様</div>
       </div>
       <!-- Testimonial 4 -->
       <div class="testi-card">
@@ -1462,75 +1329,38 @@ nav a:hover { color: var(--ink); }
         <div class="testi-quote">
           お客様からの問い合わせ対応をAIチャットボットに任せたら、営業時間外の対応もできるようになって、お客様満足度が20%アップ。社員の残業時間も目に見えて減りました。導入前は「お客様がロボット対応を嫌がるのでは」と心配しましたが、「すぐに返事がもらえて便利」と好評です。むしろ人が対応するより満足度が上がったのは予想外でした。
         </div>
-        <div class="testi-author">グリーンサービス 取締役 鈴木様</div>
+        <div class="testi-author">サービス業 / 経営者様</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== SECTION 7: PRICING ========== -->
+<!-- ========== SECTION 7: CONSULTATION ========== -->
 <section class="section">
   <div class="section-inner fade-in">
     <div class="section-header">
-      <h2>料金について</h2>
-      <p>料金は御社のご要望に合わせてお見積もりします。<br>まずは下記のプランを目安にご覧ください。</p>
+      <h2>料金・プランはご相談ください</h2>
+      <p>御社の業務内容やご要望をお聞きしたうえで、<br>最適なプランと費用をご提案します。</p>
     </div>
-    <p class="pricing-intro">
-      「いきなり大きな金額を払うのは不安」——そのお気持ち、よくわかります。<br>
-      だからこそ、小さく始められるプランをご用意しました。<br>
-      効果を実感してから、必要に応じてプランを広げていけます。
-    </p>
-    <div class="pricing-grid">
-      <!-- Plan 1 -->
-      <div class="pricing-card">
-        <div class="pricing-name">AIお試しプラン</div>
-        <div class="pricing-price">5万円〜<small>/月</small></div>
-        <div class="pricing-desc">まず1つの業務をAI化してみたい方に。<br>「本当に効果があるの？」を確かめるのにぴったりのプランです。</div>
-        <ul class="pricing-features">
-          <li>1つの業務のAI化</li>
-          <li>月1回の定期サポート</li>
-          <li>チャットでの質問対応</li>
-          <li>操作マニュアルのお渡し</li>
-          <li>効果測定レポート</li>
-        </ul>
-      </div>
-      <!-- Plan 2 -->
-      <div class="pricing-card popular">
-        <div class="pricing-name">AI標準プラン</div>
-        <div class="pricing-price">15万円〜<small>/月</small></div>
-        <div class="pricing-desc">複数の業務をまとめてAI化したい方に。<br>専任の担当者がつくので、安心して進められます。</div>
-        <ul class="pricing-features">
-          <li>最大3つの業務のAI化</li>
-          <li>月2回の定期サポート</li>
-          <li>専任担当者がつきます</li>
-          <li>月次の効果測定レポート</li>
-          <li>社員向け操作説明会</li>
-          <li>電話・チャットでの質問対応</li>
-        </ul>
-      </div>
-      <!-- Plan 3 -->
-      <div class="pricing-card">
-        <div class="pricing-name">AIフルサポートプラン</div>
-        <div class="pricing-price">30万円〜<small>/月</small></div>
-        <div class="pricing-desc">会社全体のAI化を進めたい方に。<br>専任チームが御社のAI活用を全面的にバックアップします。</div>
-        <ul class="pricing-features">
-          <li>業務数の制限なし</li>
-          <li>週1回の定期サポート</li>
-          <li>専任チーム体制</li>
-          <li>経営ダッシュボードの構築</li>
-          <li>全社向け研修の実施</li>
-          <li>優先対応・緊急サポート</li>
-        </ul>
-      </div>
-    </div>
-    <div style="max-width:720px; margin:40px auto 0; text-align:center;">
-      <p style="font-size:14px; color:var(--ink-secondary); line-height:1.8;">
-        上記はあくまで目安の料金です。御社の業務内容やご要望によって、最適なプランをご提案いたします。<br>
-        「うちの場合はいくらくらい？」というご質問は、無料相談で気軽にお聞きください。<br>
-        見積もりだけのご依頼も大歓迎です。
-      </p>
-      <div style="margin-top:20px;">
-        <a href="#" class="btn-primary" onclick="openBooking();return false;">まずは無料で相談する</a>
+    <div style="max-width:720px; margin:0 auto;">
+      <div style="background:var(--canvas); border:1px solid var(--border); border-radius:12px; padding:40px 32px; text-align:center;">
+        <div style="font-size:18px; font-weight:700; color:var(--ink); margin-bottom:16px;">まずは30分の無料相談から</div>
+        <p style="font-size:15px; color:var(--ink-secondary); line-height:1.8; margin-bottom:12px;">
+          「うちの業務にAIが使えるか知りたい」<br>
+          「どのくらい費用がかかるのか聞いてみたい」<br>
+          「まだ具体的なイメージが湧かない」
+        </p>
+        <p style="font-size:15px; color:var(--ink-secondary); line-height:1.8; margin-bottom:32px;">
+          そんな段階で構いません。<br>
+          御社のお話をお聞きしたうえで、<strong style="color:var(--ink);">できること・かかる費用・期間の目安</strong>を<br>わかりやすくご説明します。
+        </p>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <a href="#" class="btn-primary" onclick="openBooking();return false;" style="padding:14px 32px; font-size:16px;">無料で相談する</a>
+          <a href="#" class="btn-outline" onclick="openContact();return false;" style="padding:14px 32px; font-size:16px;">お問い合わせ</a>
+        </div>
+        <p style="font-size:13px; color:var(--ink-secondary); margin-top:20px;">
+          無理な営業は一切しません。相談だけでもOKです。
+        </p>
       </div>
     </div>
   </div>
@@ -1571,19 +1401,6 @@ nav a:hover { color: var(--ink); }
         </div>
       </div>
       <!-- Q3 -->
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <div class="faq-q-badge">Q</div>
-          <div class="faq-q-text">途中でやめることはできますか？</div>
-          <div class="faq-toggle"></div>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            はい、いつでも解約可能です。長期契約の縛りはありません。ただし、導入したAIツール自体は御社のものですので、解約後もお使いいただけます。「とりあえず試してみて、合わなければやめる」——そのくらいの気軽さで始めていただけます。実際には、ほとんどのお客様が導入後も継続してくださっていますが、それはあくまで効果を実感していただけているからです。
-          </div>
-        </div>
-      </div>
-      <!-- Q4 -->
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <div class="faq-q-badge">Q</div>
@@ -1652,41 +1469,6 @@ nav a:hover { color: var(--ink); }
   </div>
 </section>
 
-<!-- ========== SECTION 9: COMPANY INFO ========== -->
-<section class="section">
-  <div class="section-inner fade-in">
-    <div class="section-header">
-      <h2>会社概要</h2>
-    </div>
-    <table class="company-table">
-      <tr>
-        <th>会社名</th>
-        <td>Rakuda AI Inc.</td>
-      </tr>
-      <tr>
-        <th>設立</th>
-        <td>2024年</td>
-      </tr>
-      <tr>
-        <th>所在地</th>
-        <td>東京都港区</td>
-      </tr>
-      <tr>
-        <th>事業内容</th>
-        <td>AI導入支援、AI受託開発、業務自動化コンサルティング</td>
-      </tr>
-      <tr>
-        <th>支援実績</th>
-        <td>120社以上</td>
-      </tr>
-    </table>
-    <div style="max-width:600px; margin:32px auto 0; text-align:center;">
-      <p style="font-size:14px; color:var(--ink-secondary); line-height:1.8;">
-        私たちは「テクノロジーをもっと身近に」を合言葉に、中小企業のみなさまのAI活用をお手伝いしています。大企業だけがAIの恩恵を受ける時代は終わりました。御社の「困った」を、AIの力で「かんたん」に変えるお手伝いをさせてください。
-      </p>
-    </div>
-  </div>
-</section>
 
 <!-- ========== SECTION 10: CTA DARK ========== -->
 <section class="cta-dark">
@@ -2157,7 +1939,7 @@ function getBotReply(text) {
     return 'シンプルなものなら1ヶ月、複雑なものでも3ヶ月程度です。段階的に導入するので、最初の効果は1ヶ月目から実感いただけます。';
   }
   if (t.includes('実績') || t.includes('事例')) {
-    return '120社以上の導入実績があります。製造業、士業事務所、小売業、サービス業など、幅広い業界のお客様にご利用いただいています。導入事例はページ中ほどでご紹介しています。';
+    return '120社以上の導入実績があります。製造業、士業、小売業、サービス業など幅広い業界のお客様にご利用いただいています。導入事例はページ中ほどでご紹介しています。';
   }
   if (t.includes('セキュリティ') || t.includes('安全') || t.includes('情報漏')) {
     return 'データは暗号化して保存し、アクセス権限も細かく設定可能です。大手企業と同等のセキュリティ基準で御社の情報をお守りします。詳しくは無料相談でご説明いたします。';

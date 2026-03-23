@@ -181,8 +181,8 @@ nav a:hover { color: var(--accent); }
   padding: 16px 20px; font-size: 14px; font-weight: 700;
   display: flex; align-items: center; gap: 8px;
 }
-.ba-card-header.before { background: #FEE2E2; color: #991B1B; }
-.ba-card-header.after { background: #D1FAE5; color: #065F46; }
+.ba-card-header.before { background: #F1F5F9; color: #64748B; }
+.ba-card-header.after { background: #E0E7FF; color: var(--accent); }
 .ba-card-body { padding: 20px; min-height: 280px; }
 
 /* Before mockup: Messy spreadsheet */
@@ -219,39 +219,38 @@ nav a:hover { color: var(--accent); }
   font-size: 9px; padding: 2px 6px; border-radius: 3px; margin-top: 4px; margin-left: 4px;
 }
 
-/* After mockup: Clean dashboard */
+/* After mockup: Clean business tool UI (light) */
 .clean-dash {
-  background: #0F172A; border-radius: 8px; padding: 16px;
-  color: #F1F5F9;
+  background: #FFFFFF; border-radius: 8px; padding: 16px;
+  color: var(--ink);
 }
 .dash-top { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
 .dash-kpi-sm {
-  background: #1E293B; border-radius: 6px; padding: 10px;
-  border: 1px solid #334155;
+  background: var(--canvas); border-radius: 6px; padding: 10px;
+  border: 1px solid var(--border);
 }
-.dash-kpi-sm-label { font-size: 9px; color: #64748B; }
-.dash-kpi-sm-val { font-size: 18px; font-weight: 700; color: #F1F5F9; }
+.dash-kpi-sm-label { font-size: 9px; color: var(--ink-secondary); }
+.dash-kpi-sm-val { font-size: 18px; font-weight: 700; color: var(--ink); }
 .dash-kpi-sm-badge {
   display: inline-block; font-size: 8px; padding: 1px 5px;
   border-radius: 3px; margin-top: 2px;
 }
-.dash-kpi-sm-badge.up { background: rgba(16,185,129,0.15); color: #10B981; }
+.dash-kpi-sm-badge.up { background: rgba(5,150,105,0.08); color: var(--success); }
 .dash-mini-chart {
-  background: #1E293B; border-radius: 6px; padding: 10px;
-  border: 1px solid #334155; height: 80px; position: relative;
+  background: var(--canvas); border-radius: 6px; padding: 10px;
+  border: 1px solid var(--border); height: 80px; position: relative;
 }
 .dash-mini-bars { display: flex; align-items: flex-end; gap: 3px; height: 50px; margin-top: 6px; }
 .dash-mini-bar {
-  flex: 1; border-radius: 2px 2px 0 0; background: linear-gradient(180deg, #3B82F6, #1E40AF);
+  flex: 1; border-radius: 2px 2px 0 0; background: var(--accent);
 }
 .dash-auto-tag {
   display: flex; align-items: center; gap: 4px;
-  background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2);
+  background: rgba(5,150,105,0.06); border: 1px solid rgba(5,150,105,0.15);
   border-radius: 4px; padding: 6px 10px; margin-top: 8px;
 }
-.dash-auto-dot { width: 6px; height: 6px; border-radius: 50%; background: #10B981; animation: pulse-dot 2s infinite; }
-@keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-.dash-auto-text { font-size: 9px; color: #10B981; }
+.dash-auto-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); }
+.dash-auto-text { font-size: 9px; color: var(--success); }
 
 /* ===== FEATURES ===== */
 .features { padding: 80px 24px; }
@@ -950,42 +949,42 @@ textarea.form-input { resize: vertical; min-height: 80px; }
       <div class="ba-card">
         <div class="ba-card-header after">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm3.707 5.707l-4 4a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L7 8.586l3.293-3.293a1 1 0 011.414 1.414z"/></svg>
-          After ─ AI自動処理
+          After ─ 整理された業務フロー
         </div>
         <div class="ba-card-body">
           <div class="clean-dash">
             <div class="dash-top">
               <div class="dash-kpi-sm">
-                <div class="dash-kpi-sm-label">自動処理件数</div>
-                <div class="dash-kpi-sm-val">1,247</div>
-                <div class="dash-kpi-sm-badge up">+340%</div>
+                <div class="dash-kpi-sm-label">月間処理件数</div>
+                <div class="dash-kpi-sm-val">1,247件</div>
+                <div class="dash-kpi-sm-badge up">前月比+12%</div>
               </div>
               <div class="dash-kpi-sm">
-                <div class="dash-kpi-sm-label">エラー率</div>
+                <div class="dash-kpi-sm-label">入力ミス率</div>
                 <div class="dash-kpi-sm-val">0.3%</div>
-                <div class="dash-kpi-sm-badge up">-97%</div>
+                <div class="dash-kpi-sm-badge up">改善済み</div>
               </div>
             </div>
             <div class="dash-mini-chart">
-              <div style="font-size:9px;color:#64748B;">処理スループット</div>
+              <div style="font-size:9px;color:var(--ink-secondary);">月次処理件数の推移</div>
               <div class="dash-mini-bars">
                 <div class="dash-mini-bar" style="height:40%"></div>
-                <div class="dash-mini-bar" style="height:55%"></div>
+                <div class="dash-mini-bar" style="height:48%"></div>
                 <div class="dash-mini-bar" style="height:52%"></div>
+                <div class="dash-mini-bar" style="height:58%"></div>
+                <div class="dash-mini-bar" style="height:62%"></div>
                 <div class="dash-mini-bar" style="height:65%"></div>
                 <div class="dash-mini-bar" style="height:70%"></div>
-                <div class="dash-mini-bar" style="height:68%"></div>
+                <div class="dash-mini-bar" style="height:74%"></div>
                 <div class="dash-mini-bar" style="height:78%"></div>
                 <div class="dash-mini-bar" style="height:82%"></div>
                 <div class="dash-mini-bar" style="height:85%"></div>
                 <div class="dash-mini-bar" style="height:90%"></div>
-                <div class="dash-mini-bar" style="height:88%"></div>
-                <div class="dash-mini-bar" style="height:95%"></div>
               </div>
             </div>
             <div class="dash-auto-tag">
               <div class="dash-auto-dot"></div>
-              <span class="dash-auto-text">AI自動処理中 ─ 次回バッチ: 14:30</span>
+              <span class="dash-auto-text">自動チェック完了 ─ 異常なし</span>
             </div>
           </div>
         </div>
@@ -1072,7 +1071,7 @@ textarea.form-input { resize: vertical; min-height: 80px; }
     <div class="feature-block reverse fade-in">
       <div class="feature-text">
         <span class="feature-label">STEP 02</span>
-        <h3>カスタムAI開発</h3>
+        <h3>カスタムAIソリューション開発</h3>
         <p>専任チームがアジャイル開発で貴社専用のAIソリューションを構築。テストから運用まで一気通貫でサポートします。</p>
         <ul class="feature-points">
           <li>専任チーム体制 ─ PM + エンジニア + データサイエンティスト</li>

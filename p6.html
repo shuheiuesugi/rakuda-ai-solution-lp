@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>AI導入 完全ガイド 2026年版｜無料ホワイトペーパー｜RAKUDA AI</title>
+    <meta name="description" content="経営者・DX推進担当者のためのAI導入完全ガイド。5フェーズの導入手順、業界別事例、ROI試算テンプレート、ベンダー選定基準を無料でダウンロード。">
+    <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+    --primary: #2563EB; --primary-dark: #1D4ED8; --primary-light: #EFF6FF;
+    --primary-border: #BFDBFE; --text: #111827; --text-sub: #6B7280;
+    --text-muted: #9CA3AF; --bg: #FFF; --bg-alt: #F9FAFB;
+    --border: #E5E7EB; --radius: 8px; --radius-lg: 12px;
+}
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; font-feature-settings: "palt"; line-height: 1.6; }
+.header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.header-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+.logo { font-size: 16px; font-weight: 700; color: var(--text); }
+.nav { display: flex; align-items: center; gap: 24px; }
+.nav a { font-size: 13px; font-weight: 500; color: var(--text-sub); text-decoration: none; }
+.nav-contact { font-size: 13px; font-weight: 500; padding: 7px 16px; border-radius: var(--radius); border: 1px solid var(--border); color: var(--text-sub); background: transparent; text-decoration: none; transition: all 0.15s; }
+.nav-contact:hover { border-color: var(--primary); color: var(--primary); }
+.nav-meeting { font-size: 13px; font-weight: 600; padding: 8px 20px; border-radius: var(--radius); background: var(--primary); color: #FFF !important; text-decoration: none; transition: all 0.15s; animation: pulse-glow 2s infinite; }
+.nav-meeting:hover { background: var(--primary-dark); transform: translateY(-1px); }
+@keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(37,99,235,0.4); } 50% { box-shadow: 0 0 0 8px rgba(37,99,235,0); } }
+.hero { padding: 80px 24px 64px; text-align: center; }
+.hero-inner { max-width: 720px; margin: 0 auto; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 100px; background: var(--primary-light); color: var(--primary); font-size: 12px; font-weight: 500; margin-bottom: 24px; }
+.hero h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.3; margin-bottom: 18px; }
+.hero h1 span { color: var(--primary); }
+.hero p { font-size: 16px; color: var(--text-sub); line-height: 1.8; margin-bottom: 36px; }
+.hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; border-radius: var(--radius); background: var(--primary); color: #FFF; font-size: 15px; font-weight: 600; border: none; cursor: pointer; text-decoration: none; transition: all 0.15s; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+.btn-primary.large { padding: 16px 36px; font-size: 16px; animation: pulse-glow 2s infinite; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; border-radius: var(--radius); background: transparent; color: var(--text-sub); font-size: 15px; font-weight: 500; border: 1px solid var(--border); cursor: pointer; text-decoration: none; transition: all 0.15s; }
+.btn-secondary:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+.hero-note { margin-top: 14px; font-size: 12px; color: var(--text-muted); }
+.section { padding: 80px 24px; }
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+.section-header p { font-size: 15px; color: var(--text-sub); max-width: 560px; margin: 0 auto; }
+.stats { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat { padding: 36px 16px; text-align: center; }
+.stat:not(:last-child) { border-right: 1px solid var(--border); }
+.stat .num { font-size: 36px; font-weight: 800; color: var(--primary); letter-spacing: -0.03em; margin-bottom: 4px; }
+.stat .lbl { font-size: 13px; color: var(--text-sub); font-weight: 500; }
+.features-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feat-card { padding: 32px; border-radius: var(--radius-lg); background: var(--bg-alt); border: 1px solid var(--border); }
+.feat-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 20px; }
+.feat-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.feat-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
+.cases-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.case-card { padding: 32px; border-radius: var(--radius-lg); border: 1px solid var(--border); background: var(--bg); }
+.case-tag { display: inline-block; padding: 4px 10px; border-radius: 100px; font-size: 11px; font-weight: 600; background: var(--primary-light); color: var(--primary); margin-bottom: 12px; }
+.case-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.case-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; margin-bottom: 16px; }
+.case-result { display: flex; gap: 24px; }
+.case-result-item { flex: 1; }
+.case-result-item .val { font-size: 22px; font-weight: 800; color: var(--primary); }
+.case-result-item .label { font-size: 11px; color: var(--text-muted); }
+.cta-banner { padding: 80px 24px; text-align: center; background: var(--primary-light); }
+.cta-banner h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+.cta-banner p { font-size: 15px; color: var(--text-sub); margin-bottom: 32px; }
+.cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-note { margin-top: 12px; font-size: 12px; color: var(--text-muted); }
+.footer { padding: 32px 24px; border-top: 1px solid var(--border); background: var(--bg-alt); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.footer span { font-size: 12px; color: var(--text-muted); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 12px; color: var(--text-muted); text-decoration: none; }
+
+/* Testimonial */
+.testimonials-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.testi-card { padding: 28px; border-radius: var(--radius-lg); background: var(--bg-alt); border: 1px solid var(--border); }
+.testi-quote { font-size: 14px; color: #374151; line-height: 1.75; font-style: italic; margin-bottom: 16px; }
+.testi-quote::before { content: open-quote; font-size: 28px; color: var(--primary); font-weight: 700; vertical-align: -6px; margin-right: 4px; }
+.testi-who { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+
+/* WP card */
+.wp-section { max-width: 680px; margin: 0 auto; padding: 40px; border-radius: var(--radius-lg); background: var(--bg); border: 1px solid var(--border); display: flex; gap: 32px; align-items: center; }
+.wp-cover { width: 140px; height: 190px; border-radius: var(--radius-lg); background: linear-gradient(135deg, var(--primary), var(--primary-dark)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #FFF; font-size: 13px; font-weight: 600; text-align: center; padding: 16px; line-height: 1.5; }
+.wp-info h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.wp-info p { font-size: 14px; color: var(--text-sub); line-height: 1.7; margin-bottom: 16px; }
+.wp-info ul { list-style: none; margin-bottom: 20px; }
+.wp-info li { font-size: 13px; color: var(--text-sub); padding: 4px 0; }
+.wp-info li::before { content: "✓ "; color: var(--primary); font-weight: 700; }
+.recommend-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.recommend-card { padding: 28px; border-radius: var(--radius-lg); background: var(--bg); border: 1px solid var(--border); }
+.recommend-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.recommend-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
+.resources-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.resource-card { padding: 28px; border-radius: var(--radius-lg); background: var(--bg-alt); border: 1px solid var(--border); }
+.resource-tag { display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 600; background: var(--primary-light); color: var(--primary); margin-bottom: 10px; }
+.resource-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.resource-card p { font-size: 12px; color: var(--text-sub); line-height: 1.6; }
+
+@media (max-width: 768px) {
+    .nav a:not(.nav-contact):not(.nav-meeting) { display: none; }
+    .hero h1 { font-size: 28px; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .features-grid, .recommend-grid, .resources-grid { grid-template-columns: 1fr; }
+    .cases-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .wp-section { flex-direction: column; text-align: center; }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">RAKUDA AI</div>
+            <nav class="nav">
+                <a href="#resources">お役立ち資料</a>
+                <a href="#seminar">セミナー</a>
+                <a href="#contact" class="nav-contact">お問い合わせ</a>
+                <a href="#meeting" class="nav-meeting">初回面談を予約</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" style="background: var(--bg-alt);">
+        <div class="hero-inner">
+            <div class="hero-badge">無料ホワイトペーパー公開中</div>
+            <h1>経営者のための<br><span>AI導入 完全ガイド</span> 2026年版</h1>
+            <p>「AIで何ができるのか」「どこから始めればいいのか」「費用対効果はどう測るのか」<br>経営者・DX推進担当者が知るべきAI導入の全体像を、1冊のガイドに凝縮しました。</p>
+            <div class="hero-cta">
+                <a href="#download" class="btn-primary large">無料でダウンロード →</a>
+                <a href="#meeting" class="btn-secondary">初回面談を予約</a>
+            </div>
+            <p class="hero-note">メールアドレスの入力だけで即ダウンロード可能。営業電話はいたしません。</p>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stats-inner">
+            <div class="stat">
+                <div class="num">3,500+</div>
+                <div class="lbl">ダウンロード数</div>
+            </div>
+            <div class="stat">
+                <div class="num">120社+</div>
+                <div class="lbl">導入支援実績</div>
+            </div>
+            <div class="stat">
+                <div class="num">全96頁</div>
+                <div class="lbl">充実のボリューム</div>
+            </div>
+            <div class="stat">
+                <div class="num">2026年</div>
+                <div class="lbl">最新版</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WP Download Section -->
+    <section class="section" id="download">
+        <div class="section-header">
+            <h2>ホワイトペーパー</h2>
+            <p>AI導入を検討するすべてのビジネスリーダーに向けた実践的ガイドブックです。</p>
+        </div>
+        <div class="wp-section">
+            <div class="wp-cover">AI導入<br>完全ガイド<br>2026年版</div>
+            <div class="wp-info">
+                <h3>AI導入 完全ガイド 2026年版</h3>
+                <p>中堅〜大企業の経営者・DX推進担当者向けに、AI導入の戦略立案から本番運用までの全工程を体系的に解説。すぐに使えるテンプレート付き。</p>
+                <ul>
+                    <li>AI導入を成功させる5フェーズの実践手順</li>
+                    <li>製造・金融・小売など業界別の導入事例12選</li>
+                    <li>投資対効果を可視化するROI試算テンプレート</li>
+                    <li>失敗しないベンダー選定の7つの評価基準</li>
+                </ul>
+                <a href="#download-form" class="btn-primary">無料でダウンロード →</a>
+                <p style="margin-top: 10px; font-size: 12px; color: var(--text-muted);">メールアドレスの入力だけで即ダウンロード可能</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommend Section -->
+    <section class="section" style="background: var(--bg-alt);">
+        <div class="section-header">
+            <h2>こんな方におすすめ</h2>
+            <p>AI導入を検討中の以下のような方に、特にお役立ていただける内容です。</p>
+        </div>
+        <div class="recommend-grid">
+            <div class="recommend-card">
+                <div class="feat-icon">
+                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <h3>経営者・役員</h3>
+                <p>AI投資の判断基準がわからない、競合のAI活用状況が気になる方へ。経営視点でのAI戦略の立て方、投資対効果の考え方、段階的な導入アプローチを解説しています。「とりあえずAI」で失敗しないための意思決定フレームワークが手に入ります。</p>
+            </div>
+            <div class="recommend-card">
+                <div class="feat-icon">
+                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                </div>
+                <h3>DX推進担当者</h3>
+                <p>AI導入プロジェクトの進め方がわからない、社内説得用の資料が欲しい方へ。5フェーズの導入手順、ベンダー選定基準、稟議書に使えるROI試算テンプレートなど、プロジェクト推進に必要な実践ツールを網羅しています。</p>
+            </div>
+            <div class="recommend-card">
+                <div class="feat-icon">
+                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <h3>情報システム部門</h3>
+                <p>AI導入時の技術選定やセキュリティ要件が不安な方へ。オンプレミス vs クラウドの比較、データガバナンスの設計指針、既存システムとの統合パターンなど、技術担当者が押さえるべきポイントを整理しています。</p>
+            </div>
+            <div class="recommend-card">
+                <div class="feat-icon">
+                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <h3>事業部門リーダー</h3>
+                <p>自部門の業務にAIを活用したいが具体的なイメージが湧かない方へ。営業・マーケティング・製造・物流・カスタマーサポートなど、部門別のAI活用パターンと期待効果を具体的な事例とともに紹介しています。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Resources -->
+    <section class="section" id="resources">
+        <div class="section-header">
+            <h2>他のお役立ち資料</h2>
+            <p>AI導入の各フェーズで活用いただける専門資料をご用意しています。</p>
+        </div>
+        <div class="resources-grid">
+            <div class="resource-card">
+                <span class="resource-tag">業界別</span>
+                <h3>製造業AI導入 事例集</h3>
+                <p>品質管理・予知保全・生産最適化・サプライチェーン管理など、製造業に特化したAI導入事例15選。各事例の課題・ソリューション・定量成果・導入期間を詳細に解説。現場の声やつまずきポイントも収録しています。</p>
+                <a href="#" class="btn-secondary" style="margin-top: 16px; font-size: 13px; padding: 10px 20px;">ダウンロード →</a>
+            </div>
+            <div class="resource-card">
+                <span class="resource-tag">テンプレート</span>
+                <h3>AI導入 ROI試算シート</h3>
+                <p>AI導入の投資対効果を定量的に試算するためのExcelテンプレート。初期投資・ランニングコスト・削減効果・売上貢献を入力するだけで、3年間のROIを自動算出。稟議書・経営報告に添付してすぐに使える実用フォーマットです。</p>
+                <a href="#" class="btn-secondary" style="margin-top: 16px; font-size: 13px; padding: 10px 20px;">ダウンロード →</a>
+            </div>
+            <div class="resource-card">
+                <span class="resource-tag">チェックリスト</span>
+                <h3>ベンダー選定 評価表</h3>
+                <p>AI開発ベンダーを客観的に比較・選定するための評価テンプレート。技術力・実績・サポート体制・コスト・セキュリティなど7カテゴリ35項目のチェックリスト。複数社の提案を横並びで評価し、最適なパートナーを選定できます。</p>
+                <a href="#" class="btn-secondary" style="margin-top: 16px; font-size: 13px; padding: 10px 20px;">ダウンロード →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seminar Section -->
+    <section class="section" style="background: var(--bg-alt);" id="seminar">
+        <div class="section-header">
+            <h2>無料オンラインセミナー</h2>
+            <p>ホワイトペーパーの内容をさらに深掘りする、実践的なセミナーを定期開催しています。</p>
+        </div>
+        <div class="cases-grid">
+            <div class="case-card">
+                <span class="case-tag">次回開催</span>
+                <h3>経営者向け：AI導入で失敗しない3つの鉄則</h3>
+                <p>120社以上の支援実績から見えた、AI導入プロジェクトが頓挫する共通パターンと、それを回避するための3つの鉄則をお伝えします。PoC止まりにしないための経営判断のポイントを、具体的な事例とともに解説します。</p>
+                <div class="case-result">
+                    <div class="case-result-item">
+                        <div class="val">4/15(火)</div>
+                        <div class="label">開催日</div>
+                    </div>
+                    <div class="case-result-item">
+                        <div class="val">14:00-15:00</div>
+                        <div class="label">時間</div>
+                    </div>
+                    <div class="case-result-item">
+                        <div class="val">無料</div>
+                        <div class="label">参加費</div>
+                    </div>
+                </div>
+            </div>
+            <div class="case-card">
+                <span class="case-tag">アーカイブ配信中</span>
+                <h3>DX推進担当者向け：AI導入プロジェクトの進め方</h3>
+                <p>要件定義からPoC、本番導入、運用定着までの全プロセスを、実際のプロジェクト事例をベースに90分で解説。社内説得のコツ、ベンダーとの付き合い方、予算確保の方法など、推進担当者ならではの悩みに答えます。</p>
+                <div class="case-result">
+                    <div class="case-result-item">
+                        <div class="val">即視聴可</div>
+                        <div class="label">配信状態</div>
+                    </div>
+                    <div class="case-result-item">
+                        <div class="val">90分</div>
+                        <div class="label">所要時間</div>
+                    </div>
+                    <div class="case-result-item">
+                        <div class="val">無料</div>
+                        <div class="label">視聴費</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner" id="contact">
+        <h2>まずは無料ガイドで全体像を把握</h2>
+        <p>AI導入の第一歩は、正しい知識を得ること。<br>ホワイトペーパーで全体像を掴んだ上で、御社に最適な導入プランをご一緒に設計しましょう。</p>
+        <div class="cta-buttons">
+            <a href="#meeting" class="btn-primary large" id="meeting">初回面談を予約 →</a>
+            <a href="#contact-form" class="btn-secondary">お問い合わせ</a>
+        </div>
+        <p class="cta-note">初回面談は無料・オンライン30分。資料の内容に関するご質問もお気軽にどうぞ。</p>
+    </section>
+
+    <!-- Footer -->
+    <footer style="border-top: 1px solid #E5E5E5; background: #fff; padding: 40px 24px;">
+      <div style="max-width: 960px; margin: 0 auto;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 32px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20">
+            <path d="M10,75 C10,75 22,25 38,25 C52,25 44,65 56,65 C68,65 60,20 74,20 C90,20 100,75 100,75" stroke="#1A1A2E" stroke-width="7" fill="none" stroke-linecap="round"/>
+          </svg>
+          <span style="font-size: 14px; font-weight: 300; letter-spacing: 0.15em; color: #111;">RAKUDA AI</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px;">
+          <div>
+            <h3 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #9CA3AF; margin-bottom: 12px;">ラクダシリーズ</h3>
+            <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px;">
+              <li><a href="https://hub.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダHub</a></li>
+              <li><a href="https://mail.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダMail</a></li>
+              <li><a href="https://reception.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダReception</a></li>
+              <li><a href="https://research.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダResearch</a></li>
+              <li><a href="https://invoice.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダInvoice</a></li>
+              <li><a href="https://buddy.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダBuddy</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #9CA3AF; margin-bottom: 12px;">サポート</h3>
+            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+              <li><a href="mailto:info@rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">info@rakuda-ai.com</a></li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: 1px solid #E5E5E5; padding-top: 24px; text-align: center; font-size: 12px; color: #9CA3AF;">
+          &copy; 2026 Rakuda AI Inc. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>AI導入支援・AI受託開発 | 戦略立案から開発・運用までワンストップ</title>
+    <meta name="description" content="AI戦略コンサルティング、オーダーメイドAI開発、運用定着支援の3本柱で、120社以上のAI導入を成功に導いてきたワンストップAIソリューション。">
+    <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+    --primary: #2563EB;
+    --primary-dark: #1D4ED8;
+    --primary-light: #EFF6FF;
+    --primary-border: #BFDBFE;
+    --text: #111827;
+    --text-sub: #6B7280;
+    --text-muted: #9CA3AF;
+    --bg: #FFF;
+    --bg-alt: #F9FAFB;
+    --border: #E5E7EB;
+    --radius: 8px;
+    --radius-lg: 12px;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic Medium', Meiryo, sans-serif;
+    color: var(--text); background: var(--bg);
+    -webkit-font-smoothing: antialiased; font-feature-settings: "palt"; line-height: 1.6;
+}
+.header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.header-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+.logo { font-size: 16px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+.nav { display: flex; align-items: center; gap: 24px; }
+.nav a { font-size: 13px; font-weight: 500; color: var(--text-sub); text-decoration: none; transition: color 0.15s; }
+.nav a:hover { color: var(--text); }
+.nav-contact { font-size: 13px; font-weight: 500; padding: 7px 16px; border-radius: var(--radius); border: 1px solid var(--border); color: var(--text-sub); background: transparent; text-decoration: none; transition: all 0.15s; }
+.nav-contact:hover { border-color: var(--primary); color: var(--primary); }
+.nav-meeting { font-size: 13px; font-weight: 600; padding: 8px 20px; border-radius: var(--radius); background: var(--primary); color: #FFF !important; text-decoration: none; transition: all 0.15s; animation: pulse-glow 2s infinite; }
+.nav-meeting:hover { background: var(--primary-dark); transform: translateY(-1px); }
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(37,99,235,0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(37,99,235,0); }
+}
+.hero { padding: 80px 24px 64px; text-align: center; }
+.hero-inner { max-width: 720px; margin: 0 auto; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 100px; background: var(--primary-light); color: var(--primary); font-size: 12px; font-weight: 500; margin-bottom: 24px; }
+.hero h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.3; margin-bottom: 18px; }
+.hero h1 span { color: var(--primary); }
+.hero p { font-size: 16px; color: var(--text-sub); line-height: 1.8; margin-bottom: 36px; }
+.hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; border-radius: var(--radius); background: var(--primary); color: #FFF; font-size: 15px; font-weight: 600; border: none; cursor: pointer; text-decoration: none; transition: all 0.15s; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+.btn-primary.large { padding: 16px 36px; font-size: 16px; animation: pulse-glow 2s infinite; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; border-radius: var(--radius); background: transparent; color: var(--text-sub); font-size: 15px; font-weight: 500; border: 1px solid var(--border); cursor: pointer; text-decoration: none; transition: all 0.15s; }
+.btn-secondary:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+.hero-note { margin-top: 14px; font-size: 12px; color: var(--text-muted); }
+.freetool { padding: 0 24px 64px; }
+.freetool-inner { max-width: 680px; margin: 0 auto; padding: 32px; border-radius: var(--radius-lg); background: var(--primary-light); border: 1px solid var(--primary-border); display: flex; align-items: center; gap: 24px; }
+.freetool-icon { width: 56px; height: 56px; border-radius: 12px; background: var(--primary); color: #FFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.freetool-text { flex: 1; }
+.freetool-text h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.freetool-text p { font-size: 13px; color: var(--text-sub); line-height: 1.6; }
+.freetool-btn { padding: 10px 20px; border-radius: var(--radius); background: var(--primary); color: #FFF; font-size: 13px; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; text-decoration: none; }
+.stats { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat { padding: 36px 16px; text-align: center; }
+.stat:not(:last-child) { border-right: 1px solid var(--border); }
+.stat .num { font-size: 36px; font-weight: 800; color: var(--primary); letter-spacing: -0.03em; margin-bottom: 4px; }
+.stat .lbl { font-size: 13px; color: var(--text-sub); font-weight: 500; }
+.section { padding: 80px 24px; }
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+.section-header p { font-size: 15px; color: var(--text-sub); max-width: 560px; margin: 0 auto; }
+.features-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feat-card { padding: 32px; border-radius: var(--radius-lg); background: var(--bg-alt); border: 1px solid var(--border); transition: border-color 0.2s, box-shadow 0.2s; }
+.feat-card:hover { border-color: var(--primary-border); box-shadow: 0 4px 16px rgba(37,99,235,0.08); }
+.feat-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 20px; }
+.feat-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.feat-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
+.process-section { background: var(--bg-alt); }
+.process-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.process-step { text-align: center; padding: 32px 20px; background: var(--bg); border-radius: var(--radius-lg); border: 1px solid var(--border); }
+.step-num { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--primary); color: #FFF; font-size: 14px; font-weight: 700; margin-bottom: 16px; }
+.process-step h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.process-step p { font-size: 12px; color: var(--text-sub); line-height: 1.6; }
+.step-tag { display: inline-block; margin-top: 12px; padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 500; background: var(--primary-light); color: var(--primary); }
+.cases-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.case-card { padding: 32px; border-radius: var(--radius-lg); border: 1px solid var(--border); background: var(--bg); }
+.case-tag { display: inline-block; padding: 4px 10px; border-radius: 100px; font-size: 11px; font-weight: 600; background: var(--primary-light); color: var(--primary); margin-bottom: 12px; }
+.case-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.case-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; margin-bottom: 16px; }
+.case-result { display: flex; gap: 24px; }
+.case-result-item { flex: 1; }
+.case-result-item .val { font-size: 22px; font-weight: 800; color: var(--primary); }
+.case-result-item .label { font-size: 11px; color: var(--text-muted); }
+.faq-section { background: var(--bg-alt); }
+.faq-list { max-width: 720px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q { font-size: 15px; font-weight: 700; margin-bottom: 8px; display: flex; gap: 8px; }
+.faq-q::before { content: "Q"; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: var(--primary); color: #FFF; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+.faq-a { font-size: 14px; color: var(--text-sub); line-height: 1.7; padding-left: 32px; }
+.cta-banner { padding: 80px 24px; text-align: center; background: var(--primary-light); }
+.cta-banner h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+.cta-banner p { font-size: 15px; color: var(--text-sub); margin-bottom: 32px; }
+.cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-note { margin-top: 12px; font-size: 12px; color: var(--text-muted); }
+.footer { padding: 32px 24px; border-top: 1px solid var(--border); background: var(--bg-alt); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.footer span { font-size: 12px; color: var(--text-muted); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 12px; color: var(--text-muted); text-decoration: none; }
+
+/* Pillar styles for P2 */
+.pillars-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.pillar-card { padding: 32px; border-radius: var(--radius-lg); border: 1px solid var(--border); background: var(--bg); }
+.pillar-num { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: var(--primary); color: #FFF; font-size: 13px; font-weight: 700; margin-bottom: 16px; }
+.pillar-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+.pillar-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; margin-bottom: 16px; }
+.pillar-list { list-style: none; }
+.pillar-list li { font-size: 13px; color: var(--text-sub); padding: 4px 0; }
+.pillar-list li::before { content: "\2192  "; color: var(--primary); font-weight: 700; }
+
+@media (max-width: 768px) {
+    .nav a:not(.nav-contact):not(.nav-meeting) { display: none; }
+    .hero h1 { font-size: 28px; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(2) { border-right: none; }
+    .features-grid, .pillars-grid { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: repeat(2, 1fr); }
+    .cases-grid { grid-template-columns: 1fr; }
+    .freetool-inner { flex-direction: column; text-align: center; }
+}
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+    <div class="header-inner">
+        <div class="logo">RAKUDA AI</div>
+        <nav class="nav">
+            <a href="#features">サービス</a>
+            <a href="#process">導入の流れ</a>
+            <a href="#cases">導入事例</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact" class="nav-contact">お問い合わせ</a>
+            <a href="#meeting" class="nav-meeting">初回面談を予約</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+            End-to-End AI Solution
+        </div>
+        <h1>AI戦略立案から開発・運用まで、<br><span>ワンストップ</span>で支援します。</h1>
+        <p>「AIを導入したいが、何から始めればいいかわからない」その悩みに、戦略コンサルティング・オーダーメイド開発・運用定着支援の3本柱でお応えします。50名以上のAIエンジニアが、御社の課題に最適なソリューションを設計・実装します。</p>
+        <div class="hero-cta">
+            <a href="#" class="btn-primary">サービス資料をダウンロード</a>
+            <a href="#meeting" class="btn-secondary">初回面談を予約</a>
+        </div>
+        <div class="hero-note">資料請求は無料・初回面談はオンラインOK</div>
+    </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+    <div class="stats-inner">
+        <div class="stat">
+            <div class="num">120社+</div>
+            <div class="lbl">支援実績</div>
+        </div>
+        <div class="stat">
+            <div class="num">50名+</div>
+            <div class="lbl">AIエンジニア</div>
+        </div>
+        <div class="stat">
+            <div class="num">98%</div>
+            <div class="lbl">継続率</div>
+        </div>
+        <div class="stat">
+            <div class="num">最短2週</div>
+            <div class="lbl">PoC開始まで</div>
+        </div>
+    </div>
+</section>
+
+<!-- 3 Service Pillars -->
+<section class="section" id="features">
+    <div class="section-header">
+        <h2>3つのサービスで、AI導入を成功に導く</h2>
+        <p>戦略立案から開発・運用まで、一気通貫の支援体制で御社のAI活用を加速させます。</p>
+    </div>
+    <div class="pillars-grid">
+        <div class="pillar-card">
+            <div class="pillar-num">01</div>
+            <h3>AI戦略コンサルティング</h3>
+            <p>御社の業務プロセスを深く理解した上で、AI導入による最大効果が見込める領域を特定。投資対効果を定量化し、経営層の意思決定に必要なデータを提供します。</p>
+            <ul class="pillar-list">
+                <li>業務プロセス分析・AI適用領域特定</li>
+                <li>ROI試算・投資対効果シミュレーション</li>
+                <li>段階的導入ロードマップ策定</li>
+            </ul>
+        </div>
+        <div class="pillar-card">
+            <div class="pillar-num">02</div>
+            <h3>オーダーメイドAI開発</h3>
+            <p>汎用AIツールでは解決できない御社固有の課題に対し、専用のAIモデルをゼロから設計・開発。小さく始めて素早く検証するPoCアプローチで、リスクを最小化します。</p>
+            <ul class="pillar-list">
+                <li>自然言語処理・画像認識・予測AI</li>
+                <li>既存システムとのAPI連携</li>
+                <li>PoC→本格開発の段階的アプローチ</li>
+            </ul>
+        </div>
+        <div class="pillar-card">
+            <div class="pillar-num">03</div>
+            <h3>運用定着・伴走支援</h3>
+            <p>AIは開発して終わりではありません。現場で確実に使いこなせるよう、トレーニングから効果測定、継続的な改善まで伴走。98%の高い継続率が品質の証です。</p>
+            <ul class="pillar-list">
+                <li>現場トレーニング・マニュアル整備</li>
+                <li>KPIモニタリング・効果測定レポート</li>
+                <li>モデル精度改善・機能追加対応</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Process -->
+<section class="section process-section" id="process">
+    <div class="section-header">
+        <h2>導入の流れ</h2>
+        <p>初回相談から本格運用まで、4つのステップで着実に進めます。</p>
+    </div>
+    <div class="process-grid">
+        <div class="process-step">
+            <div class="step-num">1</div>
+            <h3>初回相談・課題整理</h3>
+            <p>御社の事業課題や業務プロセスをヒアリング。AI導入の目的を明確化し、最適なアプローチ方針を策定します。</p>
+            <span class="step-tag">無料・オンラインOK</span>
+        </div>
+        <div class="process-step">
+            <div class="step-num">2</div>
+            <h3>戦略策定・要件定義</h3>
+            <p>業務分析の結果をもとに、AI適用領域の特定とROI試算を実施。段階的な導入ロードマップを策定します。</p>
+            <span class="step-tag">約2〜4週間</span>
+        </div>
+        <div class="process-step">
+            <div class="step-num">3</div>
+            <h3>PoC・プロトタイプ開発</h3>
+            <p>実データを用いた概念実証で、AIモデルの精度と業務効果を検証。本格開発へのGo/No-Go判断をサポートします。</p>
+            <span class="step-tag">最短2週間</span>
+        </div>
+        <div class="process-step">
+            <div class="step-num">4</div>
+            <h3>本格開発・運用定着</h3>
+            <p>検証結果を踏まえた本格開発を実施。システム連携、現場トレーニング、KPIモニタリングまで一貫してサポートします。</p>
+            <span class="step-tag">伴走支援付き</span>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq-section" id="faq">
+    <div class="section-header">
+        <h2>よくある質問</h2>
+        <p>サービスに関してよくいただく質問にお答えします。</p>
+    </div>
+    <div class="faq-list">
+        <div class="faq-item">
+            <div class="faq-q">コンサルティングだけの依頼も可能ですか？</div>
+            <div class="faq-a">はい、可能です。AI戦略コンサルティングのみ、開発のみなど、御社のニーズに合わせた柔軟な支援が可能です。まずは初回面談で御社の状況をお聞かせください。最適なサービスの組み合わせをご提案します。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">どのような業界の支援実績がありますか？</div>
+            <div class="faq-a">製造業、金融、不動産、小売、物流、医療、人材など幅広い業界で120社以上の支援実績があります。業界固有の課題やデータ特性を理解した上で、最適なAIソリューションを設計します。業界別の詳しい事例はサービス資料をご覧ください。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">既存のAIツールとの違いは何ですか？</div>
+            <div class="faq-a">汎用AIツール（ChatGPTなど）は幅広い用途に使えますが、御社固有の業務課題に最適化されているわけではありません。当社のオーダーメイドAI開発では、御社のデータと業務プロセスに特化したAIモデルを構築するため、精度と業務効果の両面で大きな差が生まれます。</div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner" id="meeting">
+    <h2>まずは御社の課題をお聞かせください</h2>
+    <p>AI戦略の策定から開発・運用まで、御社に最適なソリューションをご提案します。初回面談は無料、オンラインで30分から対応可能です。</p>
+    <div class="cta-buttons">
+        <a href="#" class="btn-primary large">初回面談を予約する →</a>
+        <a href="#contact" class="btn-secondary">お問い合わせ</a>
+    </div>
+    <div class="cta-note">オンライン面談OK・30分で完了・営業電話なし</div>
+</section>
+
+<!-- Footer -->
+<footer style="border-top: 1px solid #E5E5E5; background: #fff; padding: 40px 24px;">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 32px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20">
+        <path d="M10,75 C10,75 22,25 38,25 C52,25 44,65 56,65 C68,65 60,20 74,20 C90,20 100,75 100,75" stroke="#1A1A2E" stroke-width="7" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span style="font-size: 14px; font-weight: 300; letter-spacing: 0.15em; color: #111;">RAKUDA AI</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px;">
+      <div>
+        <h3 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #9CA3AF; margin-bottom: 12px;">ラクダシリーズ</h3>
+        <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px;">
+          <li><a href="https://hub.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダHub</a></li>
+          <li><a href="https://mail.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダMail</a></li>
+          <li><a href="https://reception.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダReception</a></li>
+          <li><a href="https://research.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダResearch</a></li>
+          <li><a href="https://invoice.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダInvoice</a></li>
+          <li><a href="https://buddy.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダBuddy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #9CA3AF; margin-bottom: 12px;">サポート</h3>
+        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+          <li><a href="mailto:info@rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">info@rakuda-ai.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #E5E5E5; padding-top: 24px; text-align: center; font-size: 12px; color: #9CA3AF;">
+      &copy; 2026 Rakuda AI Inc. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

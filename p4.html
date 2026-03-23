@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>AI導入支援・AI受託開発ソリューション | ROI・数字で語るAI導入</title>
+    <meta name="description" content="AI導入で平均30%の業務コスト削減を実現。120社以上の導入実績から算出したROIデータで投資判断を支援します。">
+    <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+    --primary: #2563EB; --primary-dark: #1D4ED8; --primary-light: #EFF6FF;
+    --primary-border: #BFDBFE; --text: #111827; --text-sub: #6B7280;
+    --text-muted: #9CA3AF; --bg: #FFF; --bg-alt: #F9FAFB;
+    --border: #E5E7EB; --radius: 8px; --radius-lg: 12px;
+}
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; font-feature-settings: "palt"; line-height: 1.6; }
+.header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.header-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+.logo { font-size: 16px; font-weight: 700; color: var(--text); }
+.nav { display: flex; align-items: center; gap: 24px; }
+.nav a { font-size: 13px; font-weight: 500; color: var(--text-sub); text-decoration: none; }
+.nav-contact { font-size: 13px; font-weight: 500; padding: 7px 16px; border-radius: var(--radius); border: 1px solid var(--border); color: var(--text-sub); background: transparent; text-decoration: none; transition: all 0.15s; }
+.nav-contact:hover { border-color: var(--primary); color: var(--primary); }
+.nav-meeting { font-size: 13px; font-weight: 600; padding: 8px 20px; border-radius: var(--radius); background: var(--primary); color: #FFF !important; text-decoration: none; transition: all 0.15s; animation: pulse-glow 2s infinite; }
+.nav-meeting:hover { background: var(--primary-dark); transform: translateY(-1px); }
+@keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(37,99,235,0.4); } 50% { box-shadow: 0 0 0 8px rgba(37,99,235,0); } }
+.hero { padding: 80px 24px 64px; text-align: center; }
+.hero-inner { max-width: 720px; margin: 0 auto; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 100px; background: var(--primary-light); color: var(--primary); font-size: 12px; font-weight: 500; margin-bottom: 24px; }
+.hero h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.3; margin-bottom: 18px; }
+.hero h1 span { color: var(--primary); }
+.hero p { font-size: 16px; color: var(--text-sub); line-height: 1.8; margin-bottom: 36px; }
+.hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; border-radius: var(--radius); background: var(--primary); color: #FFF; font-size: 15px; font-weight: 600; border: none; cursor: pointer; text-decoration: none; transition: all 0.15s; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+.btn-primary.large { padding: 16px 36px; font-size: 16px; animation: pulse-glow 2s infinite; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; border-radius: var(--radius); background: transparent; color: var(--text-sub); font-size: 15px; font-weight: 500; border: 1px solid var(--border); cursor: pointer; text-decoration: none; transition: all 0.15s; }
+.btn-secondary:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+.hero-note { margin-top: 14px; font-size: 12px; color: var(--text-muted); }
+.section { padding: 80px 24px; }
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+.section-header p { font-size: 15px; color: var(--text-sub); max-width: 560px; margin: 0 auto; }
+.stats { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat { padding: 36px 16px; text-align: center; }
+.stat:not(:last-child) { border-right: 1px solid var(--border); }
+.stat .num { font-size: 36px; font-weight: 800; color: var(--primary); letter-spacing: -0.03em; margin-bottom: 4px; }
+.stat .lbl { font-size: 13px; color: var(--text-sub); font-weight: 500; }
+.features-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feat-card { padding: 32px; border-radius: var(--radius-lg); background: var(--bg-alt); border: 1px solid var(--border); }
+.feat-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 20px; }
+.feat-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.feat-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
+.cases-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.case-card { padding: 32px; border-radius: var(--radius-lg); border: 1px solid var(--border); background: var(--bg); }
+.case-tag { display: inline-block; padding: 4px 10px; border-radius: 100px; font-size: 11px; font-weight: 600; background: var(--primary-light); color: var(--primary); margin-bottom: 12px; }
+.case-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.case-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; margin-bottom: 16px; }
+.case-result { display: flex; gap: 24px; }
+.case-result-item { flex: 1; }
+.case-result-item .val { font-size: 22px; font-weight: 800; color: var(--primary); }
+.case-result-item .label { font-size: 11px; color: var(--text-muted); }
+.process-section { background: var(--bg-alt); }
+.process-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.process-step { text-align: center; padding: 32px 20px; background: var(--bg); border-radius: var(--radius-lg); border: 1px solid var(--border); }
+.step-num { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--primary); color: #FFF; font-size: 14px; font-weight: 700; margin-bottom: 16px; }
+.process-step h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.process-step p { font-size: 12px; color: var(--text-sub); line-height: 1.6; }
+.step-tag { display: inline-block; margin-top: 12px; padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 500; background: var(--primary-light); color: var(--primary); }
+.faq-section { background: var(--bg-alt); }
+.faq-list { max-width: 720px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q { font-size: 15px; font-weight: 700; margin-bottom: 8px; display: flex; gap: 8px; }
+.faq-q::before { content: "Q"; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: var(--primary); color: #FFF; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+.faq-a { font-size: 14px; color: var(--text-sub); line-height: 1.7; padding-left: 32px; }
+.cta-banner { padding: 80px 24px; text-align: center; background: var(--primary-light); }
+.cta-banner h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+.cta-banner p { font-size: 15px; color: var(--text-sub); margin-bottom: 32px; }
+.cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-note { margin-top: 12px; font-size: 12px; color: var(--text-muted); }
+.footer { padding: 32px 24px; border-top: 1px solid var(--border); background: var(--bg-alt); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.footer span { font-size: 12px; color: var(--text-muted); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 12px; color: var(--text-muted); text-decoration: none; }
+
+/* P3 Pain point styles */
+.pains-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.pain-card { padding: 24px; border-radius: var(--radius-lg); background: #FEF2F2; border: 1px solid #FECACA; display: flex; gap: 16px; align-items: flex-start; }
+.pain-icon { font-size: 24px; flex-shrink: 0; }
+.pain-card h3 { font-size: 15px; font-weight: 700; color: #991B1B; margin-bottom: 6px; }
+.pain-card p { font-size: 13px; color: #B91C1C; line-height: 1.6; }
+.arrow-down { text-align: center; padding: 24px; font-size: 32px; color: var(--primary); }
+.solution-section { background: var(--primary-light); }
+
+/* P4 ROI styles */
+.roi-calc { max-width: 520px; margin: 0 auto; padding: 32px; border-radius: var(--radius-lg); background: var(--bg); border: 1px solid var(--border); }
+.roi-calc h3 { font-size: 16px; font-weight: 700; text-align: center; margin-bottom: 24px; }
+.roi-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #F3F4F6; }
+.roi-row:last-child { border-bottom: none; }
+.roi-row .rl { font-size: 14px; color: var(--text-sub); }
+.roi-row .rv { font-size: 15px; font-weight: 700; color: var(--text); }
+.roi-row .rv.blue { color: var(--primary); }
+.roi-result { margin-top: 20px; padding: 20px; border-radius: var(--radius); background: var(--primary-light); text-align: center; }
+.roi-result .big { font-size: 32px; font-weight: 800; color: var(--primary); }
+.roi-result .sub { font-size: 12px; color: var(--text-sub); }
+
+@media (max-width: 768px) {
+    .nav a:not(.nav-contact):not(.nav-meeting) { display: none; }
+    .hero h1 { font-size: 28px; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(2) { border-right: none; }
+    .features-grid { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: repeat(2, 1fr); }
+    .cases-grid { grid-template-columns: 1fr; }
+    .pains-grid { grid-template-columns: 1fr; }
+}
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+    <div class="header-inner">
+        <div class="logo">RAKUDA AI</div>
+        <nav class="nav">
+            <a href="#features">サービス</a>
+            <a href="#cases">ROI事例</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact" class="nav-contact">お問い合わせ</a>
+            <a href="#meeting" class="nav-meeting">初回面談を予約</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-badge">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20V10M6 20V4M18 20v-4"/></svg>
+            120社以上の導入実績から算出
+        </div>
+        <h1>AI導入で<span>平均30%</span>の<br>業務コスト削減を実現。</h1>
+        <p>「AIを入れたら本当にコスト削減できるのか？」その疑問に、数字でお答えします。<br>120社以上の導入実績から得たデータに基づき、御社のAI投資対効果を可視化します。</p>
+        <div class="hero-cta">
+            <a href="#meeting" class="btn-primary large">無料ROI試算を予約する →</a>
+            <a href="#roi" class="btn-secondary">ROI試算を見る</a>
+        </div>
+        <div class="hero-note">※ オンライン面談OK・30分で完了・営業電話なし</div>
+    </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+    <div class="stats-inner">
+        <div class="stat">
+            <div class="num">30%</div>
+            <div class="lbl">平均業務コスト削減</div>
+        </div>
+        <div class="stat">
+            <div class="num">8ヶ月</div>
+            <div class="lbl">平均投資回収期間</div>
+        </div>
+        <div class="stat">
+            <div class="num">2.4倍</div>
+            <div class="lbl">平均ROI</div>
+        </div>
+        <div class="stat">
+            <div class="num">98%</div>
+            <div class="lbl">継続利用率</div>
+        </div>
+    </div>
+</section>
+
+<!-- ROI Calculator -->
+<section class="section" style="background: var(--bg-alt);" id="roi">
+    <div class="section-header">
+        <h2>ROI簡易シミュレーション</h2>
+        <p>AI導入の投資対効果を具体的な数字でご確認いただけます。実際の面談では御社の業務データに基づいた詳細試算をご提供します。</p>
+    </div>
+    <div class="roi-calc">
+        <h3>AI導入 ROI試算ツール（簡易版）</h3>
+        <div class="roi-row">
+            <span class="rl">対象業務の月間人件費</span>
+            <span class="rv">&yen;5,000,000</span>
+        </div>
+        <div class="roi-row">
+            <span class="rl">想定自動化率</span>
+            <span class="rv">30%</span>
+        </div>
+        <div class="roi-row">
+            <span class="rl">月間コスト削減額</span>
+            <span class="rv blue">&yen;1,500,000</span>
+        </div>
+        <div class="roi-row">
+            <span class="rl">初期開発費</span>
+            <span class="rv">&yen;8,000,000</span>
+        </div>
+        <div class="roi-result">
+            <div class="big">約5.3ヶ月</div>
+            <div class="sub">投資回収期間</div>
+        </div>
+        <div class="roi-result" style="margin-top: 12px;">
+            <div class="big">&yen;18,000,000</div>
+            <div class="sub">年間削減額</div>
+        </div>
+    </div>
+    <p style="text-align: center; margin-top: 24px; font-size: 13px; color: var(--text-muted);">※ 上記は一般的なケースに基づく簡易試算です。御社の業務内容に応じた詳細試算は初回面談にてご提供いたします。</p>
+</section>
+
+<!-- Features -->
+<section class="section" id="features">
+    <div class="section-header">
+        <h2>ROIを最大化する3つのアプローチ</h2>
+        <p>導入前の試算から導入後の効果測定まで、数字に基づいた意思決定を支援します。</p>
+    </div>
+    <div class="features-grid">
+        <div class="feat-card">
+            <div class="feat-icon">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20V10M6 20V4M18 20v-4"/></svg>
+            </div>
+            <h3>導入前ROI試算</h3>
+            <p>業務プロセスの工数・コストを可視化し、AI導入による削減効果を定量的に試算。経営層への投資判断材料として活用できるレポートを提供します。</p>
+        </div>
+        <div class="feat-card">
+            <div class="feat-icon">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <h3>段階的な投資設計</h3>
+            <p>一括投資ではなく、フェーズ分割で効果を確認しながら投資を拡大。各フェーズごとにKPIを設定し、投資対効果を検証しながら進めます。</p>
+        </div>
+        <div class="feat-card">
+            <div class="feat-icon">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h3>導入後の効果測定</h3>
+            <p>導入前後のコスト・工数・品質を定量比較する月次レポートを提供。実際のROIを継続的にモニタリングし、改善提案を行います。</p>
+        </div>
+    </div>
+</section>
+
+<!-- Cases -->
+<section class="section" style="background: var(--bg-alt);" id="cases">
+    <div class="section-header">
+        <h2>ROI事例</h2>
+        <p>AI導入による具体的な投資対効果をご紹介します。</p>
+    </div>
+    <div class="cases-grid">
+        <div class="case-card">
+            <span class="case-tag">製造業・100名規模</span>
+            <h3>検査工程AI化で年間4,800万円削減</h3>
+            <p>目視検査に年間12名の検査員を配置していた工程にAI画像認識を導入。検査精度を維持しつつ、検査員を3名に削減。余剰人員は付加価値の高い品質改善業務にシフトしました。24時間365日の自動検査体制を実現し、人件費と機会損失の両面でコスト削減を達成。</p>
+            <div class="case-result">
+                <div class="case-result-item">
+                    <div class="val">4,800万円/年</div>
+                    <div class="label">コスト削減額</div>
+                </div>
+                <div class="case-result-item">
+                    <div class="val">6ヶ月</div>
+                    <div class="label">投資回収期間</div>
+                </div>
+                <div class="case-result-item">
+                    <div class="val">3.2倍</div>
+                    <div class="label">ROI（初年度）</div>
+                </div>
+            </div>
+        </div>
+        <div class="case-card">
+            <span class="case-tag">小売業・500名規模</span>
+            <h3>需要予測AIで在庫ロス25%削減、年間1.2億円改善</h3>
+            <p>過去の販売データ・気象データ・イベント情報をAIが分析し、店舗別・商品別の需要を高精度に予測。発注量の最適化により廃棄ロスと機会損失を同時に削減しました。全150店舗に展開し、サプライチェーン全体の効率化を実現。</p>
+            <div class="case-result">
+                <div class="case-result-item">
+                    <div class="val">1.2億円/年</div>
+                    <div class="label">コスト改善額</div>
+                </div>
+                <div class="case-result-item">
+                    <div class="val">4ヶ月</div>
+                    <div class="label">投資回収期間</div>
+                </div>
+                <div class="case-result-item">
+                    <div class="val">4.8倍</div>
+                    <div class="label">ROI（初年度）</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process -->
+<section class="section process-section">
+    <div class="section-header">
+        <h2>ROI最大化までの4ステップ</h2>
+        <p>数字に基づいた意思決定で、確実に投資を回収します。</p>
+    </div>
+    <div class="process-grid">
+        <div class="process-step">
+            <div class="step-num">1</div>
+            <h3>業務コスト可視化</h3>
+            <p>対象業務の工数・コストを詳細に分析し、AI適用時の削減効果を定量試算します。</p>
+            <span class="step-tag">1〜2週間</span>
+        </div>
+        <div class="process-step">
+            <div class="step-num">2</div>
+            <h3>PoC・効果検証</h3>
+            <p>小規模な検証で実際の削減効果を測定。本番投資の判断材料を数値で提供します。</p>
+            <span class="step-tag">1〜2ヶ月</span>
+        </div>
+        <div class="process-step">
+            <div class="step-num">3</div>
+            <h3>本番実装・展開</h3>
+            <p>検証済みモデルを本番環境に実装。既存システムとの統合・現場トレーニングまで対応。</p>
+            <span class="step-tag">2〜4ヶ月</span>
+        </div>
+        <div class="process-step">
+            <div class="step-num">4</div>
+            <h3>効果測定・改善</h3>
+            <p>月次でROIをモニタリング。モデル精度の改善と適用範囲の拡大を継続的に提案します。</p>
+            <span class="step-tag">継続</span>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq-section" id="faq">
+    <div class="section-header">
+        <h2>よくあるご質問</h2>
+    </div>
+    <div class="faq-list">
+        <div class="faq-item">
+            <div class="faq-q">ROI試算の精度はどのくらいですか？</div>
+            <div class="faq-a">初回面談での簡易試算は概算値ですが、PoC段階で実データに基づく精緻な試算を行います。過去の導入実績では、PoC段階の試算と本番実績の乖離は平均15%以内に収まっています。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">投資回収期間が8ヶ月以上かかるケースもありますか？</div>
+            <div class="faq-a">あります。対象業務の規模や複雑性、既存システムとの統合度合いによって前後します。投資回収に12ヶ月以上かかると試算された場合は、フェーズ分割による段階的な投資をご提案し、各フェーズで効果を確認しながら進めます。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">小規模な業務でもコスト削減効果は出ますか？</div>
+            <div class="faq-a">月間人件費200万円以上の業務であれば、十分な投資対効果が見込めるケースが多いです。それ以下の規模でも、複数業務を横断的に自動化することでROIを確保できる場合があります。まずはご相談ください。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">導入後に効果が出なかった場合はどうなりますか？</div>
+            <div class="faq-a">PoC段階で効果が見込めないと判断した場合は、本番実装に進まないことをお勧めします。本番実装後に想定を下回る場合は、原因分析と改善提案を行い、目標ROI達成に向けた追加施策を実施します。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">ROI試算だけ依頼することはできますか？</div>
+            <div class="faq-a">はい、可能です。初回面談での概算ROI試算は無料で提供しています。より精緻な業務分析とROI試算レポートの作成は、有償のアセスメントサービスとして提供しています（50万円〜）。</div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner" id="meeting">
+    <h2>御社のAI導入ROIを<br>無料で試算します</h2>
+    <p>30分のオンライン面談で、御社の業務に合わせたAI導入のコスト削減効果を試算いたします。</p>
+    <div class="cta-buttons">
+        <a href="#" class="btn-primary large">初回面談を予約する →</a>
+        <a href="#contact" class="btn-secondary">お問い合わせ</a>
+    </div>
+    <div class="cta-note">オンライン面談OK・30分で完了・営業電話なし</div>
+</section>
+
+<!-- Footer -->
+<footer style="border-top: 1px solid #E5E5E5; background: #fff; padding: 40px 24px;">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 32px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20">
+        <path d="M10,75 C10,75 22,25 38,25 C52,25 44,65 56,65 C68,65 60,20 74,20 C90,20 100,75 100,75" stroke="#1A1A2E" stroke-width="7" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span style="font-size: 14px; font-weight: 300; letter-spacing: 0.15em; color: #111;">RAKUDA AI</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px;">
+      <div>
+        <h3 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #9CA3AF; margin-bottom: 12px;">ラクダシリーズ</h3>
+        <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px;">
+          <li><a href="https://hub.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダHub</a></li>
+          <li><a href="https://mail.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダMail</a></li>
+          <li><a href="https://reception.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダReception</a></li>
+          <li><a href="https://research.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダResearch</a></li>
+          <li><a href="https://invoice.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダInvoice</a></li>
+          <li><a href="https://buddy.rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">ラクダBuddy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #9CA3AF; margin-bottom: 12px;">サポート</h3>
+        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+          <li><a href="mailto:info@rakuda-ai.com" style="font-size: 14px; color: #6B7280; text-decoration: none;">info@rakuda-ai.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #E5E5E5; padding-top: 24px; text-align: center; font-size: 12px; color: #9CA3AF;">
+      &copy; 2026 Rakuda AI Inc. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

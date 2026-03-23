@@ -393,6 +393,11 @@
     document.addEventListener('rakuda:chat_start', onChatStart);
   }
 
+  // グローバル関数として公開（各HTMLから window.abTrack() で呼び出し可能）
+  window.abTrack = function (eventType, metadata) {
+    sendEvent(eventType, metadata || {});
+  };
+
   // DOMContentLoaded で自動初期化
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initialize);

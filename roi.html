@@ -505,7 +505,7 @@ footer { border-top: 1px solid var(--border); background: #fff; padding: 40px 24
       120社以上の導入実績から算出
     </div>
     <h1>AI導入で<span>平均30%</span>の<br>業務コスト削減を実現。</h1>
-    <p>「AIを入れたら本当にコスト削減できるのか？」その疑問に、数字でお答えします。<br>120社以上の導入実績から得たデータに基づき、御社のAI投資対効果を可視化します。</p>
+    <p>「AIを入れたら本当にコスト削減できるのか？」その疑問に、数字でお答えします。120社以上の導入実績から得たデータに基づき、御社のAI投資対効果を可視化します。</p>
     <div class="hero-cta">
       <a href="#" class="btn-primary large" onclick="openBooking();return false;">無料でROI試算を相談する &rarr;</a>
       <a href="#roi" class="btn-secondary">ROI試算を見る</a>
@@ -657,7 +657,7 @@ footer { border-top: 1px solid var(--border); background: #fff; padding: 40px 24
 
 <!-- ========== CTA BANNER ========== -->
 <section class="cta-banner">
-  <h2>御社のAI導入ROIを<br>無料で試算します</h2>
+  <h2>御社のAI導入ROIを無料で試算します</h2>
   <p>30分のオンライン面談で、御社の業務に合わせたAI導入のコスト削減効果を試算いたします。</p>
   <div class="cta-buttons">
     <button class="btn-cta-white" onclick="openBooking()" data-track="cta">初回面談を予約する &rarr;</button>
@@ -674,8 +674,6 @@ footer { border-top: 1px solid var(--border); background: #fff; padding: 40px 24
         <path d="M10,75 C10,75 22,25 38,25 C52,25 44,65 56,65 C68,65 60,20 74,20 C90,20 100,75 100,75" stroke="#1A1A2E" stroke-width="7" fill="none" stroke-linecap="round"/>
       </svg>
       <span>RAKUDA AI SOLUTION</span>
-    </div>
-    <div class="footer-links-row">
     </div>
     <div class="footer-copy">&copy; 2026 Rakuda AI Inc. All rights reserved.</div>
   </div>
@@ -920,6 +918,9 @@ function openContact() {
     var el = document.getElementById(id); if (el) el.value = '';
   });
 
+  var submitBtn = document.querySelector('#contactFormArea .btn-submit');
+  if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = '送信する'; }
+
   modal.classList.add('is-open');
   document.body.classList.add('modal-open');
   if (typeof window.abTrack === 'function') window.abTrack('contact_open');
@@ -994,6 +995,8 @@ function openBooking() {
   if (btnDate) { btnDate.disabled = true; btnDate.textContent = '次へ：時間を選択'; }
   var btnTime = document.getElementById('btnTime');
   if (btnTime) { btnTime.disabled = true; btnTime.textContent = '次へ：情報入力'; }
+  var confirmBtn = document.querySelector('#bookStep3 .btn-book-next');
+  if (confirmBtn) { confirmBtn.disabled = false; confirmBtn.textContent = '予約を確定する'; }
   goBookStep(1); renderCal();
   document.getElementById('bookingModal').classList.add('is-open');
   document.body.classList.add('modal-open');
@@ -1083,12 +1086,6 @@ function renderTimeSlots() {
     };
     grid.appendChild(el);
   });
-}
-
-function selectTime(time) {
-  bookState.time = time;
-  renderTimeSlots();
-  goBookStep(3);
 }
 
 function confirmBooking() {
@@ -1208,6 +1205,8 @@ function sendChatToAPI(text) {
           }
         });
         read();
+      }).catch(function() {
+        addChatMsg('通信エラーが発生しました。再度お試しください。', 'bot');
       });
     }
     read();

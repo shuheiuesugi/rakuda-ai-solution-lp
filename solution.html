@@ -107,7 +107,7 @@ nav a:hover { color: var(--ink); }
   line-height: 1.35; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--ink);
 }
 .hero h1 span, .hero h1 em { color: var(--primary); font-style: normal; }
-.hero p, .hero-desc {
+.hero p {
   font-size: 16px; color: var(--text-sub); line-height: 1.9; margin-bottom: 40px;
 }
 .hero-cta {
@@ -640,8 +640,6 @@ footer { border-top: 1px solid var(--border); background: #fff; padding: 40px 24
       </svg>
       <span>RAKUDA AI SOLUTION</span>
     </div>
-    <div class="footer-links-row">
-    </div>
     <div class="footer-copy">&copy; 2026 Rakuda AI Inc. All rights reserved.</div>
   </div>
 </footer>
@@ -885,6 +883,9 @@ function openContact() {
     var el = document.getElementById(id); if (el) el.value = '';
   });
 
+  var submitBtn = document.querySelector('#contactFormArea .btn-submit');
+  if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = '送信する'; }
+
   modal.classList.add('is-open');
   document.body.classList.add('modal-open');
   if (typeof window.abTrack === 'function') window.abTrack('contact_open');
@@ -959,6 +960,8 @@ function openBooking() {
   if (btnDate) { btnDate.disabled = true; btnDate.textContent = '次へ：時間を選択'; }
   var btnTime = document.getElementById('btnTime');
   if (btnTime) { btnTime.disabled = true; btnTime.textContent = '次へ：情報入力'; }
+  var confirmBtn = document.querySelector('#bookStep3 .btn-book-next');
+  if (confirmBtn) { confirmBtn.disabled = false; confirmBtn.textContent = '予約を確定する'; }
   goBookStep(1); renderCal();
   document.getElementById('bookingModal').classList.add('is-open');
   document.body.classList.add('modal-open');
@@ -1048,12 +1051,6 @@ function renderTimeSlots() {
     };
     grid.appendChild(el);
   });
-}
-
-function selectTime(time) {
-  bookState.time = time;
-  renderTimeSlots();
-  goBookStep(3);
 }
 
 function confirmBooking() {
@@ -1173,6 +1170,8 @@ function sendChatToAPI(text) {
           }
         });
         read();
+      }).catch(function() {
+        addChatMsg('通信エラーが発生しました。再度お試しください。', 'bot');
       });
     }
     read();

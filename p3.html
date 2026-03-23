@@ -89,12 +89,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
 .footer-links a { font-size: 12px; color: var(--text-muted); text-decoration: none; }
 
 /* P3 Pain point styles */
-.pains-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.pain-card { padding: 24px 24px 24px 28px; border-radius: var(--radius-lg); background: #FFF; border: 1px solid var(--border); border-left: 4px solid #DC2626; display: flex; gap: 16px; align-items: flex-start; }
-.pain-num { font-size: 13px; font-weight: 800; color: #DC2626; flex-shrink: 0; margin-top: 2px; }
-.pain-card h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
-.pain-card p { font-size: 13px; color: var(--text-sub); line-height: 1.6; }
-.arrow-down { text-align: center; padding: 24px; font-size: 32px; color: var(--primary); }
+.pains-list { max-width: 640px; margin: 0 auto; }
+.pain-item { padding: 24px 0; border-bottom: 1px solid var(--border); }
+.pain-item:last-child { border-bottom: none; }
+.pain-item h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.pain-item h3::before { content: "\2014\00a0"; color: var(--text-muted); font-weight: 400; }
+.pain-item p { font-size: 14px; color: var(--text-sub); line-height: 1.75; }
 .solution-section { background: var(--primary-light); }
 
 /* P4 ROI styles */
@@ -117,7 +117,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
     .features-grid { grid-template-columns: 1fr; }
     .process-grid { grid-template-columns: repeat(2, 1fr); }
     .cases-grid { grid-template-columns: 1fr; }
-    .pains-grid { grid-template-columns: 1fr; }
+
 }
     </style>
 </head>
@@ -146,7 +146,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
             <a href="#meeting" class="btn-primary large">無料相談を予約する →</a>
             <a href="#pains" class="btn-secondary">よくある課題を見る</a>
         </div>
-        <div class="hero-note"><span>オンライン面談OK</span><span>30分で完了</span><span>営業電話なし</span></div>
+        <div class="hero-note"><span>オンライン面談OK</span><span>30分で完了</span></div>
     </div>
 </section>
 
@@ -156,34 +156,22 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
         <h2>AI導入でよくある4つの壁</h2>
         <p>120社以上の支援実績から見えた、AI導入プロジェクトが停滞する主な原因です。</p>
     </div>
-    <div class="pains-grid">
-        <div class="pain-card">
-            <div class="pain-num">01</div>
-            <div>
-                <h3>何から始めればいいかわからない</h3>
-                <p>AI導入の優先領域が不明確で、検討が進まない。社内の業務プロセスのどこにAIを適用すれば最大の効果が得られるのか、判断基準がない。</p>
-            </div>
+    <div class="pains-list">
+        <div class="pain-item">
+            <h3>何から始めればいいかわからない</h3>
+            <p>AI導入の優先領域が不明確で、検討が進まない。社内の業務プロセスのどこにAIを適用すれば最大の効果が得られるのか、判断基準がない。</p>
         </div>
-        <div class="pain-card">
-            <div class="pain-num">02</div>
-            <div>
-                <h3>PoC止まりで本番化できない</h3>
-                <p>検証はしたが、現場への実装・定着に至らない。技術的には動くが、既存システムとの統合や業務フローへの組み込みで頓挫するケースが多い。</p>
-            </div>
+        <div class="pain-item">
+            <h3>PoC止まりで本番化できない</h3>
+            <p>検証はしたが、現場への実装・定着に至らない。技術的には動くが、既存システムとの統合や業務フローへの組み込みで頓挫するケースが多い。</p>
         </div>
-        <div class="pain-card">
-            <div class="pain-num">03</div>
-            <div>
-                <h3>社内にAI人材がいない</h3>
-                <p>開発も運用もできる人材がおらず、外注依存になる。ベンダーに丸投げすると、ブラックボックス化して自社でコントロールできなくなる。</p>
-            </div>
+        <div class="pain-item">
+            <h3>社内にAI人材がいない</h3>
+            <p>開発も運用もできる人材がおらず、外注依存になる。ベンダーに丸投げすると、ブラックボックス化して自社でコントロールできなくなる。</p>
         </div>
-        <div class="pain-card">
-            <div class="pain-num">04</div>
-            <div>
-                <h3>費用対効果が見えない</h3>
-                <p>投資に見合う成果が出るのか、経営層を説得できない。AI導入の投資対効果を定量的に示せず、予算確保が難航している。</p>
-            </div>
+        <div class="pain-item">
+            <h3>費用対効果が見えない</h3>
+            <p>投資に見合う成果が出るのか、経営層を説得できない。AI導入の投資対効果を定量的に示せず、予算確保が難航している。</p>
         </div>
     </div>
 </section>
@@ -345,7 +333,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino San
         <a href="#" class="btn-primary large">初回面談を予約する →</a>
         <a href="#contact" class="btn-secondary">お問い合わせ</a>
     </div>
-    <div class="cta-note"><span>オンライン面談OK</span><span>30分で完了</span><span>営業電話なし</span></div>
+    <div class="cta-note"><span>オンライン面談OK</span><span>30分で完了</span></div>
 </section>
 
 <!-- Footer -->
